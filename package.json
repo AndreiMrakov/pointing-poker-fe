@@ -24,9 +24,6 @@
       "react-app/jest"
     ]
   },
-  "browserslist": [
-    "extends browserslist-config"
-  ],
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.10",
