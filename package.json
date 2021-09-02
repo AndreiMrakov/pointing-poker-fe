@@ -24,18 +24,9 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    "extends browserslist-config"
+  ],
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.10",
