@@ -1,0 +1,22 @@
+name: Deploy for FE
+
+on:
+  push:
+    branches:
+      - main
+
+    needs:
+      - Test for FE
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "pointing-poker-app"
+          heroku_email: "pradd.wow@gmail.com"
+          procfile: "web: npm start"
