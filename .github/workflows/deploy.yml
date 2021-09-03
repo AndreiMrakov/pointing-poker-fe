@@ -3,14 +3,14 @@ name: Deploy for FE
 on:
   push:
     branches:
-      - main
+      - develop
 
     needs:
       - Test for FE
 
 jobs:
   build:
-    name: Deploy
+    name: Deploy to Heroku
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
