@@ -1,12 +1,11 @@
-name: Test for FE
+name: Test
 
 on:
   push:
-    branches: ["*"]
+    branches-ignore: [develop, main]
 
 jobs:
-  build:
-    name: Test
+  test:
     runs-on: ubuntu-latest
 
     strategy:
