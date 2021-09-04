@@ -1,4 +1,4 @@
-import { ICard, ITask, IUser } from '@/interfaces';
+import { ICard, IRoom, ITask, IUser } from '@/interfaces';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
 export class Axios {
@@ -51,4 +51,6 @@ export class Axios {
 
   getCards = () => this.instance.get<ICard[]>('/cards');
   sendCard = (body: ICard) => this.instance.post('/cards', body);
+
+  getRoom = () => this.instance.get<IRoom>('/rooms');
 };

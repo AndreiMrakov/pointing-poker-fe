@@ -12,3 +12,7 @@ export interface ICard {
   value: number;
   id?: number;
 }
+
+export interface IRoom {
+  id?: number;
+}
