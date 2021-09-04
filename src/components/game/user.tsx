@@ -32,4 +32,5 @@ const User: FC<Props> = ({ user }) => {
     </li>
   );
 };
+
 export default User;

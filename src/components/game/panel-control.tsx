@@ -5,16 +5,3 @@ const PanelGameControl = () => {
 };
 
 export default PanelGameControl;
-
-
-
-
-
-
-
-
-
-
-
-
-// game control panel: restart,finish,start game buttons

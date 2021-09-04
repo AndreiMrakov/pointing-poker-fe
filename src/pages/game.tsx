@@ -21,6 +21,5 @@ const GamePage = () => {
       <PanelUsers />
     </main>
   );
-};
 
 export default GamePage;
