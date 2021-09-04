@@ -3,7 +3,6 @@ export type CardType = {
   name: string;
   score: number;
   back: string;
-  front: string;
 };
 
 export type UserType = {

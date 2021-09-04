@@ -10,4 +10,7 @@
 
 .wrapper {
   flex: 2 0 66%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
