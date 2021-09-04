@@ -8,6 +8,7 @@ export type CardType = {
 
 export type UserType = {
   id: string;
+  type: string;
   name: string;
   surname: string;
   job: string;
