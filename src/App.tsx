@@ -8,7 +8,6 @@ function App() {
       <GamePage />
     </div>
   );
-  // return <></>;
 }
 
 export default App;
