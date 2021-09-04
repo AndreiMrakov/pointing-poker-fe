@@ -9,7 +9,7 @@ const GamePage = () => {
   const title = 'Name room';
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>{title}</h1>
         <div>
@@ -19,7 +19,7 @@ const GamePage = () => {
         <PanelCards />
       </div>
       <PanelUsers />
-    </>
+    </div>
   );
 };
 
