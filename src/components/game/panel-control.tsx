@@ -1,10 +1,10 @@
 import React from "react";
 
-const GameControlPanel = () => {
+const PanelGameControl = () => {
   return <div>Panel Control</div>;
 };
 
-export default GameControlPanel;
+export default PanelGameControl;
 
 
 
