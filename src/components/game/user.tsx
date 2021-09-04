@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { UserType } from "./type";
-import styles from '@/styles/game.module.scss';
+import styles from '@/styles/users.module.scss';
 import defaultAvatar from '@/assets/images/default-avatar.svg';
 
 type Props = {

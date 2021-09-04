@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./user";
 import { UserType } from "./type";
-import styles from '@/styles/game.module.scss';
+import styles from '@/styles/users.module.scss';
 
 const mockUser = (id: string, name: string, surname: string, job: string) => {
   return {
