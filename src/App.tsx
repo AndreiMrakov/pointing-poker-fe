@@ -1,6 +1,6 @@
 import React from 'react';
-import GamePage from './pages/Game';
-import styles from '@/styles/app.module.scss';
+import GamePage from './pages/GamePage';
+import styles from './App.module.scss';
 
 export function App() {
   return (

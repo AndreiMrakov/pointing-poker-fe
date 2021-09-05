@@ -1,6 +1,6 @@
 import React from "react";
 import { VoteCard } from "./VoteCard";
-import styles from '@/styles/cards.module.scss';
+import styles from './VoteCard.module.scss';
 import { CardType } from "@/untils/types";
 
 const mockCard = (id: string, name: string, score: number) => {

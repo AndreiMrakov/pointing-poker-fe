@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../variables.scss";
   
 .listUsers {
   border-left: 1px solid $second-font-color;
@@ -63,7 +63,7 @@
 .kick {
   width: 2rem;
   height: 2rem;
-  background-image: url(../assets/images/kick.svg);
+  background-image: url(../../assets/images/kick.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

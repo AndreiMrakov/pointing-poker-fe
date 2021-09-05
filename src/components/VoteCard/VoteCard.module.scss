@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 
 .listCards {
   display: flex;
@@ -35,7 +35,7 @@
   background-color: #60DABF;
 
   &::after {
-    content: url(../assets/images/checked.svg);
+    content: url(../../assets/images/checked.svg);
     position: absolute;
     width: 4rem;
     z-index: 10;

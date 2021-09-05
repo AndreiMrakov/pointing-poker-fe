@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from "@/styles/button.module.scss";
+import styles from "./Button.module.scss";
 
 type ButtonProps = {
   name: string;

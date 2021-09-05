@@ -1,7 +1,7 @@
 import React from "react";
 import { PanelVoteCards } from "@/components/VoteCard/PanelVoteCards";
 import { PanelUsers } from "@/components/User/PanelUsers";
-import styles from '@/styles/game.module.scss';
+import styles from '@/styles/GamePage.module.scss';
 import { Button } from "@/components/Botton/Button";
 
 const GamePage = () => {

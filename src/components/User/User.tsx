@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from '@/styles/users.module.scss';
+import styles from './User.module.scss';
 import defaultAvatar from '@/assets/images/default-avatar.svg';
 import { UserType } from "@/untils/types";
 
