@@ -1,5 +1,5 @@
 import React from "react";
-import User from "./User";
+import { User } from "./User";
 import styles from '@/styles/users.module.scss';
 import { UserType } from "@/untils/types";
 
@@ -15,7 +15,7 @@ const mockUser = (id: string, name: string, surname: string, job: string) => {
 
   }
 }
-const PanelUsers = () => {
+export const PanelUsers = () => {
   const listUsers: UserType[] = [
     mockUser('1', 'Pradd', 'Praddich', 'web-developer'),
     mockUser('2', 'Lena', 'Ivaaaan', 'Java-developer'),
@@ -34,5 +34,3 @@ const PanelUsers = () => {
     </ul>
   );
 };
-
-export default PanelUsers;

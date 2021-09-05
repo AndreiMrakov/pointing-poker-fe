@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./VoteCard";
+import { VoteCard } from "./VoteCard";
 import styles from '@/styles/cards.module.scss';
 import { CardType } from "@/untils/types";
 
@@ -12,7 +12,7 @@ const mockCard = (id: string, name: string, score: number) => {
   };
 };
 
-const PanelVoteCards = () => {
+export const PanelVoteCards = () => {
   //TODO: get list from axios
   const listCards: CardType[] = [
     mockCard('1', 'SP', 2),
@@ -24,9 +24,7 @@ const PanelVoteCards = () => {
 
   return (
     <ul className={styles.listCards}>
-      {listCards.map((card: CardType) => <Card card={card} key={card.id} />)}
+      {listCards.map((card: CardType) => <VoteCard card={card} key={card.id} />)}
     </ul>
   );
 };
-
-export default PanelVoteCards;

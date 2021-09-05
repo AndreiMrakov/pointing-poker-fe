@@ -7,7 +7,7 @@ type Props = {
   user: UserType;
 };
 
-const User: FC<Props> = ({ user }) => {
+export const User: FC<Props> = ({ user }) => {
   const { name, surname, job, avatar, currentScore, type } = user;
 
   const defaultScore = type === 'observer' ? '-' : 'in progress';
@@ -32,5 +32,3 @@ const User: FC<Props> = ({ user }) => {
     </li>
   );
 };
-
-export default User;

@@ -6,7 +6,7 @@ type Props = {
   card: CardType;
 };
 
-const VoteCard: FC<Props> = ({ card }) => {
+export const VoteCard: FC<Props> = ({ card }) => {
   const { name, score } = card;
 
   return (
@@ -17,5 +17,3 @@ const VoteCard: FC<Props> = ({ card }) => {
     </div>
   );
 };
-
-export default VoteCard;
