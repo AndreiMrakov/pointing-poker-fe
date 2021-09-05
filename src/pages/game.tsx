@@ -1,8 +1,6 @@
 import React from "react";
-import PanelCards from "@/components/game/panel-cards";
-import PanelGameControl from "@/components/game/panel-control";
-import PanelUsers from "@/components/game/panel-users";
-import PanelDealer from "@/components/game/panel-dealer";
+import PanelCards from "@/components/VoteCard/PanelVoteCards";
+import PanelUsers from "@/components/User/PanelUsers";
 import styles from '@/styles/game.module.scss';
 
 const GamePage = () => {
@@ -12,10 +10,6 @@ const GamePage = () => {
     <main className={styles.main}>
       <div className={styles.wrapper}>
         <h1>{title}</h1>
-        <div>
-          <PanelDealer />
-          <PanelGameControl />
-        </div>
         <PanelCards />
       </div>
       <PanelUsers />

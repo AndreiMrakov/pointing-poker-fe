@@ -1,7 +1,7 @@
 import React from "react";
-import User from "./user";
-import { UserType } from "./type";
+import User from "./User";
 import styles from '@/styles/users.module.scss';
+import { UserType } from "@/untils/types";
 
 const mockUser = (id: string, name: string, surname: string, job: string) => {
   return {

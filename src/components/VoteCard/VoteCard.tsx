@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import { CardType } from "./type";
 import styles from '@/styles/cards.module.scss';
+import { CardType } from "@/untils/types";
 
 type Props = {
   card: CardType;
 };
 
-const Card: FC<Props> = ({ card }) => {
+const VoteCard: FC<Props> = ({ card }) => {
   const { name, score } = card;
 
   return (
@@ -18,4 +18,4 @@ const Card: FC<Props> = ({ card }) => {
   );
 };
 
-export default Card;
+export default VoteCard;

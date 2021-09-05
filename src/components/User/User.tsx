@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { UserType } from "./type";
 import styles from '@/styles/users.module.scss';
 import defaultAvatar from '@/assets/images/default-avatar.svg';
+import { UserType } from "@/untils/types";
 
 type Props = {
   user: UserType;

@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "./card";
-import { CardType } from "./type";
+import Card from "./VoteCard";
 import styles from '@/styles/cards.module.scss';
+import { CardType } from "@/untils/types";
 
 const mockCard = (id: string, name: string, score: number) => {
   return {
@@ -12,7 +12,7 @@ const mockCard = (id: string, name: string, score: number) => {
   };
 };
 
-const PanelCards = () => {
+const PanelVoteCards = () => {
   //TODO: get list from axios
   const listCards: CardType[] = [
     mockCard('1', 'SP', 2),
@@ -29,4 +29,4 @@ const PanelCards = () => {
   );
 };
 
-export default PanelCards;
+export default PanelVoteCards;

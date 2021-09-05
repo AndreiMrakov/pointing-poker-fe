@@ -1,5 +1,5 @@
 import React from 'react';
-import GamePage from './pages/game';
+import GamePage from './pages/Game';
 import styles from '@/styles/app.module.scss';
 
 function App() {
