@@ -1,23 +1,23 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
-export class HTTPClient {
-	static classInstance?: HTTPClient;
+export class _httpClient {
+	static _instance: _httpClient;
 
 	private instance!: AxiosInstance;
 
-  constructor(public baseURL: string){
-    this._initializeResponseInterceptor();
+  constructor(public baseURL: string = ' ') {
 	}
 
-  static getClassInstance(baseURL: string){
-    if (!this.classInstance) {
-      this.classInstance = new HTTPClient(baseURL);
+  static getClassInstance(){
+    if (!this._instance) {
+      this._instance = new _httpClient();    
     };
-    return this.classInstance;
+    return this._instance;
   };
 
   createInstance = () => {
-    this.instance = axios.create({ baseURL: this.baseURL });
+    this.instance = axios.create({ baseURL: this.baseURL});
+    this._initializeResponseInterceptor();
   }
 
   private _initializeResponseInterceptor = () => {
