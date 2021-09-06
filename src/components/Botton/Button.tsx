@@ -5,13 +5,14 @@ type ButtonProps = {
   name: string;
   myStyles?: "btn-primary" | "btn-secondary";
   type?: "button" | "reset" | "submit";
+  callback: () => void;
 };
 
-export const Button: FC<ButtonProps> = ({ name, type = "button", myStyles }) => {
+export const Button: FC<ButtonProps> = ({ name, type = "button", myStyles, callback }) => {
   const btnStyle = myStyles === 'btn-primary' ? styles.btnPrimary : styles.btnSecondary;
 
   return (
-    <button type={type} className={`${styles.btn} ${btnStyle}`}>
+    <button type={type} className={`${styles.btn} ${btnStyle}`} onClick={callback}>
       {name}
     </button>
   );
