@@ -12,7 +12,7 @@ const GamePage = () => {
       <div className={styles.wrapper}>
         <h1>{title}</h1>
         <PanelVoteCards />
-        <Button name="Exit" />
+        {/* <Button name="Exit" myStyles="btn-primary" /> */}
       </div>
       <PanelUsers />
     </main>
