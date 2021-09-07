@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import styles from './User.module.scss';
 import { UserType } from "@/untils/types/UserType";
 import { scoreAnalizer } from "@/helpers/scoreAnalizer";
@@ -11,9 +11,15 @@ type Props = {
 export const User: FC<Props> = ({ user }) => {
   const { name, surname, job, avatar, currentScore, type } = user;
 
-  const score = scoreAnalizer(type, currentScore);
+  const score = useMemo(
+    () => scoreAnalizer(type, currentScore),
+    [type, currentScore]
+  );
 
-  const styleAvatar = getAvatar(avatar);
+  const styleAvatar = useMemo(
+    () => getAvatar(avatar),
+    [avatar]
+  );
 
   return (
     <li className={styles.item}>
