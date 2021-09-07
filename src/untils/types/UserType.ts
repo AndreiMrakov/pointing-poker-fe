@@ -1,10 +1,3 @@
-export type CardType = {
-  id: string;
-  name: string;
-  score: number;
-  back: string;
-};
-
 export type UserType = {
   id: string;
   type: string;

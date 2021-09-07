@@ -1,6 +1,6 @@
+import { CardType } from "@/untils/types/CardType";
 import React, { FC } from "react";
 import styles from './VoteCard.module.scss';
-import { CardType } from "@/untils/types";
 
 type Props = {
   card: CardType;

@@ -1,5 +1,5 @@
-@import "../../variables.scss";
-  
+@import "@/variables.scss";
+
 .listUsers {
   border-left: 1px solid $second-font-color;
   flex: 1 0 33%;
@@ -11,10 +11,9 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 1rem;
 
-  &:last-child {
-    margin-bottom: 0;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
   }
 }
 
@@ -69,8 +68,9 @@
   background-size: cover;
   margin-right: 0.5rem;
   cursor: pointer;
-  
+
   &:hover {
-    filter: invert(0) sepia(40%) saturate(1300%) hue-rotate(200deg) brightness(95%) contrast(200%);
+    filter: invert(0) sepia(40%) saturate(1300%) hue-rotate(200deg)
+      brightness(95%) contrast(200%);
   }
 }

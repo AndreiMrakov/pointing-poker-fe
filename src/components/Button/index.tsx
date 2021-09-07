@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from "./Button.module.scss";
+import "./Button.scss";
 
 type ButtonProps = {
   name: string;
@@ -9,10 +9,8 @@ type ButtonProps = {
 };
 
 export const Button: FC<ButtonProps> = ({ name, type = "button", myStyles, callback }) => {
-  const btnStyle = myStyles === 'btn-primary' ? styles.btnPrimary : styles.btnSecondary;
-
   return (
-    <button type={type} className={`${styles.btn} ${btnStyle}`} onClick={callback}>
+    <button type={type} className={`btn ${myStyles}`} onClick={callback}>
       {name}
     </button>
   );

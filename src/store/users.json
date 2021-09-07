@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "type": "player",
+      "name": "Pradd",
+      "surname": "Praddich",
+      "job": "web-developer",
+      "avatar": "",
+      "currentScore": null
+    },
+    {
+      "id": "2",
+      "type": "player",
+      "name": "Lena",
+      "surname": "Ivaaaan",
+      "job": "Java-developer",
+      "avatar": "",
+      "currentScore": null
+    },
+    {
+      "id": "3",
+      "type": "player",
+      "name": "Alex",
+      "surname": "Ohohoho",
+      "job": "team lead",
+      "avatar": "",
+      "currentScore": null
+    },
+    {
+      "id": "4",
+      "type": "player",
+      "name": "Jone",
+      "surname": "Smite",
+      "job": "developer",
+      "avatar": "",
+      "currentScore": null
+    },
+    {
+      "id": "5",
+      "type": "player",
+      "name": "Ivan",
+      "surname": "Petrov",
+      "job": "",
+      "avatar": "",
+      "currentScore": null
+    },
+    {
+      "id": "6",
+      "type": "player",
+      "name": "Guest",
+      "surname": "",
+      "job": "observer",
+      "avatar": "",
+      "currentScore": null
+    }
+  ]
+}

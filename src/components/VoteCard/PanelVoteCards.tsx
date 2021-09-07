@@ -1,26 +1,11 @@
 import React from "react";
 import { VoteCard } from "./VoteCard";
-import styles from './VoteCard.module.scss';
-import { CardType } from "@/untils/types";
-
-const mockCard = (id: string, name: string, score: number) => {
-  return {
-    id,
-    name,
-    score,
-    back: '',
-  };
-};
+import styles from "./VoteCard.module.scss";
+import cards from "@/store/cards.json";
+import { CardType } from "@/untils/types/CardType";
 
 export const PanelVoteCards = () => {
-  //TODO: get list from axios
-  const listCards: CardType[] = [
-    mockCard('1', 'SP', 2),
-    mockCard('2', 'SP', 5),
-    mockCard('3', 'SP', 10),
-    mockCard('4', 'SP', 25),
-    mockCard('5', 'SP', 50),
-  ];
+  const listCards: CardType[] = cards.cards;  
 
   return (
     <ul className={styles.listCards}>

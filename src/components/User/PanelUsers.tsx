@@ -1,28 +1,11 @@
 import React from "react";
 import { User } from "./User";
-import styles from './User.module.scss';
-import { UserType } from "@/untils/types";
+import styles from "./User.module.scss";
+import users from "@/store/users.json";
+import { UserType } from "@/untils/types/UserType";
 
-const mockUser = (id: string, name: string, surname: string, job: string) => {
-  return {
-    id,
-    type: 'player',
-    name,
-    surname,
-    job,
-    avatar: '',
-    currentScore: null,
-
-  }
-}
 export const PanelUsers = () => {
-  const listUsers: UserType[] = [
-    mockUser('1', 'Pradd', 'Praddich', 'web-developer'),
-    mockUser('2', 'Lena', 'Ivaaaan', 'Java-developer'),
-    mockUser('3', 'Alex', 'Ohohoho ', 'team lead'),
-    mockUser('4', 'Jone', 'gggg', 'developer'),
-    mockUser('5', 'Ivan', 'tttree', ''),
-  ];
+  const listUsers: UserType[] = users.users;
 
   return (
     <ul className={styles.listUsers}>
