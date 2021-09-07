@@ -47,10 +47,10 @@
     },
     {
       "id": "6",
-      "type": "player",
+      "type": "observer",
       "name": "Guest",
       "surname": "",
-      "job": "observer",
+      "job": "",
       "avatar": "",
       "currentScore": null
     }
