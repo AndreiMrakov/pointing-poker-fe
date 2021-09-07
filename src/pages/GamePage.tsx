@@ -4,19 +4,25 @@ import { PanelUsers } from "@/components/User/PanelUsers";
 import styles from '@/styles/GamePage.module.scss';
 import { PrimaryButton, SecondaryButton } from "@/components/Button";
 
+const NAMES_BTN = {
+  run: "run round",
+  restart: "restart round",
+  stop: "stop game"
+};
+
 const GamePage = () => {
   const title = 'Name room';
 
   const handlerRun = () => {
-    //TODO
+    console.log("handlerRun");
   };
 
   const handlerRestart = () => {
-    //TODO
+    console.log("handlerRestart");
   };
 
   const handlerStop = () => {
-    //TODO
+    console.log("handlerStop");
   };
 
   return (
@@ -25,17 +31,20 @@ const GamePage = () => {
         <h1>{title}</h1>
         <div className={styles.groupBtn}>
           <PrimaryButton
-            name="run round"
             onClick={handlerRun}
-          />
+          >
+            {NAMES_BTN.run}
+          </PrimaryButton>
           <PrimaryButton
-            name="restart round"
             onClick={handlerRestart}
-          />
+          >
+            {NAMES_BTN.restart}
+          </PrimaryButton>
           <SecondaryButton
-            name="stop game"
             onClick={handlerStop}
-          />
+          >
+            {NAMES_BTN.stop}
+          </SecondaryButton>
         </div>
         <PanelVoteCards />
       </div>

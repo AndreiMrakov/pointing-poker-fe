@@ -1,13 +1,19 @@
 import React, { FC } from "react";
-import { Button } from "./Button";
+import { Button, ButtonProps } from "./Button";
+import classNames from "classnames";
+import styles from "./Button.module.scss";
 
-type SecondaryButtonProps = {
-  name: string;
-  onClick: () => void;
-};
-
-export const SecondaryButton: FC<SecondaryButtonProps> = ({ name, onClick }) => {
+export const SecondaryButton: FC<ButtonProps> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <Button name={name} myStyles="btn-secondary" onClick={onClick} />
+    <Button
+      className={classNames(styles.btnSecondary, className)}
+      {...props}
+    >
+      {children}
+    </Button>
   );
 };

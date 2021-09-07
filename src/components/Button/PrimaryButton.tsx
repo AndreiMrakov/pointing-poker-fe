@@ -1,13 +1,19 @@
 import React, { FC } from "react";
-import { Button } from "./Button";
+import { Button, ButtonProps } from "./Button";
+import classNames from "classnames";
+import styles from "./Button.module.scss";
 
-type PrimaryButtonProps = {
-  name: string;
-  onClick: () => void;
-};
-
-export const PrimaryButton: FC<PrimaryButtonProps> = ({ name, onClick }) => {
+export const PrimaryButton: FC<ButtonProps> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <Button name={name} myStyles="btn-primary" onClick={onClick} />
+    <Button
+      className={classNames(styles.btnPrimary, className)}
+      {...props}
+    >
+      {children}
+    </Button>
   );
 };

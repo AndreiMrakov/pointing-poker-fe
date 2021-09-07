@@ -1,25 +1,22 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styles from "./Button.module.scss";
 import classNames from "classnames/bind";
 
-type ButtonProps = {
-  name: string;
-  myStyles: string;
+export type ButtonProps = {
+  children: ReactNode;
+  className?: string;
   type?: "button" | "reset" | "submit";
   onClick: () => void;
 };
 
-const cx = classNames.bind(styles);
-
-export const Button: FC<ButtonProps> = ({ name, type = "button", myStyles, onClick }) => {
-  const className = cx({
-    btnPrimary: myStyles === "btn-primary",
-    btnSecondary: myStyles === "btn-secondary",
-  });
-
+export const Button: FC<ButtonProps> = ({ children, type = "button", className, onClick }) => {
   return (
-    <button type={type} className={classNames(styles.btn, className)} onClick={onClick}>
-      {name}
+    <button 
+      type={type} 
+      className={classNames(styles.btn, className)} 
+      onClick={onClick}
+    >
+      {children}
     </button>
   );
 };
