@@ -32,7 +32,7 @@ $size-avatar: 3rem;
 .user {
   border-radius: 0.2rem;
   background-color: $primary-color;
-  box-shadow: 0 1px 1px #666;
+  box-shadow: 0 1px 1px $shadow-grey;
   min-width: 16rem;
   display: flex;
   align-items: center;

@@ -5,7 +5,7 @@ import cards from "@/store/cards.json";
 import { CardType } from "@/untils/types/CardType";
 
 export const PanelVoteCards = () => {
-  const listCards: CardType[] = cards.cards;  
+  const listCards: CardType[] = cards;  
 
   return (
     <ul className={styles.listCards}>

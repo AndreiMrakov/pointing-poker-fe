@@ -5,7 +5,7 @@ import users from "@/store/users.json";
 import { UserType } from "@/untils/types/UserType";
 
 export const PanelUsers = () => {
-  const listUsers: UserType[] = users.users;
+  const listUsers: UserType[] = users;
 
   return (
     <ul className={styles.listUsers}>

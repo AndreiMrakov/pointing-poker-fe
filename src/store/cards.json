@@ -1,34 +1,32 @@
-{
-  "cards": [
-    {
-      "id": "1",
-      "name": "SP",
-      "score": 2,
-      "back": ""
-    },
-    {
-      "id": "2",
-      "name": "SP",
-      "score": 5,
-      "back": ""
-    },
-    {
-      "id": "3",
-      "name": "SP",
-      "score": 10,
-      "back": ""
-    },
-    {
-      "id": "4",
-      "name": "SP",
-      "score": 25,
-      "back": ""
-    },
-    {
-      "id": "5",
-      "name": "SP",
-      "score": 50,
-      "back": ""
-    }
-  ]
-}
+[
+  {
+    "id": "1",
+    "name": "SP",
+    "score": 2,
+    "back": ""
+  },
+  {
+    "id": "2",
+    "name": "SP",
+    "score": 5,
+    "back": ""
+  },
+  {
+    "id": "3",
+    "name": "SP",
+    "score": 10,
+    "back": ""
+  },
+  {
+    "id": "4",
+    "name": "SP",
+    "score": 25,
+    "back": ""
+  },
+  {
+    "id": "5",
+    "name": "SP",
+    "score": 50,
+    "back": ""
+  }
+]
