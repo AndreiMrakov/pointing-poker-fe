@@ -1,7 +1,7 @@
 import React from "react";
 import { User } from "./User";
 import styles from "./User.module.scss";
-import users from "@/store/users.json";
+import users from "@/mocks/users.json";
 import { UserType } from "@/untils/types/UserType";
 
 export const PanelUsers = () => {

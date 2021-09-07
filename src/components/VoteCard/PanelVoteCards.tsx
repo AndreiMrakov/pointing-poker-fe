@@ -1,7 +1,7 @@
 import React from "react";
 import { VoteCard } from "./VoteCard";
 import styles from "./VoteCard.module.scss";
-import cards from "@/store/cards.json";
+import cards from "@/mocks/cards.json";
 import { CardType } from "@/untils/types/CardType";
 
 export const PanelVoteCards = () => {
