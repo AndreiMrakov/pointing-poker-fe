@@ -3,11 +3,11 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } f
 export class _HTTPClient {
 	static _instance: _HTTPClient;
 
-	private _axios: AxiosInstance;
+	_axios: AxiosInstance;
 
-  constructor(public baseURL = ' ') {
+  constructor(private baseURL = '') {
     this._axios = axios.create({ baseURL: this.baseURL});
-    this._initializeInterceptor();
+    this._initializeInterceptors();
 	}
 
   static getInstance(){
@@ -17,7 +17,7 @@ export class _HTTPClient {
     return this._instance;
   };
 
-  private _initializeInterceptor = () => {
+  private _initializeInterceptors = () => {
     this._axios.interceptors.response.use(
       this._handleResponse,
       this._handleError,
