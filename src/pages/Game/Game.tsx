@@ -1,7 +1,7 @@
 import React from "react";
 import { PanelVoteCards } from "@/components/VoteCard/PanelVoteCards";
 import { PanelUsers } from "@/components/User/PanelUsers";
-import styles from '@/styles/GamePage.module.scss';
+import styles from './Game.module.scss';
 import { PrimaryButton, SecondaryButton } from "@/components/Button";
 
 const NAMES_BTN = {
@@ -10,7 +10,7 @@ const NAMES_BTN = {
   stop: "stop game"
 };
 
-const GamePage = () => {
+export const Game = () => {
   const title = 'Name room';
 
   const handlerRun = () => {
@@ -52,5 +52,3 @@ const GamePage = () => {
     </main>
   );
 };
-
-export default GamePage;
