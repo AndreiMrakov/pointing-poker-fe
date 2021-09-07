@@ -1,5 +1,5 @@
 import React from "react";
-import { PanelVoteCards } from "@/components/VoteCard/PanelVoteCards";
+import { PanelVoteCards } from "@/components/VoteCard";
 import { PanelUsers } from "@/components/User";
 import styles from './Game.module.scss';
 import { PrimaryButton, SecondaryButton } from "@/components/Button";
