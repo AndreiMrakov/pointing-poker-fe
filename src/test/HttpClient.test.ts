@@ -13,22 +13,10 @@ describe('Create class', () => {
 });
 
 describe('Base url', () => {
-  test('Should return axios', () => {
-    const axios = httpClient.getAxios();
-    expect(axios).not.toBe(undefined);
-  });
-
   test('Should return url', () => {
-    const axios = httpClient.getAxios();
-    const axiosBaseUrl = axios.defaults.baseURL;
-    expect(axiosBaseUrl === '').toBe(true);
-  });
-
-  test('Should return false', () => {
-    HTTPClient.getInstance('url');
-    const axios = httpClient.getAxios();
-    const axiosBaseUrl = axios.defaults.baseURL;
+    expect(httpClient.http === '').toBe(true);
+    httpClient.http = 'url';
     
-    expect(axiosBaseUrl === 'url').toBe(false);
+    expect(httpClient.http === 'url').toBe(true);
   });
 });

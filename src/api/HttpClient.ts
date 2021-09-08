@@ -6,7 +6,7 @@ export class HTTPClient {
 	private _axios: AxiosInstance;
 
   private constructor(private baseURL = '') {
-    this._axios = axios.create({ baseURL: this.baseURL});
+    this._axios = axios.create({ baseURL });
     this._initializeInterceptors();
 	}
 
@@ -17,7 +17,13 @@ export class HTTPClient {
     return this._instance;
   };
 
-  getAxios = () => this._axios;
+  set http(baseURL: string) {
+    this._axios.defaults.baseURL = baseURL;
+  };
+
+  get http() {
+    return this._axios.defaults.baseURL ? this._axios.defaults.baseURL : '';
+  };
 
   private _initializeInterceptors = () => {
     this._axios.interceptors.response.use(
