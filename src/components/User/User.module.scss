@@ -63,7 +63,7 @@ $size-avatar: 3rem;
 .kick {
   width: $size-kick;
   height: $size-kick;
-  background: url(../../assets/images/kick.svg) center no-repeat;
+  background: url(~@/assets/images/kick.svg) center no-repeat;
   background-size: cover;
   margin-right: 0.5rem;
   cursor: pointer;
