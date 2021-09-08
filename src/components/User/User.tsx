@@ -15,7 +15,7 @@ export const User: FC<Props> = ({ user }) => {
   );
 
   const styleAvatar = useMemo(
-    () => getAvatar(user.avatar),
+    () => getAvatar(user.avatar || undefined),
     [user.avatar]
   );
 
