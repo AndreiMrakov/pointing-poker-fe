@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-export class _HTTPClient {
-	static _instance: _HTTPClient;
+export class HTTPClient {
+	static _instance: HTTPClient;
 
 	_axios: AxiosInstance;
 
@@ -10,12 +10,14 @@ export class _HTTPClient {
     this._initializeInterceptors();
 	}
 
-  static getInstance(){
+  static getInstance(baseURL = ''){
     if (!this._instance) {
-      this._instance = new _HTTPClient();    
+      this._instance = new HTTPClient(baseURL);    
     };
     return this._instance;
   };
+
+  getAxios = () => this._axios;
 
   private _initializeInterceptors = () => {
     this._axios.interceptors.response.use(
@@ -37,3 +39,5 @@ export class _HTTPClient {
     console.dir(error);
   };
 };
+
+export const httpClient = HTTPClient.getInstance();
