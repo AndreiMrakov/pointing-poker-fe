@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } f
 export class HTTPClient {
 	static _instance: HTTPClient;
 
-	_axios: AxiosInstance;
+	private _axios: AxiosInstance;
 
   private constructor(private baseURL = '') {
     this._axios = axios.create({ baseURL: this.baseURL});

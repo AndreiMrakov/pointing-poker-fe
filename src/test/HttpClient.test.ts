@@ -13,21 +13,22 @@ describe('Create class', () => {
 });
 
 describe('Base url', () => {
-  const axios = httpClient.getAxios();
-
   test('Should return axios', () => {
+    const axios = httpClient.getAxios();
     expect(axios).not.toBe(undefined);
   });
 
-  test('Should return clean string', () => {
+  test('Should return url', () => {
+    const axios = httpClient.getAxios();
     const axiosBaseUrl = axios.defaults.baseURL;
     expect(axiosBaseUrl === '').toBe(true);
   });
 
-  test('Should return new url', () => {
-    const url = 'new url';
-    axios.defaults.baseURL = url;
-    const axiosBaseUrl = axios.defaults.baseURL
-    expect(axiosBaseUrl === url).toBe(true);
+  test('Should return false', () => {
+    HTTPClient.getInstance('url');
+    const axios = httpClient.getAxios();
+    const axiosBaseUrl = axios.defaults.baseURL;
+    
+    expect(axiosBaseUrl === 'url').toBe(false);
   });
 });
