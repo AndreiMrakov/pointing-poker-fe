@@ -7,13 +7,11 @@ type Props = {
 };
 
 export const VoteCard: FC<Props> = ({ card }) => {
-  const { name, score } = card;
-
   return (
     <div className={styles.card}>
-      <div className={styles.nameTop}>{name}</div>
-      <h3 className={styles.score}>{score}</h3>
-      <div className={styles.nameBottom}>{name}</div>
+      <div className={styles.nameTop}>{card.name}</div>
+      <h3 className={styles.score}>{card.score}</h3>
+      <div className={styles.nameBottom}>{card.name}</div>
     </div>
   );
 };

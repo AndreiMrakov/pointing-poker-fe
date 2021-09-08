@@ -9,16 +9,14 @@ type Props = {
 };
 
 export const User: FC<Props> = ({ user }) => {
-  const { name, surname, job, avatar, currentScore, type } = user;
-
   const score = useMemo(
-    () => scoreAnalizer(type, currentScore),
-    [type, currentScore]
+    () => scoreAnalizer(user.type, user.currentScore),
+    [user.type, user.currentScore]
   );
 
   const styleAvatar = useMemo(
-    () => getAvatar(avatar),
-    [avatar]
+    () => getAvatar(user.avatar),
+    [user.avatar]
   );
 
   return (
@@ -29,9 +27,9 @@ export const User: FC<Props> = ({ user }) => {
       <div className={styles.user}>
         <div style={styleAvatar} className={styles.avatar} />
         <div className={styles.name}>
-          {`${name} ${surname}`}
+          {`${user.name} ${user.surname}`}
           <div className={styles.job}>
-            {job}
+            {user.job}
           </div>
         </div>
         <div className={styles.kick} />
