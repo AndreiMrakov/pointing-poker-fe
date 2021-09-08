@@ -5,5 +5,5 @@ export type UserType = {
   surname: string;
   job: string;
   avatar: string;
-  currentScore: number | null;
+  currentScore: number;
 };
