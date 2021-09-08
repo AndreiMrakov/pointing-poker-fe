@@ -10,7 +10,7 @@ export const PanelUsers = () => {
         <h3>score:</h3>
         <h3>player:</h3>
       </li>
-      {users.map((user) => <User user={user} key={user.id} />)}
+      {users.map(user => <User user={user} key={user.id} />)}
     </ul>
   );
 };

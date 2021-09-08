@@ -6,7 +6,7 @@ import cards from "@/mocks/cards.json";
 export const PanelVoteCards = () => {
   return (
     <ul className={styles.listCards}>
-      {cards.map((card) => <VoteCard card={card} key={card.id} />)}
+      {cards.map(card => <VoteCard card={card} key={card.id} />)}
     </ul>
   );
 };
