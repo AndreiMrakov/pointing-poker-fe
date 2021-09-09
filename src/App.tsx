@@ -1,7 +1,11 @@
 import React from 'react';
+import { Game } from './pages/Game';
+import styles from './App.module.scss';
 
-function App() {
-  return <></>;
+export function App() {
+  return (
+    <div className={styles.container}>
+      <Game />
+    </div>
+  );
 }
-
-export default App;

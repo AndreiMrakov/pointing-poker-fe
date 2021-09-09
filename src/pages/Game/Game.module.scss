@@ -1,0 +1,16 @@
+@import "@/styles/variables.scss";
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: inherit;
+  color: $font-color;
+}
+
+.wrapper {
+  flex: 2 0 66%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

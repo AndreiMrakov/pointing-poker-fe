@@ -1,0 +1,75 @@
+@import "@/styles/variables.scss";
+
+$size-kick: 2rem;
+$size-avatar: 3rem;
+
+.listUsers {
+  border-left: 1px solid $second-font-color;
+  flex: 1 0 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.itemTitle {
+  display: flex;
+  justify-content: space-around;
+  text-transform: capitalize;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+}
+
+.score,
+.user {
+  border-radius: 0.2rem;
+  background-color: $primary-color;
+  box-shadow: 0 1px 1px $shadow-grey;
+  min-width: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  padding: 0.5rem 0;
+}
+
+.score {
+  font-size: 2rem;
+}
+
+.user {
+  justify-content: space-between;
+}
+
+.job {
+  font-size: 1rem;
+}
+
+.avatar {
+  width: $size-avatar;
+  height: $size-avatar;
+  background: center no-repeat;
+  margin-left: 0.5rem;
+}
+
+.kick {
+  width: $size-kick;
+  height: $size-kick;
+  background: url(~@/assets/images/kick.svg) center no-repeat;
+  background-size: cover;
+  margin-right: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    filter: invert(0) sepia(40%) saturate(1300%) hue-rotate(200deg)
+      brightness(95%) contrast(200%);
+  }
+}
