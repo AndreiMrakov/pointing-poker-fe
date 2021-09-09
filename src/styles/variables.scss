@@ -1,8 +1,12 @@
 $primary-color: #f9f9f9; //background color
 $second-color: #3993ff; //Buttons and cards color
-$btn-dark-color: #2b3a67;
+$second-color-light: #74b3ff;
+$btn-dark-color: #1a2935;
+$btn-dark-color-light: #48545d;
 $table-color: #d7e9ff;
 $font-color: #1a2935;
 $second-font-color: #a8aeb2;
 $shadow-grey: #999999;
-$card-active: #60dabf;
+$card-active: linear-gradient(45deg,#3993ff 12%,transparent 0,transparent 88%,#3993ff 0), linear-gradient(135deg, transparent 37%,#1a7bf2 0,#1a7bf2 63%, transparent 0), linear-gradient(45deg
+, transparent 37%,#3993ff 0,#3993ff 63%,transparent 0),#74b3ff;
+
