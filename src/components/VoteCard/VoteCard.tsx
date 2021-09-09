@@ -1,11 +1,12 @@
 import { CardType } from "@/untils/types/CardType";
 import React, { FC } from "react";
 import styles from './VoteCard.module.scss';
+import classNames from "classnames";
 
-type Props = {
+interface Props {
   card: CardType;
   onCardClick: (e:React.MouseEvent) => void;
-  styleName: any
+  styleName: string
 };
 
 export const VoteCard: FC<Props> = (
@@ -16,7 +17,7 @@ export const VoteCard: FC<Props> = (
   }) => {
 
   return (
-    <li className={`${styles.card} ${styleName}`} 
+    <li className={classNames(styles.card, styleName)} 
         onClick={onCardClick}>
         {card.score}
     </li>

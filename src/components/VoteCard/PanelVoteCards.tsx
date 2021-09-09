@@ -29,8 +29,8 @@ export const PanelVoteCards: React.FC<IPanelVoteCards> = ({
           key={card.id} 
           styleName=
           {
-            `${card.score === +selectedCardValue ? styles.active : ''} 
-             ${isCardVisible ? styles.unactive : ''}
+            `${card.score === +selectedCardValue && styles.active} 
+             ${isCardVisible && styles.unactive}
           `} 
           onCardClick={onCardClick}
         />)
