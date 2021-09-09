@@ -14,3 +14,19 @@
   justify-content: space-between;
   flex-direction: column;
 }
+
+.groupBtn {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 7rem;
+
+  .singleBtn {
+    border-radius: .8rem;
+}
+
+  .singleBtn + .singleBtn {
+    margin-top: 1rem;
+}
+}
+
