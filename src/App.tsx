@@ -1,9 +1,8 @@
 import React from 'react';
 import { Game } from './pages/Game';
 import styles from './App.module.scss';
-
 import { BrowserRouter as Router,  Route,  Switch } from "react-router-dom";
-import { navMap } from './NavMap/NavMap';
+import { navMap } from './NavMap';
 
 function App() {
   return (
