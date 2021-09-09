@@ -17,12 +17,12 @@ export class HTTPClient {
     return this._instance;
   };
 
-  set http(baseURL: string) {
+  set url(baseURL: string) {
     this._axios.defaults.baseURL = baseURL;
   };
 
   get http() {
-    return this._axios.defaults.baseURL ? this._axios.defaults.baseURL : '';
+    return this._axios;
   };
 
   private _initializeInterceptors = () => {

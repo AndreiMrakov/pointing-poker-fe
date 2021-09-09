@@ -14,9 +14,9 @@ describe('Create class', () => {
 
 describe('Base url', () => {
   test('Should return url', () => {
-    expect(httpClient.http === '').toBe(true);
-    httpClient.http = 'url';
+    expect(httpClient.http.defaults.baseURL === '').toBe(true);
+    httpClient.url = 'url';
     
-    expect(httpClient.http === 'url').toBe(true);
+    expect(httpClient.http.defaults.baseURL === 'url').toBe(true);
   });
 });
