@@ -1,0 +1,49 @@
+@import "@/styles/variables.scss";
+
+.cardNest {
+  width: 3.5rem;
+  height: 6rem;
+  margin: 3rem auto 0;
+  border-radius: .6rem;
+  transform-style: preserve-3d;
+  transform-origin: right;
+  transition: all 0.5s;
+  perspective: 600px;
+  transition: 0.5s;
+
+  .frontSide,
+  .backSide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: .6rem;
+  }
+
+  .frontSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $second-color;
+    border: $second-color solid 2px;
+    background-color: $primary-color;
+    transform: rotateY(180deg);
+  }
+
+  .backSide {
+    background-color: $second-font-color;
+  }
+
+  .chosenCardBackground {
+    background: $card-active;
+    background-size: 1.5rem 1.5rem;
+  }
+}
+
+.showCard {
+  transform-origin: left;
+  transform: rotateY(180deg) translateX(-100%);
+}
+
