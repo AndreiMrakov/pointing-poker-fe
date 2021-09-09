@@ -12,7 +12,7 @@ function App() {
       <Switch>
         <Route path={navMap.home()} />
         <Route path={navMap.lobby()} />
-        <Route path={navMap.game() component={Game} />
+        <Route path={navMap.game()} component={Game} />
       </Switch>
     </Router>
   </div>
