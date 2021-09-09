@@ -34,12 +34,12 @@ export const Table: React.FC<ITable> = (
         <PrimaryButton 
           className={selectedCardValue && !isCardVisible ? '' : styles.none} 
           onClick={showCards}>
-          {'Show cards'}
+          Show cards
         </ PrimaryButton>
         <SecondaryButton 
           className={isCardVisible ? '' : styles.none} 
           onClick={removeChosenCard}>
-          {'New voting'}
+          New voting
         </SecondaryButton>
       </div>
   )
