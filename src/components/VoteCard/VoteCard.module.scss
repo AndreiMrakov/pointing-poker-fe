@@ -10,48 +10,43 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
-  width: 8rem;
-  height: 12rem;
+  width: 4.8rem;
+  height: 8rem;
   cursor: pointer;
   margin-right: 1rem;
-  border-radius: 0.2rem;
+  border-radius: 0.8rem;
   background-color: $primary-color;
-  box-shadow: 1px 1px 2px 1px $shadow-grey;
+  border: 2px solid $second-color;
   padding: 0.5rem;
   align-items: center;
-
+  transition: 0.3s;
+  font-size: 2rem;
+  font-weight: 600;
+  color: $second-color;
   &:last-child {
     margin-right: 0;
   }
 
   &:hover {
-    box-shadow: 1px 1px 5px 2px $shadow-grey;
-  }
+    margin-top: -.5rem;
+    transition: 0.3s;
+    background-color: $table-color;
+}
 }
 
 .active {
-  background-color: $card-active;
-
-  &::after {
-    content: url(~@/assets/images/checked.svg);
-    position: absolute;
-    width: 4rem;
-    z-index: 10;
-    top: -0.7rem;
-    right: -0.7rem;
-  }
+  background-color: $second-color !important;
+  color: $primary-color !important;
+  margin-top: -.5rem !important;
 }
 
-.score {
-  font-size: 5rem;
+.unactive {
+  color: $second-font-color !important;
+  border-color: $second-font-color !important;
+  background-color: $primary-color !important;
+  pointer-events: none;
 }
 
-.nameTop {
-  align-self: flex-start;
-}
 
-.nameBottom {
-  align-self: flex-end;
-}
