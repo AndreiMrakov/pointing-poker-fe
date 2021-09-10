@@ -1,18 +1,19 @@
 import React, { FC, useMemo } from "react";
 import styles from './User.module.scss';
 import { UserType } from "@/untils/types/UserType";
-import { scoreAnalizer } from "@/helpers/scoreAnalizer";
+// import { scoreAnalizer } from "@/helpers/scoreAnalizer";
 import { getAvatar } from "@/helpers/getAvatar";
+import { CardNest } from "../CommonArea/CardNest";
 
-type Props = {
+interface Props {
   user: UserType;
 };
 
 export const User: FC<Props> = ({ user }) => {
-  const score = useMemo(
-    () => scoreAnalizer(user.type, user.currentScore),
-    [user.type, user.currentScore]
-  );
+  // const score = useMemo(
+  //   () => scoreAnalizer(user.type, user.currentScore),
+  //   [user.type, user.currentScore]
+  // );
 
   const styleAvatar = useMemo(
     () => getAvatar(user.avatar),
@@ -21,9 +22,6 @@ export const User: FC<Props> = ({ user }) => {
 
   return (
     <li className={styles.item}>
-      <div className={styles.score}>
-        {score}
-      </div>
       <div className={styles.user}>
         <div style={styleAvatar} className={styles.avatar} />
         <div className={styles.name}>
@@ -34,6 +32,12 @@ export const User: FC<Props> = ({ user }) => {
         </div>
         <div className={styles.kick} />
       </div>
+      <CardNest 
+        cardStyle={styles.cardStyle}
+        isCardOpened={user.isCardOpened}
+        selectedCardValue={user.currentScore}
+        userType={user.type}
+      />
     </li>
   );
 };

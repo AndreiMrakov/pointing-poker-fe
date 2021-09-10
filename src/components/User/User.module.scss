@@ -4,10 +4,15 @@ $size-kick: 2rem;
 $size-avatar: 3rem;
 
 .listUsers {
-  border-left: 1px solid $second-font-color;
+  padding: 2rem 0 2rem 0;
+  border-right: 1px solid $second-font-color;
+  border-bottom: 1px solid $second-font-color;
   flex: 1 0 33%;
+  max-width: 40rem;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  height: 40rem;
 }
 
 .item {
@@ -20,33 +25,25 @@ $size-avatar: 3rem;
   }
 }
 
-.itemTitle {
-  display: flex;
-  justify-content: space-around;
-  text-transform: capitalize;
-  margin: 2rem 0;
-  font-size: 1.8rem;
-}
-
-.score,
 .user {
-  border-radius: 0.2rem;
-  background-color: $primary-color;
-  box-shadow: 0 1px 1px $shadow-grey;
-  min-width: 16rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-transform: capitalize;
-  padding: 0.5rem 0;
-}
-
-.score {
-  font-size: 2rem;
-}
-
-.user {
   justify-content: space-between;
+  width: 25rem;
+  position: relative;
+  padding: 1rem 2rem;
+  border-radius: .8rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  font-size: 1.8rem;
+  text-align: center;
+  height: 5.6rem;
+  border: 2px solid $second-color;
+  color: $font-color;
+}
+
+.cardStyle {
+  margin: 0 !important;
 }
 
 .job {
@@ -69,7 +66,10 @@ $size-avatar: 3rem;
   cursor: pointer;
 
   &:hover {
-    filter: invert(0) sepia(40%) saturate(1300%) hue-rotate(200deg)
-      brightness(95%) contrast(200%);
+    transform: scale(1.1);
   }
+
+  &:active {
+    transform: scale(0.9);
+ }
 }
