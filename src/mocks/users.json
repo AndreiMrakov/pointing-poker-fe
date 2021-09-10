@@ -6,7 +6,8 @@
     "surname": "Praddich",
     "job": "web-developer",
     "avatar": "",
-    "currentScore": 0
+    "currentScore": "",
+    "isCardOpened": false
   },
   {
     "id": "2",
@@ -15,7 +16,8 @@
     "surname": "Ivaaaan",
     "job": "Java-developer",
     "avatar": "",
-    "currentScore": 0
+    "currentScore": "",
+    "isCardOpened": false
   },
   {
     "id": "3",
@@ -24,7 +26,8 @@
     "surname": "Ohohoho",
     "job": "team lead",
     "avatar": "",
-    "currentScore": 0
+    "currentScore": "",
+    "isCardOpened": false
   },
   {
     "id": "4",
@@ -33,7 +36,8 @@
     "surname": "Smite",
     "job": "developer",
     "avatar": "",
-    "currentScore": 0
+    "currentScore": "",
+    "isCardOpened": false
   },
   {
     "id": "5",
@@ -42,15 +46,17 @@
     "surname": "Petrov",
     "job": "",
     "avatar": "",
-    "currentScore": 0
+    "currentScore": "",
+    "isCardOpened": false
   },
   {
     "id": "6",
-    "type": "observer",
+    "type": "spectator",
     "name": "Guest",
     "surname": "",
     "job": "",
     "avatar": "",
-    "currentScore": 0
+    "currentScore": "",
+    "isCardOpened": false
   }
 ]

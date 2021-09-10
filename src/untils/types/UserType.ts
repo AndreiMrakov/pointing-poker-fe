@@ -1,9 +1,10 @@
-export type UserType = {
+export interface UserType {
   id: string;
   type: string;
   name: string;
   surname: string;
   job: string;
   avatar: string;
-  currentScore: number;
+  currentScore: string;
+  isCardOpened: boolean;
 };
