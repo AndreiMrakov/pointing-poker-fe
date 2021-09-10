@@ -9,24 +9,14 @@
 }
 
 .wrapper {
-  flex: 2 0 66%;
+  min-width: calc(100vw - 80rem);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.groupBtn {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 7rem;
-
-  .singleBtn {
-    border-radius: .8rem;
+.title {
+  text-align: center;
 }
 
-  .singleBtn + .singleBtn {
-    margin-top: 1rem;
-}
-}
 
