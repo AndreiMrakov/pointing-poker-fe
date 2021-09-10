@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Table.module.scss";
 
 interface ITable {
-  isCardVisible: boolean;
+  isCardOpened: boolean;
   selectedCardValue: string;
   setIsCardIsVisible: (e: boolean) => void;
   setSelectedCardValue: (e: string) => void;
@@ -12,7 +12,7 @@ interface ITable {
 export const Table: React.FC<ITable> = (
   {
     selectedCardValue,
-    isCardVisible, 
+    isCardOpened, 
     setIsCardIsVisible, 
     setSelectedCardValue, 
   }) => {
@@ -28,16 +28,16 @@ export const Table: React.FC<ITable> = (
 
   return (
       <div className={styles.table}>
-        <p className={selectedCardValue || isCardVisible ? styles.none : ''}>
+        <p className={selectedCardValue || isCardOpened ? styles.none : ''}>
         Pick your cards!
         </p> 
         <PrimaryButton 
-          className={selectedCardValue && !isCardVisible ? '' : styles.none} 
+          className={selectedCardValue && !isCardOpened ? '' : styles.none} 
           onClick={showCards}>
           Show cards
         </ PrimaryButton>
         <SecondaryButton 
-          className={isCardVisible ? '' : styles.none} 
+          className={isCardOpened ? '' : styles.none} 
           onClick={removeChosenCard}>
           New voting
         </SecondaryButton>

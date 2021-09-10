@@ -3,14 +3,14 @@ import { CardNest } from "./CardNest";
 import { Table } from "./Table";
 
 interface ICommonArea {
-  isCardVisible: boolean;
+  isCardOpened: boolean;
   selectedCardValue: string;
   setIsCardIsVisible: (e: boolean) => void;
   setSelectedCardValue: (e: string) => void;
 }
 
 export const CommonArea: React.FC<ICommonArea> = (
-  {isCardVisible, 
+  {isCardOpened, 
    selectedCardValue, 
    setSelectedCardValue, 
    setIsCardIsVisible, 
@@ -18,13 +18,13 @@ export const CommonArea: React.FC<ICommonArea> = (
   return (
     <section>
       <Table 
-        isCardVisible={isCardVisible}
+        isCardOpened={isCardOpened}
         setIsCardIsVisible={setIsCardIsVisible}
         setSelectedCardValue={setSelectedCardValue}
         selectedCardValue={selectedCardValue}
       />
       <CardNest 
-        isCardVisible={isCardVisible}
+        isCardOpened={isCardOpened}
         selectedCardValue={selectedCardValue}
       />
     </section>
