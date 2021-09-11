@@ -4,7 +4,7 @@ $size-kick: 2rem;
 $size-avatar: 3rem;
 
 .listUsers {
-  padding: 2rem 0 2rem 0;
+  padding: 2rem 0;
   border-right: 1px solid $second-font-color;
   border-bottom: 1px solid $second-font-color;
   flex: 1 0 33%;
@@ -32,9 +32,9 @@ $size-avatar: 3rem;
   width: 25rem;
   position: relative;
   padding: 1rem 2rem;
-  border-radius: .8rem;
+  border-radius: 0.8rem;
   font-weight: 700;
-  letter-spacing: .02em;
+  letter-spacing: 0.2px;
   font-size: 1.8rem;
   text-align: center;
   height: 5.6rem;
