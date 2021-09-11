@@ -9,20 +9,30 @@ interface ICardNest {
   userType?: string
 }
 
-export const CardNest: React.FC<ICardNest> = ({ isCardOpened,selectedCardValue, cardStyle, userType}) => {
+export const CardNest: React.FC<ICardNest> = ({ 
+  isCardOpened,
+  selectedCardValue, 
+  cardStyle, 
+  userType
+}) => {
   return (
-    <section className={`
-      ${styles.cardNest}
-      ${isCardOpened && styles.showCard}
-      ${cardStyle}
-      ${userType === 'spectator' && styles.spectator}`
-    }>
+    <section className={classNames(
+        styles.cardNest,
+        cardStyle, 
+         {
+          [styles.showCard]: isCardOpened,
+          [styles.spectator]: userType === 'spectator'
+         } 
+    )}>
       {userType !== 'spectator' &&
       <> 
         <div className={styles.frontSide}>
           {selectedCardValue}
         </div>
-        <div className={classNames(styles.backSide, selectedCardValue && styles.chosenCardBackground)}>
+        <div className={classNames(
+            styles.backSide,
+            {[styles.chosenCardBackground]: selectedCardValue}
+        )}>
         </div>
       </>
       }

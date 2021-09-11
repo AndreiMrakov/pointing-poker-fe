@@ -1,20 +1,14 @@
 import React, { FC, useMemo } from "react";
 import styles from './User.module.scss';
 import { UserType } from "@/untils/types/UserType";
-// import { scoreAnalizer } from "@/helpers/scoreAnalizer";
 import { getAvatar } from "@/helpers/getAvatar";
-import { CardNest } from "../CommonArea/CardNest";
+import { CardNest } from "@/components/CommonArea/CardNest";
 
 interface Props {
   user: UserType;
 };
 
 export const User: FC<Props> = ({ user }) => {
-  // const score = useMemo(
-  //   () => scoreAnalizer(user.type, user.currentScore),
-  //   [user.type, user.currentScore]
-  // );
-
   const styleAvatar = useMemo(
     () => getAvatar(user.avatar),
     [user.avatar]

@@ -9,8 +9,8 @@ interface ICommonArea {
   setSelectedCardValue: (e: string) => void;
 }
 
-export const CommonArea: React.FC<ICommonArea> = (
-  {isCardOpened, 
+export const CommonArea: React.FC<ICommonArea> = ({
+   isCardOpened, 
    selectedCardValue, 
    setSelectedCardValue, 
    setIsCardIsVisible, 

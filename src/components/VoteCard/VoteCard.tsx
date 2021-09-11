@@ -4,19 +4,23 @@ import classNames from "classnames";
 
 interface Props {
   score: string;
-  onCardClick: (e:React.MouseEvent) => void;
-  styleName: string
+  className: string;
+  setSelectedCardValue: (e: string) => void
 };
 
-export const VoteCard: FC<Props> = (
-  { 
+export const VoteCard: FC<Props> = ({ 
     score, 
-    onCardClick, 
-    styleName 
+    className,
+    setSelectedCardValue 
   }) => {
 
+    function onCardClick(event: React.MouseEvent): void {
+      const currentElem = event.target as HTMLElement;
+      setSelectedCardValue(currentElem.textContent!)
+    }
+
   return (
-    <li className={classNames(styles.card, styleName)} 
+    <li className={classNames(styles.card, className)} 
         onClick={onCardClick}>
         {score}
     </li>
