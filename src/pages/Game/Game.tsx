@@ -6,10 +6,9 @@ import { CommonArea } from "@/components/CommonArea";
 import { Controls } from "@/components/Controls";
 import { Issues } from "@/components/Issues";
 
+const title = 'Name room';
 
 export const Game = () => {
-  const title = 'Name room';
-
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
 
