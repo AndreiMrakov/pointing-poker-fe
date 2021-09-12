@@ -8,8 +8,8 @@
   border: 0;
   padding: 0 2.4rem;
   cursor: pointer;
-  border-radius: .8rem;
-  font-weight: $button-font-weight;
+  border-radius: 0.8rem;
+  font-weight: $bold-font-weight;
   letter-spacing: 0.2px;
   outline: 0;
   font-size: 1.8rem;
@@ -18,8 +18,8 @@
 
   &:active {
     transform: scale(0.95);
-    transition: 0.3s;
-}
+    transition: transform 0.1s linear;
+  }
 }
 
 .btnPrimary {
