@@ -5,20 +5,20 @@ import classNames from "classnames";
 interface ICardNest {
   isCardOpened: boolean;
   selectedCardValue: string;
-  cardStyle?: string;
+  className?: string;
   userType?: string
 }
 
 export const CardNest: React.FC<ICardNest> = ({ 
   isCardOpened,
   selectedCardValue, 
-  cardStyle, 
+  className, 
   userType
 }) => {
   return (
     <section className={classNames(
         styles.cardNest,
-        cardStyle, 
+        className, 
          {
           [styles.showCard]: isCardOpened,
           [styles.spectator]: userType === 'spectator'
