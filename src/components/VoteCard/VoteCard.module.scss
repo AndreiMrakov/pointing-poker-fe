@@ -30,10 +30,10 @@
     transition: margin-top 0.3s linear;
     background-color: $table-color;
   }
-}
 
-.card + .card {
-  margin-left: 1rem;
+  &:not(:first-child) {
+    margin-left: 1rem;
+  }
 }
 
 .active {
