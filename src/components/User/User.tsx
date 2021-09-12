@@ -2,21 +2,13 @@ import React, { FC, useMemo } from "react";
 import styles from './User.module.scss';
 import { getAvatar } from "@/helpers/getAvatar";
 import { CardNest } from "@/components/CommonArea/CardNest";
+import { IUser } from "@/interfaces";
 
-interface IUser {
-  user: {
-    id: string;
-    type: string;
-    name: string;
-    surname: string;
-    job: string;
-    avatar: string;
-    currentScore: string;
-    isCardOpened: boolean;
-  }
+interface IUserProps {
+  user: IUser
 };
 
-export const User: FC<IUser> = ({ user }) => {
+export const User: FC<IUserProps> = ({ user }) => {
   const styleAvatar = useMemo(
     () => getAvatar(user.avatar),
     [user.avatar]
