@@ -1,7 +1,6 @@
 import { PrimaryButton, SecondaryButton } from "@/components/Button";
 import React from "react";
 import styles from "./Table.module.scss";
-import classNames from "classnames";
 
 interface ITable {
   isCardOpened: boolean;
@@ -29,27 +28,21 @@ export const Table: React.FC<ITable> = (
 
   return (
       <div className={styles.table}>
-        <p className={classNames({
-          [styles.none]: selectedCardValue || isCardOpened
-          })
-        }>
-        Pick your cards!
-        </p> 
-        <PrimaryButton 
-          className={classNames({
-            [styles.none]: !selectedCardValue || isCardOpened
-            })
-          } 
-          onClick={showCards}>
-          Show cards
-        </ PrimaryButton>
-        <SecondaryButton 
-          className={classNames({
-            [styles.none]: !isCardOpened}
-          )} 
-          onClick={removeChosenCard}>
-          New voting
-        </SecondaryButton>
+        {!selectedCardValue && !isCardOpened && 
+          <p> 
+            Pick your cards!
+          </p> 
+        }
+        {selectedCardValue && !isCardOpened &&
+          <PrimaryButton onClick={showCards}>
+            Show cards
+          </ PrimaryButton>
+        }
+        {isCardOpened && 
+          <SecondaryButton onClick={removeChosenCard}>
+            New voting
+          </SecondaryButton>
+        }
       </div>
   )
 }
