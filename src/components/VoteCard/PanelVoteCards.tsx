@@ -3,13 +3,13 @@ import { VoteCard } from "./VoteCard";
 import styles from "./VoteCard.module.scss";
 import { cards } from "@/mocks/cards";
 
-interface IPanelVoteCards {
+interface IPanelVoteCardsProps {
   selectedCardValue: string;
   setSelectedCardValue: (e: string) => void;
   isCardOpened: boolean
 }
 
-export const PanelVoteCards: React.FC<IPanelVoteCards> = ({
+export const PanelVoteCards: React.FC<IPanelVoteCardsProps> = ({
   selectedCardValue, 
   setSelectedCardValue,
   isCardOpened
