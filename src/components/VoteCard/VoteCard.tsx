@@ -1,18 +1,30 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import styles from './VoteCard.module.scss';
 import classNames from "classnames";
 
-interface Props {
+interface IVoteCard {
   score: string;
-  className: string;
-  setSelectedCardValue: (e: string) => void
+  setSelectedCardValue: (e: string) => void;
+  isCardOpened: boolean;
+  selectedCardValue: string;
 };
 
-export const VoteCard: FC<Props> = ({ 
+export const VoteCard: FC<IVoteCard> = ({ 
     score, 
-    className,
-    setSelectedCardValue 
-  }) => {
+    setSelectedCardValue,
+    isCardOpened,
+    selectedCardValue
+}) => {
+    
+    const classActive = useMemo(
+      () => isCardOpened && styles.unactive,
+      [isCardOpened]
+    );
+
+    const classUnactive = useMemo(
+      () => score === selectedCardValue  &&  styles.active,
+      [selectedCardValue]
+    );
 
     function onCardClick(event: React.MouseEvent): void {
       const currentElem = event.target as HTMLElement;
@@ -20,7 +32,7 @@ export const VoteCard: FC<Props> = ({
     }
 
   return (
-    <li className={classNames(styles.card, className)} 
+    <li className={classNames(styles.card, classActive, classUnactive)} 
         onClick={onCardClick}>
         {score}
     </li>

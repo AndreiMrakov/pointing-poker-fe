@@ -2,7 +2,6 @@ import React from "react";
 import { VoteCard } from "./VoteCard";
 import styles from "./VoteCard.module.scss";
 import { cards } from "@/mocks/cards";
-import classNames from "classnames";
 
 interface IPanelVoteCards {
   selectedCardValue: string;
@@ -22,13 +21,9 @@ export const PanelVoteCards: React.FC<IPanelVoteCards> = ({
         <VoteCard 
           score={card} 
           key={card} 
-          className={classNames(
-            {
-              [styles.active]: card === selectedCardValue,
-              [styles.unactive]: isCardOpened
-            }
-          )} 
           setSelectedCardValue={setSelectedCardValue}
+          isCardOpened={isCardOpened}
+          selectedCardValue={selectedCardValue}
         />)
       }
     </ul>
