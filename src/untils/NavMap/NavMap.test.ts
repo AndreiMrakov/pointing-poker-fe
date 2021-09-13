@@ -1,4 +1,4 @@
-import { navMap } from "@/untils/NavMap";
+import { navMap } from "./NavMap";
 
 describe('Create class', () => {
   test('Should be created', () => {
