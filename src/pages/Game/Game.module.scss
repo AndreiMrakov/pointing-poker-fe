@@ -9,8 +9,14 @@
 }
 
 .wrapper {
-  flex: 2 0 66%;
+  min-width: calc(100vw - 80rem);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
+
+.title {
+  text-align: center;
+}
+
+

@@ -1,0 +1,1 @@
+export { CommonArea } from "./CommonArea";

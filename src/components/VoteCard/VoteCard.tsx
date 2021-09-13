@@ -1,17 +1,37 @@
-import { CardType } from "@/untils/types/CardType";
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import styles from './VoteCard.module.scss';
+import classNames from "classnames";
 
-type Props = {
-  card: CardType;
+interface IVoteCardProps {
+  score: string;
+  setSelectedCardValue: (e: string) => void;
+  isCardOpened: boolean;
+  selectedCardValue: string;
 };
 
-export const VoteCard: FC<Props> = ({ card }) => {
+export const VoteCard: FC<IVoteCardProps> = ({ 
+    score, 
+    setSelectedCardValue,
+    isCardOpened,
+    selectedCardValue
+}) => {
+
+  const className = useMemo(()=> 
+    classNames(styles.card, {
+      [styles.unactive]: isCardOpened,
+      [styles.active]: score === selectedCardValue
+    })
+  ,
+  [isCardOpened, selectedCardValue])
+
+    function onCardClick(event: React.MouseEvent): void {
+      const currentElem = event.target as HTMLElement;
+      setSelectedCardValue(currentElem.textContent!)
+    }
+
   return (
-    <div className={styles.card}>
-      <div className={styles.nameTop}>{card.name}</div>
-      <h3 className={styles.score}>{card.score}</h3>
-      <div className={styles.nameBottom}>{card.name}</div>
-    </div>
+    <li className={className} onClick={onCardClick}>
+        {score}
+    </li>
   );
 };
