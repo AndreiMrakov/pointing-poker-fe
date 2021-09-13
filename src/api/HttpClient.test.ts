@@ -1,4 +1,4 @@
-import { httpClient, HTTPClient } from '../api/HttpClient';
+import { httpClient, HTTPClient } from './HttpClient';
 
 describe('Create class', () => {
   test('Should be created', () => {
