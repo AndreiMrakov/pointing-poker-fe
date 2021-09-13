@@ -1,6 +1,7 @@
 import React from "react";
 import { CardNest } from "./CardNest";
 import { Table } from "./Table";
+import styles from './CommonArea.module.scss'
 
 interface ICommonArea {
   isCardOpened: boolean;
@@ -26,6 +27,7 @@ export const CommonArea: React.FC<ICommonArea> = ({
       <CardNest 
         isCardOpened={isCardOpened}
         selectedCardValue={selectedCardValue}
+        className={styles.cardMargin}
       />
     </section>
   )

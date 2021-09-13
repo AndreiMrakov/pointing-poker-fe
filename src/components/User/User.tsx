@@ -27,7 +27,6 @@ export const User: FC<IUserProps> = ({ user }) => {
         <div className={styles.kick} />
       </div>
       <CardNest 
-        className={styles.cardStyle}
         isCardOpened={user.isCardOpened}
         selectedCardValue={user.currentScore}
         userType={user.type}
