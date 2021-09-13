@@ -1,4 +1,4 @@
-import { navMap } from "@/NavMap";
+import { navMap } from "@/untils/NavMap";
 
 describe('Create class', () => {
   test('Should be created', () => {
@@ -8,7 +8,7 @@ describe('Create class', () => {
 
 describe('Check class methods', () => {
   test('Should return clear string', () => {
-    expect(navMap.home()).toBe('');
+    expect(navMap.home()).toBe('/');
   });
 
   test('Should return lobby path', () => {
