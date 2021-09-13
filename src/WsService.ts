@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const URL = process.env.REACT_APP_SOCKET_URL as string;
+const URL = 'ws://localhost:3000';
 
 export const socketService = io(URL);
 
