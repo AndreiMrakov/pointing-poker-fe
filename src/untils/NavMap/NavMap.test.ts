@@ -1,4 +1,4 @@
-import { navMap } from "@/NavMap";
+import { navMap } from "./NavMap";
 
 describe('Create class', () => {
   test('Should be created', () => {
@@ -8,14 +8,14 @@ describe('Create class', () => {
 
 describe('Check class methods', () => {
   test('Should return clear string', () => {
-    expect(navMap.home()).toBe('');
+    expect(navMap.home()).toBe('/');
   });
 
   test('Should return lobby path', () => {
-    expect(navMap.lobby()).toBe('/lobby/:id');
+    expect(navMap.lobby()).toBe('/lobbies/:id');
   });
 
   test('Should return game path', () => {
-    expect(navMap.game()).toBe('/game/:id');
+    expect(navMap.game()).toBe('/games/:id');
   });
 });

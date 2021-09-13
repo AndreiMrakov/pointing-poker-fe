@@ -3,55 +3,50 @@
 .listCards {
   display: flex;
   justify-content: center;
-  justify-self: end;
   margin-bottom: 2rem;
 }
 
 .card {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  width: 8rem;
-  height: 12rem;
+  justify-content: center;
+  width: 4.8rem;
+  height: 8rem;
   cursor: pointer;
-  margin-right: 1rem;
-  border-radius: 0.2rem;
+  border-radius: 0.8rem;
   background-color: $primary-color;
-  box-shadow: 1px 1px 2px 1px $shadow-grey;
-  padding: 0.5rem;
+  border: 2px solid $second-color;
   align-items: center;
-
+  transition: margin-top 0.3s linear;
+  font-size: 2rem;
+  font-weight: $bold-font-weight;
+  color: $second-color;
+  
   &:last-child {
     margin-right: 0;
   }
 
   &:hover {
-    box-shadow: 1px 1px 5px 2px $shadow-grey;
+    margin-top: -0.5rem;
+    transition: margin-top 0.3s linear;
+    background-color: $table-color;
+  }
+
+  &:not(:first-child) {
+    margin-left: 1rem;
   }
 }
 
 .active {
-  background-color: $card-active;
-
-  &::after {
-    content: url(~@/assets/images/checked.svg);
-    position: absolute;
-    width: 4rem;
-    z-index: 10;
-    top: -0.7rem;
-    right: -0.7rem;
-  }
+  background-color: $second-color !important;
+  color: $primary-color !important;
+  margin-top: -0.5rem !important;
 }
 
-.score {
-  font-size: 5rem;
+.unactive {
+  color: $second-font-color !important;
+  border-color: $second-font-color !important;
+  background-color: $primary-color !important;
+  pointer-events: none;
 }
 
-.nameTop {
-  align-self: flex-start;
-}
 
-.nameBottom {
-  align-self: flex-end;
-}

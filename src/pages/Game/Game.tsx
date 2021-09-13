@@ -1,54 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { PanelVoteCards } from "@/components/VoteCard";
 import { PanelUsers } from "@/components/User";
 import styles from './Game.module.scss';
-import { PrimaryButton, SecondaryButton } from "@/components/Button";
+import { CommonArea } from "@/components/CommonArea";
+import { Controls } from "@/components/Controls";
+import { Issues } from "@/components/Issues";
 
-const NAMES_BTN = {
-  run: "run round",
-  restart: "restart round",
-  stop: "stop game"
-};
+const title = 'Name room';
 
 export const Game = () => {
-  const title = 'Name room';
-
-  const handlerRun = () => {
-    console.log("handlerRun");
-  };
-
-  const handlerRestart = () => {
-    console.log("handlerRestart");
-  };
-
-  const handlerStop = () => {
-    console.log("handlerStop");
-  };
+  const [isCardOpened, setIsCardIsVisible] = useState(false);
+  const [selectedCardValue, setSelectedCardValue] = useState('');
 
   return (
     <main className={styles.main}>
-      <div className={styles.wrapper}>
-        <h1>{title}</h1>
-        <div className={styles.groupBtn}>
-          <PrimaryButton
-            onClick={handlerRun}
-          >
-            {NAMES_BTN.run}
-          </PrimaryButton>
-          <PrimaryButton
-            onClick={handlerRestart}
-          >
-            {NAMES_BTN.restart}
-          </PrimaryButton>
-          <SecondaryButton
-            onClick={handlerStop}
-          >
-            {NAMES_BTN.stop}
-          </SecondaryButton>
-        </div>
-        <PanelVoteCards />
-      </div>
       <PanelUsers />
+      <article className={styles.wrapper}>
+        <section>
+          <h1 className={styles.title}>{title}</h1>
+          <Controls />
+        </section>
+        <CommonArea 
+          isCardOpened={isCardOpened}
+          selectedCardValue={selectedCardValue}
+          setIsCardIsVisible={setIsCardIsVisible}
+          setSelectedCardValue={setSelectedCardValue}
+        />
+        <PanelVoteCards 
+          setSelectedCardValue={setSelectedCardValue}
+          selectedCardValue={selectedCardValue}
+          isCardOpened={isCardOpened}
+        />
+      </article>
+      <Issues />
     </main>
   );
 };

@@ -1,48 +1,41 @@
 @import "@/styles/variables.scss";
 
 .btn {
-  display: inline-block;
-  width: 16rem;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.5;
-  color: $font-color;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 0;
+  padding: 0 2.4rem;
   cursor: pointer;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.25rem;
-  text-shadow: 0px 4px 4px $font-color;
-  transition: all 0.15s ease-in-out;
+  border-radius: 0.8rem;
+  font-weight: $bold-font-weight;
+  letter-spacing: 0.2px;
+  outline: 0;
+  font-size: 1.8rem;
+  height: 5.6rem;
+  text-decoration: none;
+
+  &:active {
+    transform: scale(0.95);
+    transition: transform 0.1s linear;
+  }
 }
 
 .btnPrimary {
-  color: $table-color;
+  color: $primary-color;
   background-color: $second-color;
-  border-color: $second-color;
 
   &:hover {
-    box-shadow: inset 0 0 1.5rem $table-color;
-  }
-
-  &:active {
-    text-shadow: 0 0 1px $table-color;
+    background-color: $second-color-light;
   }
 }
 
 .btnSecondary {
-  color: $btn-dark-color;
-  border-color: $btn-dark-color;
+  color: $primary-color;
+  background-color: $btn-dark-color-light;
 
   &:hover {
-    box-shadow: inset 0 0 1.5rem $btn-dark-color;
-  }
-
-  &:active {
-    text-shadow: 0 0 1px $table-color;
+    background-color: $btn-dark-color;
   }
 }
