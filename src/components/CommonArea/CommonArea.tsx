@@ -3,14 +3,14 @@ import { CardNest } from "./CardNest";
 import { Table } from "./Table";
 import styles from './CommonArea.module.scss'
 
-interface ICommonArea {
+interface ICommonAreaProps {
   isCardOpened: boolean;
   selectedCardValue: string;
   setIsCardIsVisible: (e: boolean) => void;
   setSelectedCardValue: (e: string) => void;
 }
 
-export const CommonArea: React.FC<ICommonArea> = ({
+export const CommonArea: React.FC<ICommonAreaProps> = ({
    isCardOpened, 
    selectedCardValue, 
    setSelectedCardValue, 

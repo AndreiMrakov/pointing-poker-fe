@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./CardNest.module.scss";
 import classNames from "classnames";
 
-interface ICardNest {
+interface ICardNestProps {
   isCardOpened: boolean;
   selectedCardValue: string;
   className?: string;
   userType?: string
 }
 
-export const CardNest: React.FC<ICardNest> = ({ 
+export const CardNest: React.FC<ICardNestProps> = ({ 
   isCardOpened,
   selectedCardValue, 
   className, 

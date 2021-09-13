@@ -2,14 +2,14 @@ import { PrimaryButton, SecondaryButton } from "@/components/Button";
 import React from "react";
 import styles from "./Table.module.scss";
 
-interface ITable {
+interface ITableProps {
   isCardOpened: boolean;
   selectedCardValue: string;
   setIsCardIsVisible: (e: boolean) => void;
   setSelectedCardValue: (e: string) => void;
 }
 
-export const Table: React.FC<ITable> = (
+export const Table: React.FC<ITableProps> = (
   {
     selectedCardValue,
     isCardOpened, 
