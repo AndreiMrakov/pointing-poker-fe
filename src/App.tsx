@@ -10,7 +10,7 @@ export function App() {
     <Router>
       <Switch>
         <Route exact path={navMap.home()}></Route>
-        <Route exact path={navMap.lobby()}></Route>
+        <Route path={navMap.lobby()}></Route>
         <Route path={navMap.game()}>
           <Game />
         </Route>
