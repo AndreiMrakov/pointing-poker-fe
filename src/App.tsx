@@ -4,7 +4,7 @@ import styles from './App.module.scss';
 import { BrowserRouter as Router,  Redirect,  Route,  Switch } from "react-router-dom";
 import { navMap } from './NavMap';
 
-function App() {
+export function App() {
   return (
   <div className={styles.container}>
     <Router>
