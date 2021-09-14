@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { PanelVoteCards } from "@/components/VoteCard";
-import { PanelUsers } from "@/components/User";
+import React, { useState } from 'react';
+import { PanelVoteCards } from '@/components/VoteCard';
+import { PanelUsers } from '@/components/User';
 import styles from './Game.module.scss';
-import { CommonArea } from "@/components/CommonArea";
-import { Controls } from "@/components/Controls";
-import { Issues } from "@/components/Issues";
+import { CommonArea } from '@/components/CommonArea';
+import { Controls } from '@/components/Controls';
+import { Issues } from '@/components/Issues';
 
 const title = 'Name room';
 
@@ -20,13 +20,13 @@ export const Game = () => {
           <h1 className={styles.title}>{title}</h1>
           <Controls />
         </section>
-        <CommonArea 
+        <CommonArea
           isCardOpened={isCardOpened}
           selectedCardValue={selectedCardValue}
           setIsCardIsVisible={setIsCardIsVisible}
           setSelectedCardValue={setSelectedCardValue}
         />
-        <PanelVoteCards 
+        <PanelVoteCards
           setSelectedCardValue={setSelectedCardValue}
           selectedCardValue={selectedCardValue}
           isCardOpened={isCardOpened}
