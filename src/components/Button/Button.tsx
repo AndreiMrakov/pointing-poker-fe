@@ -1,22 +1,25 @@
-import React, { FC, ReactNode } from "react";
-import styles from "./Button.module.scss";
-import classNames from "classnames";
+import React, { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import classNames from 'classnames';
+import styles from './Button.module.scss';
 
-export type ButtonProps = {
+export interface ButtonProps {
   children: ReactNode;
   className?: string;
-  type?: "button" | "reset" | "submit";
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type']
   onClick: () => void;
-};
+}
 
-export const Button: FC<ButtonProps> = ({ children, type = "button", className, onClick }) => {
-  return (
-    <button 
-      type={type} 
-      className={classNames(styles.btn, className)} 
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
+export const Button: FC<ButtonProps> = ({
+  children,
+  type = 'button',
+  className,
+  onClick,
+}) => (
+  <button
+    type={type}
+    className={classNames(styles.btn, className)}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
