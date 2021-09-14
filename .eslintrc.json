@@ -60,7 +60,13 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "react/button-has-type": "off",
+    "react/jsx-props-no-spreading": [0, {
+      "custom": "ignore"
+    }],
+    "react/require-default-props": "off"
   },
   "settings": {
     "import/resolver": {

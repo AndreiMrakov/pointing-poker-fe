@@ -1,2 +1,2 @@
-export { PanelVoteCards } from "./PanelVoteCards";
-export { VoteCard } from "./VoteCard";
+export { PanelVoteCards } from './PanelVoteCards';
+export { VoteCard } from './VoteCard';

@@ -1,1 +1,1 @@
-export { CommonArea } from "./CommonArea";
+export { CommonArea } from './CommonArea';

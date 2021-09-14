@@ -1,17 +1,17 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useMemo } from 'react';
 import styles from './User.module.scss';
-import { getAvatar } from "@/helpers/getAvatar";
-import { CardNest } from "@/components/CommonArea/CardNest";
-import { IUser } from "@/interfaces";
+import { getAvatar } from '@/helpers/getAvatar';
+import { CardNest } from '@/components/CommonArea/CardNest';
+import { IUser } from '@/interfaces';
 
 interface IUserProps {
   user: IUser
-};
+}
 
 export const User: FC<IUserProps> = ({ user }) => {
   const styleAvatar = useMemo(
     () => getAvatar(user.avatar),
-    [user.avatar]
+    [user.avatar],
   );
 
   return (
@@ -26,7 +26,7 @@ export const User: FC<IUserProps> = ({ user }) => {
         </div>
         <div className={styles.kick} />
       </div>
-      <CardNest 
+      <CardNest
         isCardOpened={user.isCardOpened}
         selectedCardValue={user.currentScore}
         userType={user.type}

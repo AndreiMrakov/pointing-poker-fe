@@ -1,10 +1,8 @@
-import React  from "react";
+import React from 'react';
 import styles from './Issues.module.scss';
 
-export const Issues = () => {
-  return(
-    <section className={styles.issues}>
-      Issues
-    </section>
-  )
-}
+export const Issues = () => (
+  <section className={styles.issues}>
+    Issues
+  </section>
+);
