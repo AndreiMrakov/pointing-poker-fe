@@ -65,7 +65,8 @@
     "react/button-has-type": "off",
     "react/jsx-props-no-spreading": [0, {
       "custom": "ignore"
-    }]
+    }],
+    "react/require-default-props": "off"
   },
   "settings": {
     "import/resolver": {
