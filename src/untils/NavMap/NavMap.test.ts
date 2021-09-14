@@ -1,4 +1,4 @@
-import { navMap } from "./NavMap";
+import { navMap } from './NavMap';
 
 describe('Create class', () => {
   test('Should be created', () => {
