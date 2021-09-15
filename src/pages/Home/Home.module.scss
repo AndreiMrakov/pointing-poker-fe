@@ -6,16 +6,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $primary-color;
 }
 
 .wrapper {
   min-width: calc(100vw - 80rem);
+  height: 70%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  width: 550px;
+  min-height: 150px;
+  background-image: url(../../assets/images/logo.svg);
+  background-repeat: no-repeat;
+}
+
+.action {
+  width: 500px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .title {
   color: $font-color;
-  margin-bottom: 20px;
+  font-size: 3rem;
 }

@@ -13,10 +13,13 @@ export const Home: React.FC = () => {
   return (
     <main className={styles.home}>
       <article className={styles.wrapper}>
-        <h2 className={styles.title}>Pointing Poker</h2>
-        <PrimaryButton onClick={showModal}>
-          Create new game
-        </PrimaryButton>
+        <div className={styles.logo}></div>
+        <div className={styles.action}>
+          <h2 className={styles.title}>Start your plaining:</h2>
+          <PrimaryButton onClick={showModal}>
+            Create new game
+          </PrimaryButton>
+        </div>
         <NewGameModal show={modal} onClick={showModal} />
       </article>
     </main>

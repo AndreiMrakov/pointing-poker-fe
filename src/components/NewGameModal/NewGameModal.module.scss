@@ -1,36 +1,19 @@
 @import "@/styles/variables.scss";
 
-.modal {
-  position: fixed;
-  top: 0;
+.content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  transition: all 200ms;
-  visibility: inherit;
-  background-color: $modal-dark-color;
-
-  &_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $primary-color;
-    padding: 30px;
-    border-radius: 5px;
-  }
-}
-
-.modal_close {
-  visibility: hidden;
-  display: none;
+  background-color: $primary-color;
+  padding: 30px;
+  border-radius: 5px;
 }
 
 .title {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: $font-color;
+  font-size: 2rem;
 }
 
 .form {
@@ -42,7 +25,7 @@
 
   &_submit {
     background-color: $second-color;
-    color: $font-color;
+    color: $primary-color;
     border: none;
     outline: none;
 

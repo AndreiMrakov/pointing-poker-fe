@@ -1,6 +1,7 @@
 import { dealerOptions, voteOptions } from '@/mocks/options';
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { Input } from '../Input';
+import { Modal } from '../Modal';
 import { Select } from '../Select';
 import styles from './NewGameModal.module.scss';
 
@@ -27,17 +28,10 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
     event.preventDefault();
     console.log('submit', form);
   };
-
-  const closeModal = (elem: HTMLElement) => {
-    if (elem.classList.contains(styles.modal)) onClick();
-  };
   
   return (
-    <div 
-      className={show ? styles.modal : styles.modal_close}
-      onClick={(e) => closeModal(e.target as HTMLElement)}
-    >
-      <section className={styles.modal_content}>
+    <Modal show={show} onClick={onClick}>
+      <section className={styles.content}>
         <h3 className={styles.title}>
           Choose a name and a voting system for your game.
         </h3>
@@ -70,6 +64,7 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
           />
         </form>
       </section>
-    </div>
+    </Modal>
+    
   );
 };
