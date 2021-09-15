@@ -1,37 +1,44 @@
-import React, { FC, useMemo } from "react";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useMemo,
+  MouseEvent,
+} from 'react';
+import classNames from 'classnames';
 import styles from './VoteCard.module.scss';
-import classNames from "classnames";
 
 interface IVoteCardProps {
   score: string;
-  setSelectedCardValue: (e: string) => void;
+  setSelectedCardValue: Dispatch<SetStateAction<string>>;
   isCardOpened: boolean;
   selectedCardValue: string;
-};
+}
 
-export const VoteCard: FC<IVoteCardProps> = ({ 
-    score, 
-    setSelectedCardValue,
-    isCardOpened,
-    selectedCardValue
+export const VoteCard: FC<IVoteCardProps> = ({
+  score,
+  setSelectedCardValue,
+  isCardOpened,
+  selectedCardValue,
 }) => {
+  const className = useMemo(() => classNames(styles.card, {
+    [styles.unactive]: isCardOpened,
+    [styles.active]: score === selectedCardValue,
+  }),
+  [isCardOpened, selectedCardValue]);
 
-  const className = useMemo(()=> 
-    classNames(styles.card, {
-      [styles.unactive]: isCardOpened,
-      [styles.active]: score === selectedCardValue
-    })
-  ,
-  [isCardOpened, selectedCardValue])
-
-    function onCardClick(event: React.MouseEvent): void {
-      const currentElem = event.target as HTMLElement;
-      setSelectedCardValue(currentElem.textContent!)
-    }
+  function onCardClick(event: MouseEvent): void {
+    const currentElem = event.target as HTMLElement;
+    setSelectedCardValue(currentElem.textContent!);
+  }
 
   return (
-    <li className={className} onClick={onCardClick}>
-        {score}
+    <li
+      className={className}
+      onClick={onCardClick}
+      aria-hidden="true"
+    >
+      {score}
     </li>
   );
 };
