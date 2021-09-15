@@ -14,7 +14,7 @@ interface ISelectProps {
 export const Select: React.FC<ISelectProps> = ({
   option, name, className, label, value, onChange,
 }) => (
-  <label htmlFor={name} className={styles.label}>
+  <label className={styles.label}>
     {label}
     <select
       className={classNames(styles.select, className)}

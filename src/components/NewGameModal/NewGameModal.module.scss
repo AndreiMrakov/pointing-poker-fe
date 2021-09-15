@@ -28,9 +28,9 @@
     color: $primary-color;
     border: none;
     outline: none;
+    cursor: pointer;
 
     &:hover {
-      cursor: pointer;
       background-color: $second-color-light;
     }
 

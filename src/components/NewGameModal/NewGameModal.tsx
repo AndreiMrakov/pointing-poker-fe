@@ -17,7 +17,7 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
     dealer: dealerOptions[0],
   });
 
-  const formHandler: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (event) => {
+  const inputsHandler: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (event) => {
     setForm({
       ...form,
       [event.target.name]: event.target.value,
@@ -40,21 +40,21 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
             type="text"
             label="Game's name"
             name="gameName"
-            onChange={formHandler}
+            onChange={inputsHandler}
           />
           <Select
             name="voteSystem"
             label="Voting system"
             option={voteOptions}
             value={form.voteSystem}
-            onChange={formHandler}
+            onChange={inputsHandler}
           />
           <Select
             name="dealer"
             label="Who can show cards?"
             option={dealerOptions}
             value={form.dealer}
-            onChange={formHandler}
+            onChange={inputsHandler}
           />
           <Input
             type="submit"

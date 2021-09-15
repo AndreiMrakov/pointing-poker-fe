@@ -14,13 +14,12 @@ interface IImportProps {
 export const Input: React.FC<IImportProps> = ({
   type, name, className, label, onChange, value,
 }) => (
-  <label htmlFor={name} className={styles.label}>
+  <label className={styles.label}>
     {label}
     <input
       name={name}
       type={type}
       className={classNames(styles.input, className)}
-      id={label}
       onChange={onChange}
       value={value}
     />

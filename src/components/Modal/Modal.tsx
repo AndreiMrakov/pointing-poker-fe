@@ -1,21 +1,23 @@
-import React, { ReactNode } from 'react';
+import React, { MouseEventHandler, ReactNode } from 'react';
 import styles from './Modal.module.scss';
 
 interface IModalProps {
-  children?: ReactNode;
+  children: ReactNode;
   show: boolean;
   onClick: () => void;
 }
 
 export const Modal: React.FC<IModalProps> = ({ children, show, onClick }) => {
-  const closeModal = (elem: HTMLElement) => {
-    if (elem.classList.contains(styles.modal)) onClick();
+  const closeModal: MouseEventHandler = (event) => {
+    const elem = event.target as HTMLElement;
+    if (!elem.classList.contains(styles.modal)) return;
+    onClick();
   };
 
   return (
     <div
       className={show ? styles.modal : styles.modal_close}
-      onClick={(e) => closeModal(e.target as HTMLElement)}
+      onClick={closeModal}
       role="button"
       aria-hidden="true"
     >
