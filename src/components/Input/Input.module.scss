@@ -1,0 +1,18 @@
+@import "@/styles/variables.scss";
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  height: 40px;
+  border-radius: 5px;
+  color: $font-color;
+  border: 1px solid $shadow-grey;
+  outline: none;
+
+  &:focus {
+    border: 2px solid $second-color;
+  }
+}

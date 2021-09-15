@@ -1,0 +1,42 @@
+@import "@/styles/variables.scss";
+
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $table-color;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.title {
+  color: $font-color;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50rem;
+  height: 240px;
+
+  &_submit {
+    background-color: $second-color;
+    color: $font-color;
+    border: none;
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $second-color-light;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      transition: transform 0.1s linear;
+      border: none;
+    }
+  }
+}
