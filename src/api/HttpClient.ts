@@ -48,6 +48,7 @@ export class HTTPClient {
   private _handleRequest = (config: AxiosRequestConfig) => config;
 
   private _handleError = (error: AxiosError) => {
+    // eslint-disable-next-line no-console
     console.dir(error);
   };
 }
