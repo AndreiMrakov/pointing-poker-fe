@@ -10,15 +10,12 @@ const NAMES_BTN = {
 
 export const Controls = () => {
   const handlerRun = () => {
-    console.log('handlerRun');
   };
 
   const handlerRestart = () => {
-    console.log('handlerRestart');
   };
 
   const handlerStop = () => {
-    console.log('handlerStop');
   };
 
   return (
