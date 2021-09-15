@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 import styles from './Modal.module.scss';
 
 interface IModalProps {
   children?: ReactNode;
   show: boolean;
   onClick: () => void;
-};
+}
 
 export const Modal: React.FC<IModalProps> = ({ children, show, onClick }) => {
   const closeModal = (elem: HTMLElement) => {
@@ -13,9 +13,11 @@ export const Modal: React.FC<IModalProps> = ({ children, show, onClick }) => {
   };
 
   return (
-    <div 
+    <div
       className={show ? styles.modal : styles.modal_close}
       onClick={(e) => closeModal(e.target as HTMLElement)}
+      role="button"
+      aria-hidden="true"
     >
       {children}
     </div>

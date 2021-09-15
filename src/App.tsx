@@ -18,7 +18,7 @@ export function App() {
           <Route exact path={navMap.home()}>
             <Home />
           </Route>
-          <Route path={navMap.lobby()}></Route>
+          <Route path={navMap.lobby()} />
           <Route path={navMap.game()}>
             <Game />
           </Route>

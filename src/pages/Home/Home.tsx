@@ -1,6 +1,6 @@
-import { PrimaryButton } from "@/components/Button";
-import { NewGameModal } from "@/components/NewGameModal";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { PrimaryButton } from '@/components/Button';
+import { NewGameModal } from '@/components/NewGameModal';
 import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
@@ -13,7 +13,7 @@ export const Home: React.FC = () => {
   return (
     <main className={styles.home}>
       <article className={styles.wrapper}>
-        <div className={styles.logo}></div>
+        <div className={styles.logo} />
         <div className={styles.action}>
           <h2 className={styles.title}>Start your plaining:</h2>
           <PrimaryButton onClick={showModal}>

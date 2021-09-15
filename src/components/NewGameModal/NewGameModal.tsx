@@ -1,5 +1,5 @@
-import { dealerOptions, voteOptions } from '@/mocks/options';
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input } from '../Input';
 import { Modal } from '../Modal';
 import { Select } from '../Select';
@@ -8,7 +8,7 @@ import styles from './NewGameModal.module.scss';
 interface INewGameModalProps {
   show: boolean;
   onClick: () => void;
-};
+}
 
 export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) => {
   const [form, setForm] = useState({
@@ -28,7 +28,7 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
     event.preventDefault();
     console.log('submit', form);
   };
-  
+
   return (
     <Modal show={show} onClick={onClick}>
       <section className={styles.content}>
@@ -36,35 +36,35 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
           Choose a name and a voting system for your game.
         </h3>
         <form className={styles.form} onSubmit={submitHandler}>
-          <Input 
-            type="text" 
-            label="Game's name" 
+          <Input
+            type="text"
+            label="Game's name"
             name="gameName"
-            onChange={formHandler} 
+            onChange={formHandler}
           />
-          <Select 
+          <Select
             name="voteSystem"
             label="Voting system"
-            option={voteOptions} 
+            option={voteOptions}
             value={form.voteSystem}
             onChange={formHandler}
           />
-          <Select 
+          <Select
             name="dealer"
             label="Who can show cards?"
-            option={dealerOptions} 
+            option={dealerOptions}
             value={form.dealer}
             onChange={formHandler}
           />
-          <Input 
-            type="submit" 
-            name="Create game" 
+          <Input
+            type="submit"
+            name="Create game"
             value="Create game"
             className={styles.form_submit}
           />
         </form>
       </section>
     </Modal>
-    
+
   );
 };
