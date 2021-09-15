@@ -1,17 +1,35 @@
 @import "@/styles/variables.scss";
 
 .modal {
-  position: absolute;
+  position: fixed;
+  top: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: $table-color;
-  padding: 30px;
-  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  transition: all 200ms;
+  visibility: inherit;
+  background-color: $modal-dark-color;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary-color;
+    padding: 30px;
+    border-radius: 5px;
+  }
+}
+
+.modal_close {
+  visibility: hidden;
+  display: none;
 }
 
 .title {
+  margin-bottom: 10px;
   color: $font-color;
 }
 
