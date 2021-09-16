@@ -37,7 +37,6 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
         </h3>
         <form className={styles.form} onSubmit={submitHandler}>
           <Input
-            type="text"
             label="Game's name"
             name="gameName"
             onChange={inputsHandler}

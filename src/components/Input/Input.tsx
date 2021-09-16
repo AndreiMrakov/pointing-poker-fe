@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from './Input.module.scss';
 
 interface IImportProps {
-  type: string;
+  type?: string;
   name?: string;
   value?: string;
   className?: string;
@@ -12,7 +12,7 @@ interface IImportProps {
 }
 
 export const Input: React.FC<IImportProps> = ({
-  type, name, className, label, onChange, value,
+  type = 'text', name, className, label, onChange, value,
 }) => (
   <label className={styles.label}>
     {label}

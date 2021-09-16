@@ -10,8 +10,9 @@ interface IModalProps {
 export const Modal: React.FC<IModalProps> = ({ children, show, onClick }) => {
   const closeModal: MouseEventHandler = (event) => {
     const elem = event.target as HTMLElement;
-    if (!elem.classList.contains(styles.modal)) return;
-    onClick();
+    if (elem.classList.contains(styles.modal)) {
+      onClick();
+    }
   };
 
   return (
