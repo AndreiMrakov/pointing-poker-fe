@@ -41,3 +41,13 @@
     }
   }
 }
+
+.form_select {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  color: $font-color;
+
+  &__value-container {
+    color: $font-color;
+  }
+}
