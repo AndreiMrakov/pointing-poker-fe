@@ -29,7 +29,7 @@ export const User: FC<IUserProps> = ({ user }) => {
       <CardNest
         isCardOpened={user.isCardOpened}
         selectedCardValue={user.currentScore}
-        userType={user.role}
+        userRole={user.role}
       />
     </li>
   );
