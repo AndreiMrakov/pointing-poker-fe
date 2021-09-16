@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { IUser } from '@/interfaces';
 import { SingleUser } from '@/helpers/getSingleUser';
 import styles from './User.module.scss';
@@ -9,24 +9,22 @@ import { SocketEvent } from '@/utils/enums';
 export const PanelUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
-  const subscribeJoin = (msg: string) => {
+  const subscribeJoin = useCallback((msg: string) => {
     const newUser = new SingleUser(msg);
     setUsers((usrs) => [...usrs, newUser]);
-  };
+  }, []);
 
-  const subscribeLeave = (id: string) => {
+  const subscribeLeave = useCallback((id: string) => {
     setUsers((usrs) => usrs.filter((usr) => usr.id !== id));
-  };
-
-  const unsubscribeAll = () => {
-    socketService.off(SocketEvent.JoinUser, subscribeJoin);
-    socketService.off(SocketEvent.LeaveUser, subscribeLeave);
-  };
+  }, []);
 
   useEffect(() => {
     socketService.on(SocketEvent.JoinUser, subscribeJoin);
     socketService.on(SocketEvent.LeaveUser, subscribeLeave);
-    return () => unsubscribeAll();
+    return () => {
+      socketService.off(SocketEvent.JoinUser, subscribeJoin);
+      socketService.off(SocketEvent.LeaveUser, subscribeLeave);
+    };
   }, []);
 
   return (
