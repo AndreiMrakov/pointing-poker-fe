@@ -61,7 +61,6 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
             onChange={inputsHandler}
           />
           <Select
-            classNamePrefix={styles.select}
             placeholder="Select vote system"
             options={voteOptions}
             onChange={voteSystemHandler}
