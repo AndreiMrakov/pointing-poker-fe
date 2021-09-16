@@ -1,8 +1,8 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import Select from 'react-select';
 import { dealerOptions, voteOptions } from '@/mocks/options';
-import { Input } from '../Input';
-import { Modal } from '../Modal';
+import { Input } from '@/components/Input';
+import { Modal } from '@/components/Modal';
 import styles from './NewGameModal.module.scss';
 
 interface INewGameModalProps {

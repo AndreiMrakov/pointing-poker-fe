@@ -6,12 +6,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: $primary-color;
-  padding: 30px;
+  padding: 3rem;
   border-radius: 5px;
 }
 
 .title {
-  margin-bottom: 20px;
+  margin-bottom: 2.5rem;
   color: $font-color;
   font-size: 2rem;
 }
@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 50rem;
-  height: 240px;
+  height: 22rem;
 
   &_submit {
     background-color: $second-color;
