@@ -12,10 +12,7 @@
   .img {
     width: 25rem;
     height: 10rem;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: $page-not-found-img;
+    background: center / cover no-repeat url(~@/assets/images/not-found.svg);
   }
 
   .title {
