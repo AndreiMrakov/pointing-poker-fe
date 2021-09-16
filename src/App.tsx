@@ -19,7 +19,7 @@ export function App() {
           <Route path={navMap.game()}>
             <Game />
           </Route>
-          <Route path={navMap.notFound()}>
+          <Route>
             <NotFound />
           </Route>
         </Switch>

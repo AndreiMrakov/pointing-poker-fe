@@ -8,8 +8,6 @@ class NavMap {
   lobby = () => `${this.baseUrl}/lobbies/:id`;
 
   game = () => `${this.baseUrl}/games/:id`;
-
-  notFound = () => `${this.baseUrl}/*`;
 }
 
 export const navMap = new NavMap();
