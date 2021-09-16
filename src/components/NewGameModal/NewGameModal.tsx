@@ -1,8 +1,8 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import Select from 'react-select';
 import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input } from '../Input';
 import { Modal } from '../Modal';
-import { Select } from '../Select';
 import styles from './NewGameModal.module.scss';
 
 interface INewGameModalProps {
@@ -10,17 +10,36 @@ interface INewGameModalProps {
   onClick: () => void;
 }
 
+interface OptionType {
+  value: string;
+  label: string;
+}
+
 export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) => {
   const [form, setForm] = useState({
     gameName: '',
-    voteSystem: voteOptions[0],
-    dealer: dealerOptions[0],
+    voteSystem: voteOptions[0].value || undefined,
+    dealer: dealerOptions[0].value || undefined,
   });
 
-  const inputsHandler: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (event) => {
+  const inputsHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
     setForm({
       ...form,
       [event.target.name]: event.target.value,
+    });
+  };
+
+  const voteSystemHandler = (selectedOption: OptionType | null | undefined) => {
+    setForm({
+      ...form,
+      voteSystem: selectedOption?.value,
+    });
+  };
+
+  const dealerHandler = (selectedOption: OptionType | null | undefined) => {
+    setForm({
+      ...form,
+      dealer: selectedOption?.value,
     });
   };
 
@@ -37,23 +56,20 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
         </h3>
         <form className={styles.form} onSubmit={submitHandler}>
           <Input
-            label="Game's name"
+            label="Enter game's name"
             name="gameName"
             onChange={inputsHandler}
           />
           <Select
-            name="voteSystem"
-            label="Voting system"
-            option={voteOptions}
-            value={form.voteSystem}
-            onChange={inputsHandler}
+            classNamePrefix={styles.select}
+            placeholder="Select vote system"
+            options={voteOptions}
+            onChange={voteSystemHandler}
           />
           <Select
-            name="dealer"
-            label="Who can show cards?"
-            option={dealerOptions}
-            value={form.dealer}
-            onChange={inputsHandler}
+            placeholder="Who can show cards?"
+            options={dealerOptions}
+            onChange={dealerHandler}
           />
           <Input
             type="submit"
@@ -64,6 +80,5 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
         </form>
       </section>
     </Modal>
-
   );
 };
