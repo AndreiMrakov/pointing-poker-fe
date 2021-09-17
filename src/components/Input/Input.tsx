@@ -2,7 +2,7 @@ import React, { ChangeEventHandler } from 'react';
 import classNames from 'classnames';
 import styles from './Input.module.scss';
 
-interface IImportProps {
+interface IInputProps {
   type?: string;
   name?: string;
   value?: string;
@@ -11,7 +11,7 @@ interface IImportProps {
   onChange?: ChangeEventHandler;
 }
 
-export const Input: React.FC<IImportProps> = ({
+export const Input: React.FC<IInputProps> = ({
   type = 'text', name, className, label, onChange, value,
 }) => (
   <input
