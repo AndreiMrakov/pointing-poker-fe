@@ -10,7 +10,6 @@ import { navMap } from './untils/NavMap';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 
-
 export function App() {
   return (
     <div className={styles.container}>
