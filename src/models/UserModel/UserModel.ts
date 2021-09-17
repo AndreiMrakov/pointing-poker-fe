@@ -13,7 +13,6 @@ export class UserModel {
 
   constructor(user: IUser) {
     this.id = user.id;
-    this.name = `User${user.id.slice(0, 3)}`;
     this.role = user.role;
     this.name = user.name;
     this.score = user.score;
