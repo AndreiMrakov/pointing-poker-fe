@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 import { Game } from './pages/Game';
 import styles from './App.module.scss';
-import { navMap } from './untils/NavMap';
 import { Home } from './pages/Home';
+import { navMap } from './utils/NavMap';
 import { NotFound } from './pages/NotFound';
 
 export function App() {

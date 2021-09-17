@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NotFound.module.scss';
-import { navMap } from '@/untils/NavMap';
+import { navMap } from '@/utils/NavMap';
 
 export const NotFound = () => (
   <div className={styles.wrapper}>

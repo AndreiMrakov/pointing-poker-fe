@@ -3,29 +3,26 @@ import classNames from 'classnames';
 import styles from './CardNest.module.scss';
 
 interface ICardNestProps {
-  isCardOpened: boolean;
   selectedCardValue: string;
   className?: string;
-  userType?: string;
+  userRole?: string;
 }
 
 export const CardNest: React.FC<ICardNestProps> = ({
-  isCardOpened,
   selectedCardValue,
   className,
-  userType,
+  userRole,
 }) => (
   <section
     className={classNames(
       styles.cardNest,
       className,
       {
-        [styles.showCard]: isCardOpened,
-        [styles.spectator]: userType === 'spectator',
+        [styles.spectator]: userRole === 'spectator',
       },
     )}
   >
-    {userType !== 'spectator'
+    {userRole !== 'spectator'
       && (
         <>
           <div className={styles.frontSide}>
