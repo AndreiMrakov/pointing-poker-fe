@@ -3,14 +3,12 @@ import classNames from 'classnames';
 import styles from './CardNest.module.scss';
 
 interface ICardNestProps {
-  isCardOpened: boolean;
   selectedCardValue: string;
   className?: string;
   userRole?: string;
 }
 
 export const CardNest: React.FC<ICardNestProps> = ({
-  isCardOpened,
   selectedCardValue,
   className,
   userRole,
@@ -20,7 +18,6 @@ export const CardNest: React.FC<ICardNestProps> = ({
       styles.cardNest,
       className,
       {
-        [styles.showCard]: isCardOpened,
         [styles.spectator]: userRole === 'spectator',
       },
     )}
