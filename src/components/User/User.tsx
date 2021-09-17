@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './User.module.scss';
-import { getAvatar } from '@/helpers/getAvatar';
 import { CardNest } from '@/components/CommonArea/CardNest';
 import { IUser } from '@/interfaces';
 
@@ -38,7 +37,7 @@ export const User: FC<IUserProps> = ({ user }) => {
       </div>
       <CardNest
         isCardOpened={user.isCardOpened}
-        selectedCardValue={user.currentScore}
+        selectedCardValue={user.score || ''}
         userRole={user.role}
       />
     </li>

@@ -24,7 +24,6 @@ export const CommonArea: React.FC<ICommonAreaProps> = ({
       selectedCardValue={selectedCardValue}
     />
     <CardNest
-      isCardOpened={isCardOpened}
       selectedCardValue={selectedCardValue}
       className={styles.cardMargin}
     />

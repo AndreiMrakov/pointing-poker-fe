@@ -1,11 +1,12 @@
 export interface IUser {
   id: string;
-  type: string;
+  role?: string;
   name: string;
   surname: string;
   job: string;
   avatar: string;
-  currentScore: string;
   isCardOpened: boolean;
   role?: string;
+  score?: string;
+  room: string;
 }
