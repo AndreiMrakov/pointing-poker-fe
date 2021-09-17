@@ -7,4 +7,5 @@ export interface IUser {
   avatar: string;
   currentScore: string;
   isCardOpened: boolean;
+  role: string;
 }

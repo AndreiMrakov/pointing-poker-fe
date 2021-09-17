@@ -2,6 +2,7 @@
 
 $size-kick: 2rem;
 $size-avatar: 3rem;
+$size-admin: 2rem;
 
 .listUsers {
   padding: 2rem 0;
@@ -40,10 +41,27 @@ $size-avatar: 3rem;
   height: 5.6rem;
   border: 2px solid $second-color;
   color: $font-color;
+
+  &__admin {
+    background-image: url(~@/assets/images/admin.svg);
+    background-repeat: no-repeat;
+    background-size: $size-admin;
+    background-position-y: 0.3rem;
+    background-position-x: 0.3rem;
+  }
+
+  &__spectator {
+    color: $shadow-grey;
+    border: 2px solid $shadow-grey;
+  }
 }
 
 .job {
   font-size: 1rem;
+}
+
+.role {
+  font-size: 1.2rem;
 }
 
 .avatar {
@@ -67,5 +85,5 @@ $size-avatar: 3rem;
 
   &:active {
     transform: scale(0.9);
- }
+  }
 }
