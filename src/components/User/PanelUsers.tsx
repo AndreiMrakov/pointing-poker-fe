@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { IUser } from '@/interfaces';
-import { SingleUser } from '@/helpers/getSingleUser';
 import styles from './User.module.scss';
 import { socketService } from '@/services/socketService';
 import { User } from './User';
 import { SocketEvent } from '@/utils/enums';
+import { UserModel } from '@/models/UserModel';
 
 export const PanelUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
-  const subscribeJoin = useCallback((msg: string) => {
-    const newUser = new SingleUser(msg);
+  const subscribeJoin = useCallback((user: IUser) => {
+    const newUser = new UserModel(user);
     setUsers((usrs) => [...usrs, newUser]);
   }, []);
 
