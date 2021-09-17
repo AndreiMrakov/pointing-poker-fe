@@ -15,13 +15,15 @@ export const User: FC<IUserProps> = ({ user }) => {
     [user.avatar],
   );
 
+  const role = user.role || 'spectator';
+
   return (
     <li className={styles.item}>
       <div className={classNames(
         styles.user,
         {
-          [styles.user__admin]: user.role === 'admin',
-          [styles.user__spectator]: user.role === 'spectator',
+          [styles.user__admin]: role === 'admin',
+          [styles.user__spectator]: role === 'spectator',
         },
       )}
       >

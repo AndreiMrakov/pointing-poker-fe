@@ -13,7 +13,7 @@ export const CardNest: React.FC<ICardNestProps> = ({
   isCardOpened,
   selectedCardValue,
   className,
-  userRole,
+  userRole = 'spectator',
 }) => (
   <section
     className={classNames(
