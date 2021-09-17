@@ -1,0 +1,44 @@
+@import "@/styles/variables.scss";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: $second-color;
+
+  .img {
+    width: 25rem;
+    height: 10rem;
+    background: center / cover no-repeat url(~@/assets/images/not-found.svg);
+  }
+
+  .title {
+    margin-top: 2rem;
+    color: $btn-dark-color;
+    font-weight: $bold-font-weight;
+    font-size: 7rem;
+  }
+  
+  .link {
+    padding: 1rem 5rem;
+    margin-top: 4rem;
+    border-radius: 1.5rem;
+    font-size: 3rem;
+    text-transform: capitalize;
+    background-color: $second-color-light;
+    color: $primary-color;
+  }
+  
+  .link:hover {
+    cursor: pointer;
+    color: $btn-dark-color;
+  }
+  
+  .link:active {
+    background-color: $btn-dark-color;
+    color: $primary-color;
+  }
+}
