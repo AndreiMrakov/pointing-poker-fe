@@ -7,6 +7,7 @@ import {
 import { Game } from './pages/Game';
 import styles from './App.module.scss';
 import { navMap } from './untils/NavMap';
+import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 
 export function App() {
@@ -14,7 +15,9 @@ export function App() {
     <div className={styles.container}>
       <Router>
         <Switch>
-          <Route exact path={navMap.home()} />
+          <Route exact path={navMap.home()}>
+            <Home />
+          </Route>
           <Route path={navMap.lobby()} />
           <Route path={navMap.game()}>
             <Game />

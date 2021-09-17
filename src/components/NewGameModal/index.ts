@@ -1,0 +1,1 @@
+export { NewGameModal } from './NewGameModal';
