@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
 import { Game } from './pages/Game';
 import styles from './App.module.scss';
 import { navMap } from './untils/NavMap';
+import { NotFound } from './pages/NotFound';
 
 export function App() {
   return (
@@ -19,7 +19,9 @@ export function App() {
           <Route path={navMap.game()}>
             <Game />
           </Route>
-          <Redirect to={navMap.home()} />
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
       </Router>
     </div>
