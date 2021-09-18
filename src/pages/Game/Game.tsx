@@ -6,13 +6,15 @@ import { CommonArea } from '@/components/CommonArea';
 import { Controls } from '@/components/Controls';
 import { Issues } from '@/components/Issues';
 import { ChooseUserNameModal } from '@/components/Modals';
+import { useAppSelector } from '@/redux/reduxHooks';
 
 const title = 'Name room';
 
 export const Game = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
-
+  // If id === '' => user unauthorized
+  const { id } = useAppSelector((state) => state.user);
   const [modal, setModal] = useState(true);
 
   const showModal = () => {
