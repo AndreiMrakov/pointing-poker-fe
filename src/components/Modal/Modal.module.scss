@@ -11,6 +11,7 @@
   transition: all 300ms;
   visibility: visible;
   background-color: $modal-dark-color;
+  z-index: 10;
 }
 
 .modal_close {

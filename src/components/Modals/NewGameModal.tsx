@@ -1,9 +1,12 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import Select from 'react-select';
+import { useHistory } from 'react-router-dom';
 import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input } from '@/components/Input';
 import { Modal } from '@/components/Modal';
-import styles from './NewGameModal.module.scss';
+import styles from './Modals.module.scss';
+import { useAppDispatch } from '@/redux/reduxHooks';
+import { addGameSettings } from '@/redux/slice';
 
 interface INewGameModalProps {
   show: boolean;
@@ -19,8 +22,11 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
   const [form, setForm] = useState({
     gameName: '',
     voteSystem: voteOptions[0].value || undefined,
-    dealer: dealerOptions[0].value || undefined,
+    dealerRights: dealerOptions[0].value || undefined,
   });
+
+  const dispatch = useAppDispatch();
+  const history = useHistory();
 
   const inputsHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
     setForm({
@@ -39,13 +45,15 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
   const dealerHandler = (selectedOption: OptionType | null | undefined) => {
     setForm({
       ...form,
-      dealer: selectedOption?.value,
+      dealerRights: selectedOption?.value,
     });
   };
 
   const submitHandler: FormEventHandler = (event): void => {
     event.preventDefault();
-    console.log('submit', form);
+    // ToDo - add some functionality to validate form data
+    dispatch(addGameSettings(form));
+    history.push('/games/1');
   };
 
   return (

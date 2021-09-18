@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PrimaryButton } from '@/components/Button';
-import { NewGameModal } from '@/components/NewGameModal';
+import { NewGameModal } from '@/components/Modals';
 import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
