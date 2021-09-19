@@ -4,6 +4,8 @@ import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input } from '@/components/Input';
 import { Modal } from '@/components/Modal';
 import styles from './NewGameModal.module.scss';
+import { socketService } from '@/services/socketService';
+import { ButtonEvent } from '@/utils/enums';
 
 interface INewGameModalProps {
   show: boolean;
@@ -45,7 +47,7 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
 
   const submitHandler: FormEventHandler = (event): void => {
     event.preventDefault();
-    console.log('submit', form);
+    socketService.emit(ButtonEvent.CreateGame);
   };
 
   return (

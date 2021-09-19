@@ -3,4 +3,5 @@ export enum ButtonEvent {
   RestartGame = 'restartGame',
   FinishGame = 'finishGame',
   UserVote = 'userVote',
+  CreateGame = 'createGame',
 }

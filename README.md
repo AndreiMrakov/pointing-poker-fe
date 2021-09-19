@@ -13,3 +13,4 @@ socket events:
 | 'restartGame' | game is restarted    |
 | 'finishGame'  | game is finished     |
 | 'userVote'    | user voted           |
+| 'createGame'  | create new game      |
