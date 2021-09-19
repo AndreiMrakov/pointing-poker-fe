@@ -1,4 +1,4 @@
-import { IUser } from '@/utils/interfaces/interfaces';
+import { IUser } from '@/utils/interfaces';
 import { UserModel } from './UserModel';
 
 const mockData = { id: '1', name: 'q', room: 'e' };
