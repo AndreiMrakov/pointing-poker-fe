@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { FC, useMemo } from 'react';
+=======
+import React, { FC } from 'react';
+>>>>>>> 61e97f3e70d29c82bdc13f532c04cdea20e4d4d6
 import classNames from 'classnames';
 import styles from './User.module.scss';
 import { CardNest } from '@/components/CommonArea/CardNest';
@@ -9,11 +13,14 @@ interface IUserProps {
 }
 
 export const User: FC<IUserProps> = ({ user }) => {
+<<<<<<< HEAD
   const styleAvatar = useMemo(
     () => getAvatar(user.avatar),
     [user.avatar],
   );
 
+=======
+>>>>>>> 61e97f3e70d29c82bdc13f532c04cdea20e4d4d6
   const role = user.role || 'spectator';
 
   return (
@@ -26,6 +33,7 @@ export const User: FC<IUserProps> = ({ user }) => {
         },
       )}
       >
+<<<<<<< HEAD
         <div style={styleAvatar} className={styles.avatar} />
         <div className={styles.name}>
           {`${user.name} ${user.surname}`}
@@ -37,6 +45,12 @@ export const User: FC<IUserProps> = ({ user }) => {
       </div>
       <CardNest
         isCardOpened={user.isCardOpened}
+=======
+        <div className={styles.name} />
+        <div className={styles.kick} />
+      </div>
+      <CardNest
+>>>>>>> 61e97f3e70d29c82bdc13f532c04cdea20e4d4d6
         selectedCardValue={user.score || ''}
         userRole={user.role}
       />
