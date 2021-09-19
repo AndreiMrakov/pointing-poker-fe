@@ -1,3 +1,3 @@
-export function getEnvValue(): string {
-  return process.env.NODE_ENV;
+export function getEnvValue(type: string): string | undefined {
+  return process.env[type];
 }
