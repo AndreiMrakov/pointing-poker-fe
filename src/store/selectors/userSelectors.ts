@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import { RootState } from '@/store';
 
 const user = (state: RootState) => state.userReducer.user;
 const settings = (state: RootState) => state.gameReducer.gameSettings;

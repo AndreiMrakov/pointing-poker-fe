@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { getEnvValue } from '@/helpers/getEnvValue';
-import { userReducer, gameReducer } from './reducers/userReducer';
+import { userReducer, gameReducer } from '@/store/reducers/userReducer';
 
 export const store = configureStore({
   reducer: { userReducer, gameReducer },
