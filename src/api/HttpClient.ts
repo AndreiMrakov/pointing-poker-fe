@@ -15,7 +15,7 @@ export class HTTPClient {
     this._initializeInterceptors();
   }
 
-  static getInstance(baseURL = '') {
+  static getInstance(baseURL = ''): HTTPClient {
     if (!this._instance) {
       this._instance = new HTTPClient(baseURL);
     }
@@ -27,7 +27,7 @@ export class HTTPClient {
     this._axios.defaults.baseURL = baseURL;
   }
 
-  get http() {
+  get http(): AxiosInstance {
     return this._axios;
   }
 
