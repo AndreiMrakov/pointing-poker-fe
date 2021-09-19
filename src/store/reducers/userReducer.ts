@@ -1,14 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
   addGameSettings, addUserId, addUserName, addUserRoom,
-} from '../actions/userActions';
+} from '@/store/actions/userActions';
 
-const initialState = {
+const initialStateUser = {
   user: {
     id: '',
     name: '',
     room: '',
   },
+};
+
+const initialStateGame = {
   gameSettings: {
     gameName: '',
     voteSystem: '',
@@ -16,7 +19,7 @@ const initialState = {
   },
 };
 
-export const userReducer = createReducer(initialState, (builder) => {
+export const userReducer = createReducer(initialStateUser, (builder) => {
   builder
     .addCase(addUserId, (state, action) => {
       state.user.id = action.payload;
@@ -27,6 +30,11 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase(addUserRoom, (state, action) => {
       state.user.room = action.payload;
     })
+    .addDefaultCase((state) => state);
+});
+
+export const gameReducer = createReducer(initialStateGame, (builder) => {
+  builder
     .addCase(addGameSettings, (state, action) => {
       state.gameSettings = action.payload;
     })
