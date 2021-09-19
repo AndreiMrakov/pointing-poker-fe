@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './User.module.scss';
 import { CardNest } from '@/components/CommonArea/CardNest';
-import { IUser } from '@/interfaces';
+import { IUser } from '@/utils/interfaces/interfaces';
 
 interface IUserProps {
   user: IUser
