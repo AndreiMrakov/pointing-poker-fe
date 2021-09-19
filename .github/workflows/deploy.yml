@@ -24,7 +24,6 @@ jobs:
         with:
           cmd: build
   lint:
-    needs: build
     name: Lint FE
     runs-on: ubuntu-latest
 
@@ -44,7 +43,6 @@ jobs:
         with:
           cmd: lint
   test:
-    needs: lint
     name: Test FE
     runs-on: ubuntu-latest
 
@@ -64,7 +62,7 @@ jobs:
         with:
           cmd: test -- --passWithNoTests
   deploy:
-    needs: test
+    needs: [test, build, lint]
     name: Deploy FE
     runs-on: ubuntu-latest
     steps:
