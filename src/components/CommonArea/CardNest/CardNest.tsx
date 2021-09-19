@@ -18,7 +18,6 @@ export const CardNest: React.FC<ICardNestProps> = ({
       styles.cardNest,
       className,
       {
-        [styles.showCard]: isCardOpened,
         [styles.spectator]: userRole === 'spectator',
       },
     )}
