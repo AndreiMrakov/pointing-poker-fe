@@ -6,7 +6,7 @@ import { User } from './User';
 import { SocketEvent } from '@/utils/enums';
 import { UserModel } from '@/models/UserModel';
 
-export const PanelUsers = () => {
+export const PanelUsers: React.FC = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
   const subscribeJoin = useCallback((user: IUser) => {
