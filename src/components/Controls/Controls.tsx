@@ -8,7 +8,7 @@ const NAMES_BTN = {
   stop: 'stop game',
 };
 
-export const Controls = () => {
+export const Controls: React.FC = () => {
   const handlerRun = () => {
     console.log('handlerRun');
   };

@@ -8,7 +8,7 @@ import { Issues } from '@/components/Issues';
 
 const title = 'Name room';
 
-export const Game = () => {
+export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
 

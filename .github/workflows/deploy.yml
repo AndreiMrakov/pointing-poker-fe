@@ -5,47 +5,40 @@ on:
     branches: [develop, main]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - run: yarn
+      - run: CI=false yarn build
   lint:
     name: Lint FE
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
       - uses: actions/checkout@v2
-        name: Pull branch
-      - name: Install dependencies
-        uses: borales/actions-yarn@v2.3.0
+      - uses: actions/setup-node@v2
         with:
-          cmd: install
-      - name: Checking lint
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: lint
+          node-version: "14"
+      - run: yarn
+      - run: yarn lint
   test:
-    needs: lint
     name: Test FE
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
       - uses: actions/checkout@v2
-        name: Pull branch
-      - name: Install dependencies
-        uses: borales/actions-yarn@v2.3.0
+      - uses: actions/setup-node@v2
         with:
-          cmd: install
-      - name: Checking test
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: test -- --passWithNoTests
+          node-version: "14"
+      - run: yarn
+      - run: yarn test -- --passWithNoTests
   deploy:
-    needs: test
+    needs: [test, build, lint]
     name: Deploy FE
     runs-on: ubuntu-latest
     steps:

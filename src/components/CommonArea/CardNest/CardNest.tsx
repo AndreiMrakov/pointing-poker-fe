@@ -11,7 +11,7 @@ interface ICardNestProps {
 export const CardNest: React.FC<ICardNestProps> = ({
   selectedCardValue,
   className,
-  userRole,
+  userRole = 'spectator',
 }) => (
   <section
     className={classNames(
