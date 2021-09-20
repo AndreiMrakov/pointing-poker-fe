@@ -2,7 +2,7 @@ import React from 'react';
 import { PrimaryButton, SecondaryButton } from '@/components/Button';
 import styles from './Controls.module.scss';
 import { socketService } from '@/services/socketService';
-import { ButtonEvent } from '@/utils/enums';
+import { SocketEvent } from '@/utils/enums';
 
 const NAMES_BTN = {
   run: 'run round',
@@ -12,15 +12,15 @@ const NAMES_BTN = {
 
 export const Controls: React.FC = () => {
   const handlerRun = () => {
-    socketService.emit(ButtonEvent.StartGame);
+    socketService.emit(SocketEvent.StartGame);
   };
 
   const handlerRestart = () => {
-    socketService.emit(ButtonEvent.RestartGame);
+    socketService.emit(SocketEvent.RestartGame);
   };
 
   const handlerStop = () => {
-    socketService.emit(ButtonEvent.FinishGame);
+    socketService.emit(SocketEvent.FinishGame);
   };
 
   return (

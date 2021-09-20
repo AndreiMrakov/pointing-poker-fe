@@ -5,7 +5,7 @@ import { Input } from '@/components/Input';
 import { Modal } from '@/components/Modal';
 import styles from './NewGameModal.module.scss';
 import { socketService } from '@/services/socketService';
-import { ButtonEvent } from '@/utils/enums';
+import { SocketEvent } from '@/utils/enums';
 
 interface INewGameModalProps {
   show: boolean;
@@ -47,7 +47,10 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
 
   const submitHandler: FormEventHandler = (event): void => {
     event.preventDefault();
-    socketService.emit(ButtonEvent.CreateGame);
+    if (form.gameName.length < 1) {
+      return;
+    }
+    socketService.emit(SocketEvent.CreateGame);
   };
 
   return (
