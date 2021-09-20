@@ -1,9 +1,10 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { getEnvValue } from '@/helpers/getEnvValue';
-import { userReducer, gameReducer } from '@/store/reducers/userReducer';
+import { user } from '@/store/reducers/userReducer';
+import { gameSettings } from './reducers/gameSettingsReducer';
 
 export const store = configureStore({
-  reducer: { userReducer, gameReducer },
+  reducer: { user, gameSettings },
   middleware: getDefaultMiddleware({
     immutableCheck: true,
     serializableCheck: false,
