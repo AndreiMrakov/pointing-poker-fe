@@ -10,7 +10,7 @@ import { useAppSelector } from '@/redux/reduxHooks';
 
 const title = 'Name room';
 
-export const Game = () => {
+export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
   // If id === '' => user unauthorized

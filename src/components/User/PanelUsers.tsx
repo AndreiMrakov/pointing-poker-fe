@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { IUser } from '@/interfaces';
+import { IUser } from '@/utils/interfaces';
 import styles from './User.module.scss';
 import { socketService } from '@/services/socketService';
 import { User } from './User';
 import { SocketEvent } from '@/utils/enums';
 import { UserModel } from '@/models/UserModel';
 
-export const PanelUsers = () => {
+export const PanelUsers: React.FC = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
   const subscribeJoin = useCallback((user: IUser) => {
