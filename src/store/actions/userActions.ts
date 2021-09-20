@@ -2,8 +2,8 @@ import { createAction } from '@reduxjs/toolkit';
 
 interface IAddGameSettings {
   gameName: string;
-  voteSystem: string;
-  dealerRights: string;
+  voteSystem: string | undefined;
+  dealerRights: string | undefined;
 }
 
 export const addUserId = createAction<string>('addUserId');

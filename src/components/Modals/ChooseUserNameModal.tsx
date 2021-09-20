@@ -2,11 +2,12 @@ import React, {
   ChangeEventHandler, FormEventHandler, MouseEventHandler, useState,
 } from 'react';
 import { FormControlLabel, Switch } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import { Modal } from '@/components/Modal';
 import { Input } from '@/components/Input';
 import styles from './Modals.module.scss';
-import { useAppDispatch } from '@/redux/reduxHooks';
-import { addUserName } from '@/redux/slice';
+import { AppDispatch } from '@/store';
+import { addUserName } from '@/store/actions/userActions';
 
 interface IChooseUserNameModalProps {
   show: boolean;
@@ -18,7 +19,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
   const [userName, setUserName] = useState('');
   // ToDo - add role to store and replace row below
   const [isRoleSpectator, setIsRoleSpectator] = useState(false);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const submitHandler: FormEventHandler = (event): void => {
     event.stopPropagation();
@@ -50,7 +51,13 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
           />
           <FormControlLabel
             className={styles.toggle}
-            control={<Switch checked={isRoleSpectator} onClick={toggleHandler} />}
+            control={(
+              <Switch
+                checked={isRoleSpectator}
+                onClick={toggleHandler}
+                disabled
+              />
+            )}
             label="Join as spectator"
           />
           <Input
