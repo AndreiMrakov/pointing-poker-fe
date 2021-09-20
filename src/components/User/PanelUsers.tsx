@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { IUser } from '@/interfaces';
+import { IUser } from '@/utils/interfaces';
 import styles from './User.module.scss';
 import { socketService } from '@/services/socketService';
 import { User } from './User';
