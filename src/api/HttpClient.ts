@@ -54,3 +54,4 @@ export class HTTPClient {
 }
 
 export const httpClient = HTTPClient.getInstance();
+export const { http } = httpClient;
