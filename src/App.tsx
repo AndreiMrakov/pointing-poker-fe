@@ -4,11 +4,9 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { Game } from './pages/Game';
+import { Game, Home, NotFound } from './pages';
 import styles from './App.module.scss';
-import { Home } from './pages/Home';
 import { navMap } from './utils/NavMap';
-import { NotFound } from './pages/NotFound';
 
 export const App: React.FC = () => (
   <div className={styles.container}>
