@@ -6,17 +6,23 @@
   width: 100%;
   height: inherit;
   color: $font-color;
+
+  .sideSection {
+    width: 40rem;
+  }
+
+  .wrapper {
+    min-width: calc(100vw - 80rem);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .title {
+    text-align: center;
+  }
 }
 
-.wrapper {
-  min-width: calc(100vw - 80rem);
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
 
-.title {
-  text-align: center;
-}
 
 
