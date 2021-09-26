@@ -10,6 +10,6 @@ describe('MessageModel', () => {
   });
 
   test('Should return requred fields', () => {
-    expect(mockObj).toEqual(mockData);
+    expect(mockObj).toEqual({ ...mockData, id: mockData.id.toString() });
   });
 });
