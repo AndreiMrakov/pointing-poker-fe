@@ -1,14 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addMessage, getMessages } from '@/store/actions/messageActions';
+import { messageActions } from '@/store/actions';
 
-const initialState = [{ userName: '', message: '', id: 0 }];
+const initialState = [{ userName: '', message: '', id: '' }];
 
 export const messages = createReducer(initialState, (builder) => {
   builder
-    .addCase(addMessage, (state, action) => {
+    .addCase(messageActions.addMessage, (state, action) => {
       state.push(action.payload);
     })
-    .addCase(getMessages, (state, action) => {
+    .addCase(messageActions.getMessages, (state, action) => {
       state.push(...action.payload);
     })
     .addDefaultCase((state) => state);

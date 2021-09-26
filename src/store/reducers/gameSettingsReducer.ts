@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addGameSettings } from '../actions/userActions';
+import { addGameSettings } from '@/store/actions';
 
 const initialStateGame = {
   gameName: '',

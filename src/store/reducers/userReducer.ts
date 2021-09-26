@@ -1,23 +1,21 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {
-  addUserId, addUserName, addUserRoom,
-} from '@/store/actions/userActions';
+import { userActions } from '@/store/actions';
 
 const initialStateUser = {
-  id: NaN,
+  id: '',
   name: '',
   room: '',
 };
 
 export const user = createReducer(initialStateUser, (builder) => {
   builder
-    .addCase(addUserId, (state, action) => {
+    .addCase(userActions.addUserId, (state, action) => {
       state.id = action.payload;
     })
-    .addCase(addUserName, (state, action) => {
+    .addCase(userActions.addUserName, (state, action) => {
       state.name = action.payload;
     })
-    .addCase(addUserRoom, (state, action) => {
+    .addCase(userActions.addUserRoom, (state, action) => {
       state.room = action.payload;
     })
     .addDefaultCase((state) => state);
