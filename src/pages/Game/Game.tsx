@@ -15,7 +15,7 @@ export const Game: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <section>
+      <section className={styles.sideSection}>
         <PanelUsers />
         <Chat />
       </section>

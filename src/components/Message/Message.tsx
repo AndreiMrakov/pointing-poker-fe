@@ -6,7 +6,7 @@ interface IMessage {
   message: string
 }
 
-export const Message: React.FC<IMessage> = ({ userName, message }): JSX.Element => (
+export const Message: React.FC<IMessage> = ({ userName, message }) => (
   <div className={styles.messageWrapper}>
     <h3 className={styles.userName}>
       {userName}

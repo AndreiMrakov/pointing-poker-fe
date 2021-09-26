@@ -7,7 +7,7 @@ import { SocketEvent } from '@/utils/enums';
 import styles from './SendMessageForm.module.scss';
 import { PrimaryButton } from '@/components/Button';
 
-export const SendMessageForm = (): JSX.Element => {
+export const SendMessageForm: React.FC = () => {
   const [text, setText] = useState('');
   const userId = useSelector(userSelectors.userId);
   const roomId = useSelector(userSelectors.userRoom);
