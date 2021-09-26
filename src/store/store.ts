@@ -1,9 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { messages } from './reducers/messagesReducer';
+import { messages, user, gameSettings } from './reducers';
 import { getEnvValue } from '@/helpers/getEnvValue';
-import { user } from '@/store/reducers/userReducer';
-import { gameSettings } from './reducers/gameSettingsReducer';
 
 export const store = configureStore({
   reducer: { user, gameSettings, messages },
