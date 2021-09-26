@@ -5,6 +5,7 @@ import styles from './Game.module.scss';
 import { CommonArea } from '@/components/CommonArea';
 import { Controls } from '@/components/Controls';
 import { Issues } from '@/components/Issues';
+import { Chat } from '@/containers/Chat';
 
 const title = 'Name room';
 
@@ -14,7 +15,10 @@ export const Game: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <PanelUsers />
+      <section>
+        <PanelUsers />
+        <Chat />
+      </section>
       <article className={styles.wrapper}>
         <section>
           <h1 className={styles.title}>{title}</h1>

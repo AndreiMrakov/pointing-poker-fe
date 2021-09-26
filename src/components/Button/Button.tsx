@@ -6,7 +6,7 @@ export interface ButtonProps {
   children: ReactNode;
   className?: string;
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type']
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Button: FC<ButtonProps> = ({
