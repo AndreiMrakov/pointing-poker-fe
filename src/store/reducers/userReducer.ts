@@ -4,7 +4,7 @@ import {
 } from '@/store/actions/userActions';
 
 const initialStateUser = {
-  id: '',
+  id: NaN,
   name: '',
   room: '',
 };

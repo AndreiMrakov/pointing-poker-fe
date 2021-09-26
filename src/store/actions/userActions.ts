@@ -6,7 +6,7 @@ interface IAddGameSettings {
   dealerRights: string;
 }
 
-export const addUserId = createAction<string>('addUserId');
+export const addUserId = createAction<number>('addUserId');
 export const addUserName = createAction<string>('addUserName');
 export const addUserRoom = createAction<string>('addUserRoom');
 export const addGameSettings = createAction<IAddGameSettings>('addGameSettings');
