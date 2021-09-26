@@ -1,12 +1,13 @@
 import { httpClient } from '@/api/HttpClient';
 import { MessageModel } from '@/models/MessageModel';
-import { useAppDispatch } from '@/store';
-import { getMessages } from '@/store/actions/messageActions';
-import { IMessage } from '@/utils/interfaces';
+import { AppDispatch } from '@/store';
+import { messageActions } from '@/store/actions';
+import { IMessageFromBE } from '@/utils/interfaces';
 
-export async function getMessagesByRoomId(roomId: string): Promise<void> {
-  const messagesFromBE: IMessage[] = await httpClient.http.get(`/api/messages?roomId=${roomId}`);
-  const messages = messagesFromBE.map((msg) => new MessageModel(msg));
-  const dispatch = useAppDispatch();
-  dispatch(getMessages(messages));
+export function getMessagesByRoomId(roomId: string) {
+  return async (dispatch: AppDispatch): Promise<void> => {
+    const messagesFromBE: IMessageFromBE[] = await httpClient.http.get(`/api/messages?roomId=${roomId}`);
+    const messages = messagesFromBE.map((msg) => new MessageModel(msg));
+    dispatch(messageActions.getMessages(messages));
+  };
 }
