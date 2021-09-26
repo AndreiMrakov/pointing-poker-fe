@@ -10,6 +10,6 @@ export class SendMessageModel {
   constructor(message: ISendMessage) {
     this.text = message.text;
     this.roomId = message.roomId;
-    this.userId = message.userId;
+    this.userId = +message.userId;
   }
 }
