@@ -1,25 +1,25 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { messageSelector, userSelectors } from '@/store/selectors';
+import { messagesSelectors, userSelectors } from '@/store/selectors';
 import styles from './Chat.module.scss';
 import { Message } from '@/components/Message';
-import { IMessage } from '@/utils/interfaces';
-import { addMessage } from '@/store/actions/messageActions';
+import { IMessageFromBE } from '@/utils/interfaces';
+import { messageActions } from '@/store/actions';
 import { socketService } from '@/services/socketService';
 import { MessageModel } from '@/models/MessageModel';
 import { useAppDispatch } from '@/store';
 import { SocketEvent } from '@/utils/enums';
 import { SendMessageForm } from '../SendMessageForm';
-import { getMessagesByRoomId } from '@/helpers/getMessagesByRoomId';
+import { getMessagesByRoomId } from '@/helpers';
 
 export const Chat = (): JSX.Element => {
-  const messages = useSelector(messageSelector);
+  const messages = useSelector(messagesSelectors.messageSelector);
   const room = useSelector(userSelectors.userRoom);
+  const dispatch = useAppDispatch();
 
-  const subscribeMessages = useCallback((message: IMessage) => {
-    const dispatch = useAppDispatch();
+  const subscribeMessages = useCallback((message: IMessageFromBE) => {
     const newMessage = new MessageModel(message);
-    dispatch(addMessage(newMessage));
+    dispatch(messageActions.addMessage(newMessage));
   }, []);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const Chat = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    getMessagesByRoomId(room);
+    dispatch<any>(getMessagesByRoomId(room));
   }, [room]);
 
   return (
@@ -39,7 +39,7 @@ export const Chat = (): JSX.Element => {
       <div className={styles.container}>
         <h2 className={styles.header}>Chat</h2>
         {messages.map((message) => (
-          message.id > 0
+          message.id
           && (
             <Message
               userName={message.userName}
