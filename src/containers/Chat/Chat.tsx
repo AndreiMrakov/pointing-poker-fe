@@ -22,9 +22,9 @@ export const Chat = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    socketService.on(SocketEvent.MessageCreated, subscribeMessages);
+    socketService.on(SocketEvent.MessageCreate, subscribeMessages);
     return () => {
-      socketService.off(SocketEvent.MessageCreated, subscribeMessages);
+      socketService.off(SocketEvent.MessageCreate, subscribeMessages);
     };
   }, []);
 

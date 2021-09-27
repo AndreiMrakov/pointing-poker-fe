@@ -6,6 +6,5 @@ export enum SocketEvent {
   FinishGame = 'finishGame',
   UserVote = 'userVote',
   CreateGame = 'createGame',
-  MessageCreated = 'message:created',
   MessageCreate = 'message:create'
 }
