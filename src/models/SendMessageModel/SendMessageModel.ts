@@ -5,11 +5,11 @@ export class SendMessageModel {
 
   roomId: string;
 
-  roomUserId: number
+  userId: number
 
   constructor(message: ISendMessage) {
     this.text = message.text;
     this.roomId = message.roomId;
-    this.roomUserId = +message.roomUserId;
+    this.userId = +message.userId;
   }
 }

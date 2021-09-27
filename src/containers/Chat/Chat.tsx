@@ -41,7 +41,7 @@ export const Chat = (): JSX.Element => {
           <Message
             name={message.name}
             text={message.text}
-            key={message.id}
+            key={message.messageId}
           />
         )) }
       </div>

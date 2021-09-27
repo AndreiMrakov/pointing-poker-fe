@@ -6,7 +6,6 @@ const initialStateUser: IUser = {
   id: '',
   name: '',
   roomId: '',
-  roomUserId: '',
   role: '',
   score: '',
 };
@@ -21,9 +20,6 @@ export const user = createReducer(initialStateUser, (builder) => {
     })
     .addCase(userActions.addRoomId, (state, action) => {
       state.roomId = action.payload;
-    })
-    .addCase(userActions.addRoomUserId, (state, action) => {
-      state.roomUserId = action.payload;
     })
     .addCase(userActions.addRole, (state, action) => {
       state.role = action.payload;

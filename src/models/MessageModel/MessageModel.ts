@@ -1,21 +1,24 @@
 interface msg {
-  id: number;
+  userId: number;
+  messageId: number;
   roomId: string;
-  roomUserId: number;
   name: string;
   text: string;
 }
 
 export class MessageModel {
-  id: string;
+  messageId: string;
+
+  userId: string;
 
   name: string;
 
   text: string;
 
   constructor(message: msg) {
-    this.id = message.id.toString();
+    this.messageId = message.messageId.toString();
     this.name = message.name;
     this.text = message.text;
+    this.userId = message.userId.toString();
   }
 }

@@ -14,4 +14,4 @@ socket events:
 | 'finishGame'  | game is finished     |                    |
 | 'userVote'    | user voted           |                    |
 | 'createGame'  | create new game      |                    |
-| 'message:create'| send message to BE | {text: string, roomId: string, roomUserId: string}|
+| 'message:create'| send message to BE | {text: string, roomId: string, userId: string}|

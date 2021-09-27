@@ -1,6 +1,6 @@
 export interface IRoomMember {
   name: string;
-  roomUserId: string;
+  userId: string;
   role?: string;
   score?: string;
 }

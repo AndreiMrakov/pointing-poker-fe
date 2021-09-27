@@ -15,7 +15,7 @@ export const PanelUsers: React.FC = () => {
   }, []);
 
   const subscribeLeave = useCallback((id: string) => {
-    setUsers((usrs) => usrs.filter((usr) => usr.roomUserId !== id));
+    setUsers((usrs) => usrs.filter((usr) => usr.userId !== id));
   }, []);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const PanelUsers: React.FC = () => {
 
   return (
     <ul className={styles.listUsers}>
-      {users.map((user) => <User user={user} key={user.roomUserId} />)}
+      {users.map((user) => <User user={user} key={user.userId} />)}
     </ul>
   );
 };

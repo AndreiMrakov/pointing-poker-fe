@@ -6,7 +6,7 @@ import { MessageModel } from '@/models/MessageModel';
 export function getMessageByMessageFromBE(message: IMessageFromBE): MessageModel {
   const roomUsers = useSelector(roomMembersSelector.roomMembers);
 
-  const { name } = roomUsers.find((usr) => usr.roomUserId === message.roomUserId.toString())!;
+  const { name } = roomUsers.find((usr) => usr.userId === message.userId.toString())!;
 
   return new MessageModel({ ...message, name });
 }

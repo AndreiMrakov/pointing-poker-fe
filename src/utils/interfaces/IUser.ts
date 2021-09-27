@@ -4,5 +4,4 @@ export interface IUser {
   name: string;
   score?: string;
   roomId: string;
-  roomUserId: string
 }
