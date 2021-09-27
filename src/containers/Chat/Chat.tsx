@@ -6,7 +6,6 @@ import { Message } from '@/components/Message';
 import { IMessageFromBE } from '@/utils/interfaces';
 import { messageActions } from '@/store/actions';
 import { socketService } from '@/services/socketService';
-import { MessageModel } from '@/models/MessageModel';
 import { useAppDispatch } from '@/store';
 import { SocketEvent } from '@/utils/enums';
 import { SendMessageForm } from '../SendMessageForm';
