@@ -10,7 +10,7 @@ import { MessageModel } from '@/models/MessageModel';
 import { useAppDispatch } from '@/store';
 import { SocketEvent } from '@/utils/enums';
 import { SendMessageForm } from '../SendMessageForm';
-import { getMessagesByRoomId } from '@/helpers';
+import { getMessageByMessageFromBE, getMessagesByRoomId } from '@/helpers';
 
 export const Chat = (): JSX.Element => {
   const messages = useSelector(messagesSelectors.messageSelector);
@@ -18,7 +18,7 @@ export const Chat = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const subscribeMessages = useCallback((message: IMessageFromBE) => {
-    const newMessage = new MessageModel(message);
+    const newMessage = getMessageByMessageFromBE(message);
     dispatch(messageActions.addMessage(newMessage));
   }, []);
 
