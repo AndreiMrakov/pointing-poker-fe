@@ -6,8 +6,12 @@ import { IMessageFromBE } from '@/utils/interfaces';
 
 export function getMessagesByRoomId(roomId: string) {
   return async (dispatch: AppDispatch): Promise<void> => {
-    const messagesFromBE: IMessageFromBE[] = await httpClient.http.get(`/api/messages?roomId=${roomId}`);
-    const messages = messagesFromBE.map((msg) => new MessageModel(msg));
-    dispatch(messageActions.getMessages(messages));
+    try {
+      const messagesFromBE: IMessageFromBE[] = await httpClient.http.get(`/api/messages?roomId=${roomId}`);
+      const messages = messagesFromBE.map((msg) => new MessageModel(msg));
+      dispatch(messageActions.getMessages(messages));
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
