@@ -9,7 +9,7 @@ export class MessageModel {
 
   constructor(message: IMessageFromBE) {
     this.id = message.id.toString();
-    this.userName = message.userName;
-    this.message = message.message;
+    this.userName = message.name;
+    this.message = message.text;
   }
 }
