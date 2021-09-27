@@ -1,1 +1,1 @@
-export { UserModel } from './UserModel';
+export { RoomMemberModel } from './RoomMemberModel';
