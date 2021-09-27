@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { messageActions } from '@/store/actions';
+import { IMessage } from '@/utils/interfaces';
 
-const initialState = [{ userName: '', message: '', id: '' }];
+const initialState: IMessage[] = [];
 
 export const messages = createReducer(initialState, (builder) => {
   builder

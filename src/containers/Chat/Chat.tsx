@@ -39,14 +39,11 @@ export const Chat = (): JSX.Element => {
       <div className={styles.container}>
         <h2 className={styles.header}>Chat</h2>
         {messages.map((message) => (
-          message.id
-          && (
-            <Message
-              userName={message.userName}
-              message={message.message}
-              key={message.id}
-            />
-          )
+          <Message
+            userName={message.userName}
+            message={message.message}
+            key={message.id}
+          />
         )) }
       </div>
     </section>
