@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 interface IRoomState {
-  gameName: string;
+  roomTitle: string;
   voteSystem: string;
   dealerRights: string;
   roomId: string;
