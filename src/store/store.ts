@@ -1,10 +1,14 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import { messages, user, gameSettings } from './reducers';
+import {
+  messages, user, gameSettings, roomMembers,
+} from './reducers';
 import { getEnvValue } from '@/helpers/getEnvValue';
 
 export const store = configureStore({
-  reducer: { user, gameSettings, messages },
+  reducer: {
+    user, gameSettings, messages, roomMembers,
+  },
   middleware: getDefaultMiddleware({
     immutableCheck: true,
     serializableCheck: false,
