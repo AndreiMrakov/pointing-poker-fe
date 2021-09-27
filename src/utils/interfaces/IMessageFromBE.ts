@@ -1,5 +1,6 @@
 export interface IMessageFromBE {
-  name: string,
+  id: number;
   text: string,
-  id: number
+  roomId: string,
+  roomUserId: number
 }
