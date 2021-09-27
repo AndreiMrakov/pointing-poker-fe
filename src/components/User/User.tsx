@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import classNames from 'classnames';
 import styles from './User.module.scss';
 import { CardNest } from '@/components/CommonArea/CardNest';
-import { IUser } from '@/utils/interfaces';
+import { IRoomMember } from '@/utils/interfaces';
 
 interface IUserProps {
-  user: IUser
+  user: IRoomMember
 }
 
 export const User: FC<IUserProps> = ({ user }) => {

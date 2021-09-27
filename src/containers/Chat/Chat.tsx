@@ -14,7 +14,7 @@ import { getMessagesByRoomId } from '@/helpers';
 
 export const Chat = (): JSX.Element => {
   const messages = useSelector(messagesSelectors.messageSelector);
-  const room = useSelector(userSelectors.userRoom);
+  const roomId = useSelector(userSelectors.roomId);
   const dispatch = useAppDispatch();
 
   const subscribeMessages = useCallback((message: IMessageFromBE) => {
@@ -30,8 +30,8 @@ export const Chat = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    dispatch<any>(getMessagesByRoomId(room));
-  }, [room]);
+    dispatch<any>(getMessagesByRoomId(roomId));
+  }, [roomId]);
 
   return (
     <section className={styles.chat}>

@@ -9,8 +9,8 @@ import { PrimaryButton } from '@/components/Button';
 
 export const SendMessageForm: React.FC = () => {
   const [text, setText] = useState('');
-  const userId = useSelector(userSelectors.userId);
-  const roomId = useSelector(userSelectors.userRoom);
+  const roomUserId = useSelector(userSelectors.roomUserId);
+  const roomId = useSelector(userSelectors.roomId);
 
   function sendMessageHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);
@@ -21,7 +21,7 @@ export const SendMessageForm: React.FC = () => {
     const sendedMessage = new SendMessageModel({
       text,
       roomId,
-      userId,
+      roomUserId,
     });
     socketService.emit(SocketEvent.MessageCreate, sendedMessage);
     setText('');
