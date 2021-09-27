@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { IRoomMember } from '@/utils/interfaces';
 import styles from './User.module.scss';
 import { socketService } from '@/services/socketService';
 import { User } from './User';
 import { SocketEvent } from '@/utils/enums';
 import { RoomMemberModel } from '@/models/UserModel';
+import { IUser } from '@/utils/interfaces';
 
 export const PanelUsers: React.FC = () => {
-  const [users, setUsers] = useState<IRoomMember[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
 
-  const subscribeJoin = useCallback((user: IRoomMember) => {
+  const subscribeJoin = useCallback((user: IUser) => {
     const newUser = new RoomMemberModel(user);
     setUsers((usrs) => [...usrs, newUser]);
   }, []);

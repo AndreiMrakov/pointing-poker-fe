@@ -5,7 +5,7 @@ Staging: https://pointing-poker-app.herokuapp.com
 
 socket events:
 
-| Event name    | description          |data                | 
+| Event name    | description          |payload               | 
 | ------------- | -------------------- |--------------------|
 | 'joinUser'    | join user to room    |                    |
 | 'leaveUser'   | leave user from room |                    |

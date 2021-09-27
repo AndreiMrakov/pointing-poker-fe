@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { messagesSelectors, userSelectors } from '@/store/selectors';
+import { messagesSelectors, roomStateSelectors } from '@/store/selectors';
 import styles from './Chat.module.scss';
 import { Message } from '@/components/Message';
 import { IMessageFromBE } from '@/utils/interfaces';
@@ -13,7 +13,7 @@ import { getMessageByMessageFromBE, getMessagesByRoomId } from '@/helpers';
 
 export const Chat = (): JSX.Element => {
   const messages = useSelector(messagesSelectors.messageSelector);
-  const roomId = useSelector(userSelectors.roomId);
+  const roomId = useSelector(roomStateSelectors.roomId);
   const dispatch = useAppDispatch();
 
   const subscribeMessages = useCallback((message: IMessageFromBE) => {

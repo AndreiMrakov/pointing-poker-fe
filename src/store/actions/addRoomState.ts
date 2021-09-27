@@ -1,9 +1,10 @@
 import { createAction } from '@reduxjs/toolkit';
 
-interface IAddGameSettings {
+interface IRoomState {
   gameName: string;
   voteSystem: string;
   dealerRights: string;
+  roomId: string;
 }
 
-export const addGameSettings = createAction<IAddGameSettings>('addGameSettings');
+export const addRoomState = createAction<IRoomState>('addGameSettings');

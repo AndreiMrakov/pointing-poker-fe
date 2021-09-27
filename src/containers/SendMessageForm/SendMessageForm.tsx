@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { socketService } from '@/services/socketService';
-import { userSelectors } from '@/store/selectors';
+import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { SendMessageModel } from '@/models/SendMessageModel/SendMessageModel';
 import { SocketEvent } from '@/utils/enums';
 import styles from './SendMessageForm.module.scss';
@@ -10,7 +10,7 @@ import { PrimaryButton } from '@/components/Button';
 export const SendMessageForm: React.FC = () => {
   const [text, setText] = useState('');
   const userId = useSelector(userSelectors.userId);
-  const roomId = useSelector(userSelectors.roomId);
+  const roomId = useSelector(roomStateSelectors.roomId);
 
   function sendMessageHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);

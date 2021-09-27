@@ -1,4 +1,4 @@
 export { userActions } from './userActions';
-export { addGameSettings } from './addGameSettings';
+export { addRoomState } from './addRoomState';
 export { messageActions } from './messageActions';
 export { roomMembersActions } from './roomMembersActions';

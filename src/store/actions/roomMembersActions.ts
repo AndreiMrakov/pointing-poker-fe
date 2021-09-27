@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
-import { IRoomMember } from '@/utils/interfaces';
+import { IUser } from '@/utils/interfaces';
 
 export const roomMembersActions = {
-  addRoomMembers: createAction<IRoomMember[]>('addRoomMembers'),
+  addRoomMembers: createAction<IUser[]>('addRoomMembers'),
 };

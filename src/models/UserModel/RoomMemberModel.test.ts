@@ -1,10 +1,10 @@
-import { IRoomMember } from '@/utils/interfaces';
+import { IUser } from '@/utils/interfaces';
 import { RoomMemberModel } from './RoomMemberModel';
 
 const mockData = { name: 'q', userId: '1' };
 
 describe('UserModel', () => {
-  let mockObj: IRoomMember;
+  let mockObj: IUser;
   beforeEach(() => {
     mockObj = new RoomMemberModel(mockData);
   });

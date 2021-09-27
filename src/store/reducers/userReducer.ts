@@ -3,9 +3,8 @@ import { userActions } from '@/store/actions';
 import { IUser } from '@/utils/interfaces';
 
 const initialStateUser: IUser = {
-  id: '',
+  userId: '',
   name: '',
-  roomId: '',
   role: '',
   score: '',
 };
@@ -13,13 +12,10 @@ const initialStateUser: IUser = {
 export const user = createReducer(initialStateUser, (builder) => {
   builder
     .addCase(userActions.addUserId, (state, action) => {
-      state.id = action.payload;
+      state.userId = action.payload;
     })
     .addCase(userActions.addName, (state, action) => {
       state.name = action.payload;
-    })
-    .addCase(userActions.addRoomId, (state, action) => {
-      state.roomId = action.payload;
     })
     .addCase(userActions.addRole, (state, action) => {
       state.role = action.payload;

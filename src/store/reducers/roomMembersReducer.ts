@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { IRoomMember } from '@/utils/interfaces';
+import { IUser } from '@/utils/interfaces';
 import { roomMembersActions } from '../actions';
 
-const initialStateRoomMembers: IRoomMember[] = [];
+const initialStateRoomMembers: IUser[] = [];
 
 export const roomMembers = createReducer(initialStateRoomMembers, (builder) => {
   builder

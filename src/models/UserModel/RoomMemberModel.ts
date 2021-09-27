@@ -1,4 +1,4 @@
-import { IRoomMember } from '@/utils/interfaces';
+import { IUser } from '@/utils/interfaces';
 
 export class RoomMemberModel {
   name: string;
@@ -9,7 +9,7 @@ export class RoomMemberModel {
 
   score?: string;
 
-  constructor(user: IRoomMember) {
+  constructor(user: IUser) {
     this.role = user.role;
     this.name = user.name;
     this.score = user.score;
