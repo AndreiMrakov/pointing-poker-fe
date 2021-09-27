@@ -3,5 +3,6 @@ export interface IUser {
   role?: string;
   name: string;
   score?: string;
-  room: string;
+  roomId: string;
+  roomUserId: string
 }
