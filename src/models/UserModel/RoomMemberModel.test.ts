@@ -1,7 +1,7 @@
 import { IRoomMember } from '@/utils/interfaces';
 import { RoomMemberModel } from './RoomMemberModel';
 
-const mockData = { name: 'q', id: '1' };
+const mockData = { name: 'q', userId: '1' };
 
 describe('UserModel', () => {
   let mockObj: IRoomMember;

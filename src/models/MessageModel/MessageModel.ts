@@ -11,6 +11,8 @@ export class MessageModel {
 
   userId: string;
 
+  roomId: string;
+
   name: string;
 
   text: string;
@@ -20,5 +22,6 @@ export class MessageModel {
     this.name = message.name;
     this.text = message.text;
     this.userId = message.userId.toString();
+    this.roomId = message.roomId;
   }
 }
