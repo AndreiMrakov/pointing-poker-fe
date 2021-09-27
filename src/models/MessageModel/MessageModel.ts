@@ -3,13 +3,13 @@ import { IMessageFromBE } from '@/utils/interfaces';
 export class MessageModel {
   id: string;
 
-  userName: string;
+  name: string;
 
-  message: string;
+  text: string;
 
   constructor(message: IMessageFromBE) {
     this.id = message.id.toString();
-    this.userName = message.name;
-    this.message = message.text;
+    this.name = message.name;
+    this.text = message.text;
   }
 }

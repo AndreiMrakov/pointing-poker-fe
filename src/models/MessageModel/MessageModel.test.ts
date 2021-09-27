@@ -1,7 +1,7 @@
 import { IMessage } from '@/utils/interfaces';
 import { MessageModel } from './MessageModel';
 
-const mockData = { id: 1, userName: 'q', message: 'e' };
+const mockData = { id: 1, name: 'q', text: 'e' };
 
 describe('MessageModel', () => {
   let mockObj: IMessage;

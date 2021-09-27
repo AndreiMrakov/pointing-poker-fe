@@ -40,8 +40,8 @@ export const Chat = (): JSX.Element => {
         <h2 className={styles.header}>Chat</h2>
         {messages.map((message) => (
           <Message
-            userName={message.userName}
-            message={message.message}
+            name={message.name}
+            text={message.text}
             key={message.id}
           />
         )) }
