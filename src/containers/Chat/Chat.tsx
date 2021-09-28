@@ -29,7 +29,7 @@ export const Chat = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    dispatch<any>(messageActions.getMessages(roomId));
+    dispatch(messageActions.getMessages(roomId));
   }, [roomId]);
 
   return (
