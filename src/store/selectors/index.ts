@@ -1,4 +1,4 @@
-export { roomStateSelectors } from './roomStateSelector';
-export { messagesSelectors } from './messageSelector';
-export { userSelectors } from './userSelector';
-export { roomMembersSelector } from './roomMembersSelector';
+export { roomStateSelectors } from './roomStateSelectors';
+export { messagesSelectors } from './messageSelectors';
+export { userSelectors } from './userSelectors';
+export { membersSelectors } from './membersSelectors';

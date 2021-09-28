@@ -1,12 +1,12 @@
 import { IUser } from '@/utils/interfaces';
-import { RoomMemberModel } from './RoomMemberModel';
+import { UserModel } from './UserModel';
 
 const mockData = { name: 'q', userId: '1' };
 
 describe('UserModel', () => {
   let mockObj: IUser;
   beforeEach(() => {
-    mockObj = new RoomMemberModel(mockData);
+    mockObj = new UserModel(mockData);
   });
 
   test('Should return requred fields', () => {

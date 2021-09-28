@@ -2,14 +2,14 @@ import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { messagesSelectors, roomStateSelectors } from '@/store/selectors';
 import styles from './Chat.module.scss';
-import { Message } from '@/components/Message';
+import { Message } from '@/components';
 import { IMessageFromBE } from '@/utils/interfaces';
 import { messageActions } from '@/store/actions';
-import { socketService } from '@/services/socketService';
+import { socketService } from '@/services';
 import { useAppDispatch } from '@/store';
 import { SocketEvent } from '@/utils/enums';
-import { SendMessageForm } from '../SendMessageForm';
-import { getMessageByMessageFromBE, getMessagesByRoomId } from '@/helpers';
+import { SendMessageForm } from '@/containers/SendMessageForm';
+import { MessageModel } from '@/models';
 
 export const Chat = (): JSX.Element => {
   const messages = useSelector(messagesSelectors.messageSelector);
@@ -17,7 +17,7 @@ export const Chat = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const subscribeMessages = useCallback((message: IMessageFromBE) => {
-    const newMessage = getMessageByMessageFromBE(message);
+    const newMessage = new MessageModel(message);
     dispatch(messageActions.addMessage(newMessage));
   }, []);
 
@@ -29,7 +29,7 @@ export const Chat = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    dispatch<any>(getMessagesByRoomId(roomId));
+    dispatch<any>(messageActions.getMessages(roomId));
   }, [roomId]);
 
   return (
@@ -39,7 +39,7 @@ export const Chat = (): JSX.Element => {
         <h2 className={styles.header}>Chat</h2>
         {messages.map((message) => (
           <Message
-            name={message.name}
+            name={message.userName}
             text={message.text}
             key={message.messageId}
           />

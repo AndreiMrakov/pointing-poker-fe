@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
+import { IUser } from '@/utils/interfaces';
 
 export const userActions = {
-  addUserId: createAction<string>('addUserId'),
-  addName: createAction<string>('addName'),
-  addRole: createAction<string>('addRole'),
-  addScore: createAction<string>('addScore'),
+  addUserData: createAction<IUser>('[USER]:addUserData'),
+  addRole: createAction<string>('[USER]:addRole'),
+  addScore: createAction<string>('[USER]:addScore'),
 };

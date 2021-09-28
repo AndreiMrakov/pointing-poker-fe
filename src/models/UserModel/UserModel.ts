@@ -1,6 +1,6 @@
 import { IUser } from '@/utils/interfaces';
 
-export class RoomMemberModel {
+export class UserModel {
   name: string;
 
   userId: string;

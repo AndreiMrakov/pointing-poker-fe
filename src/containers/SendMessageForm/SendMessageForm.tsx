@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { socketService } from '@/services/socketService';
+import { socketService } from '@/services';
 import { roomStateSelectors, userSelectors } from '@/store/selectors';
-import { SendMessageModel } from '@/models/SendMessageModel/SendMessageModel';
+import { SendMessageModel } from '@/models';
 import { SocketEvent } from '@/utils/enums';
 import styles from './SendMessageForm.module.scss';
-import { PrimaryButton } from '@/components/Button';
+import { PrimaryButton } from '@/components';
 
 export const SendMessageForm: React.FC = () => {
   const [text, setText] = useState('');
@@ -18,12 +18,12 @@ export const SendMessageForm: React.FC = () => {
 
   const formSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    const sendedMessage = new SendMessageModel({
+    const newMessage = new SendMessageModel({
       text,
       roomId,
       userId,
     });
-    socketService.emit(SocketEvent.MessageCreate, sendedMessage);
+    socketService.emit(SocketEvent.MessageCreate, newMessage);
     setText('');
   };
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { PrimaryButton, SecondaryButton } from '@/components/Button';
+import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Controls.module.scss';
-import { socketService } from '@/services/socketService';
+import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
 const NAMES_BTN = {

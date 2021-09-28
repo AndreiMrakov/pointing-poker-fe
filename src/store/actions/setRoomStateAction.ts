@@ -7,4 +7,4 @@ interface IRoomState {
   roomId: string;
 }
 
-export const addRoomState = createAction<IRoomState>('addGameSettings');
+export const setRoomState = createAction<IRoomState>('[ROOM_STATE]:setRoomState');

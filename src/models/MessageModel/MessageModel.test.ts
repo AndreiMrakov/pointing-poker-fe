@@ -2,7 +2,7 @@ import { IMessage } from '@/utils/interfaces';
 import { MessageModel } from './MessageModel';
 
 const mockData = {
-  userId: 1, name: 'q', text: 'e', messageId: 3, roomId: '3',
+  userId: 1, userName: 'q', text: 'e', messageId: 3,
 };
 
 describe('MessageModel', () => {

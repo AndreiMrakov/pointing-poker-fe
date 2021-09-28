@@ -1,4 +1,4 @@
-export { roomState } from './roomState';
+export { roomState } from './roomStateReducer';
 export { messages } from './messagesReducer';
 export { user } from './userReducer';
-export { roomMembers } from './roomMembersReducer';
+export { members } from './membersReducer';

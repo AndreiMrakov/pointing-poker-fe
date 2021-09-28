@@ -1,4 +1,4 @@
 export { userActions } from './userActions';
-export { addRoomState } from './addRoomState';
+export { setRoomState } from './setRoomStateAction';
 export { messageActions } from './messageActions';
-export { roomMembersActions } from './roomMembersActions';
+export { membersActions } from './membersActions';

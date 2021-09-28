@@ -1,4 +1,10 @@
-import { ISendMessage } from '@/utils/interfaces';
+interface msg {
+  text: string;
+
+  roomId: string;
+
+  userId: number | string
+}
 
 export class SendMessageModel {
   text: string;
@@ -7,7 +13,7 @@ export class SendMessageModel {
 
   userId: number
 
-  constructor(message: ISendMessage) {
+  constructor(message: msg) {
     this.text = message.text;
     this.roomId = message.roomId;
     this.userId = +message.userId;

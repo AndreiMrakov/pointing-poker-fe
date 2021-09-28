@@ -1,27 +1,18 @@
-interface msg {
-  userId: number;
-  messageId: number;
-  roomId: string;
-  name: string;
-  text: string;
-}
+import { IMessageFromBE } from '@/utils/interfaces';
 
 export class MessageModel {
   messageId: string;
 
   userId: string;
 
-  roomId: string;
-
-  name: string;
+  userName: string;
 
   text: string;
 
-  constructor(message: msg) {
+  constructor(message: IMessageFromBE) {
     this.messageId = message.messageId.toString();
-    this.name = message.name;
+    this.userName = message.userName;
     this.text = message.text;
     this.userId = message.userId.toString();
-    this.roomId = message.roomId;
   }
 }

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { PanelVoteCards } from '@/components/VoteCard';
-import { PanelUsers } from '@/components/User';
+import {
+  PanelVoteCards, PanelUsers, CommonArea, Controls, Issues,
+} from '@/components';
 import styles from './Game.module.scss';
-import { CommonArea } from '@/components/CommonArea';
-import { Controls } from '@/components/Controls';
-import { Issues } from '@/components/Issues';
-import { Chat } from '@/containers/Chat';
+import { Chat } from '@/containers';
 
 const title = 'Name room';
 

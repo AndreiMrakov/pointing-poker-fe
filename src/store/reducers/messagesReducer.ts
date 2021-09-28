@@ -9,7 +9,7 @@ export const messages = createReducer(initialState, (builder) => {
     .addCase(messageActions.addMessage, (state, action) => {
       state.push(action.payload);
     })
-    .addCase(messageActions.getMessages, (state, action) => {
+    .addCase(messageActions.getMessages.fulfilled, (state, action) => {
       state.push(...action.payload);
     })
     .addDefaultCase((state) => state);

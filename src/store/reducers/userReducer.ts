@@ -2,21 +2,16 @@ import { createReducer } from '@reduxjs/toolkit';
 import { userActions } from '@/store/actions';
 import { IUser } from '@/utils/interfaces';
 
-const initialStateUser: IUser = {
+const initialState: IUser = {
   userId: '',
   name: '',
   role: '',
   score: '',
 };
 
-export const user = createReducer(initialStateUser, (builder) => {
+export const user = createReducer(initialState, (builder) => {
   builder
-    .addCase(userActions.addUserId, (state, action) => {
-      state.userId = action.payload;
-    })
-    .addCase(userActions.addName, (state, action) => {
-      state.name = action.payload;
-    })
+    .addCase(userActions.addUserData, (state, action) => ({ ...action.payload }))
     .addCase(userActions.addRole, (state, action) => {
       state.role = action.payload;
     })
