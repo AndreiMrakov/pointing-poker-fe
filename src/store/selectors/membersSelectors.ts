@@ -1,6 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
 
+const rootStateSelector = (state: RootState) => state.members;
+
 export const membersSelectors = {
-  members: createSelector((state: RootState) => state.members, (state) => state),
+  members: createSelector(rootStateSelector, (state) => state),
 };

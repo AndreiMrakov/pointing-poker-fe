@@ -1,9 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
 
+const rootStateSelector = (state: RootState) => state.user;
+
 export const userSelectors = {
-  userId: createSelector((state: RootState) => state.user, (state) => state.userId),
-  name: createSelector((state: RootState) => state.user, (state) => state.name),
-  score: createSelector((state: RootState) => state.user, (state) => state.score),
-  role: createSelector((state: RootState) => state.user, (state) => state.role),
+  userId: createSelector(rootStateSelector, (state) => state.userId),
+  name: createSelector(rootStateSelector, (state) => state.name),
+  score: createSelector(rootStateSelector, (state) => state.score),
+  role: createSelector(rootStateSelector, (state) => state.role),
 };

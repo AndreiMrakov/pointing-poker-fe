@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { setRoomState } from '@/store/actions';
 
 const initialState = {
-  roomTitle: '',
+  roomTitle: 'TITLE',
   voteSystem: '',
   dealerRights: '',
   roomId: '',

@@ -4,5 +4,5 @@ import { IUser } from '@/utils/interfaces';
 export const membersActions = {
   addRoomMembers: createAction<IUser[]>('[MEMBERS]:addRoomMembers'),
   addRoomMember: createAction<IUser>('[MEMBERS]:addRoomMember'),
-  deleteRoomMember: createAction<string | number>('[MEMBERS]:deleteRoomMember'),
+  deleteRoomMember: createAction<IUser['userId']>('[MEMBERS]:deleteRoomMember'),
 };

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   PanelVoteCards, PanelUsers, CommonArea, Controls, Issues,
 } from '@/components';
 import styles from './Game.module.scss';
-import { Chat } from '@/containers';
-
-const title = 'Name room';
+import { Chat } from '@/containers'; import { roomStateSelectors } from '@/store/selectors';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
+  const title = useSelector(roomStateSelectors.roomTitle);
 
   return (
     <main className={styles.main}>

@@ -8,11 +8,11 @@ import { messageActions } from '@/store/actions';
 import { socketService } from '@/services';
 import { useAppDispatch } from '@/store';
 import { SocketEvent } from '@/utils/enums';
-import { SendMessageForm } from '@/containers/SendMessageForm';
+import { SendMessageForm } from '@/containers';
 import { MessageModel } from '@/models';
 
-export const Chat = (): JSX.Element => {
-  const messages = useSelector(messagesSelectors.messageSelector);
+export const Chat: React.FC = () => {
+  const messages = useSelector(messagesSelectors.messages);
   const roomId = useSelector(roomStateSelectors.roomId);
   const dispatch = useAppDispatch();
 
