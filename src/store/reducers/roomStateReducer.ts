@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setRoomState } from '@/store/actions';
+import { roomStateActions } from '@/store/actions';
 
 const initialState = {
   roomTitle: 'TITLE',
@@ -10,6 +10,6 @@ const initialState = {
 
 export const roomState = createReducer(initialState, (builder) => {
   builder
-    .addCase(setRoomState, (state, action) => ({ ...action.payload }))
+    .addCase(roomStateActions.setRoomState, (state, action) => ({ ...action.payload }))
     .addDefaultCase((state) => state);
 });
