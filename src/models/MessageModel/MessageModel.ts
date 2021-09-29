@@ -10,8 +10,8 @@ export class MessageModel {
   text: string;
 
   constructor(message: IMessageFromBE) {
-    this.messageId = message.messageId.toString();
-    this.userName = message.userName;
+    this.messageId = message.id.toString();
+    this.userName = message.name;
     this.text = message.text;
     this.userId = message.userId.toString();
   }
