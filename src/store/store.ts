@@ -2,9 +2,10 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { getEnvValue } from '@/helpers/getEnvValue';
 import { user } from '@/store/reducers/userReducer';
 import { gameSettings } from './reducers/gameSettingsReducer';
+import { tasks } from './reducers/tasksReducer';
 
 export const store = configureStore({
-  reducer: { user, gameSettings },
+  reducer: { user, gameSettings, tasks },
   middleware: getDefaultMiddleware({
     immutableCheck: true,
     serializableCheck: false,
