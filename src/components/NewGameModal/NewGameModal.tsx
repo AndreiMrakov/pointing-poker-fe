@@ -1,10 +1,9 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import Select from 'react-select';
 import { dealerOptions, voteOptions } from '@/mocks/options';
-import { Input } from '@/components/Input';
-import { Modal } from '@/components/Modal';
+import { Input, Modal } from '@/components';
 import styles from './NewGameModal.module.scss';
-import { socketService } from '@/services/socketService';
+import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
 interface INewGameModalProps {

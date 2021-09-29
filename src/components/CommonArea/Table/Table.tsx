@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { PrimaryButton, SecondaryButton } from '@/components/Button';
+import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Table.module.scss';
 
 interface ITableProps {
