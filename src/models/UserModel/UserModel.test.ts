@@ -1,7 +1,7 @@
 import { IUser } from '@/utils/interfaces';
 import { UserModel } from './UserModel';
 
-const mockData = { id: '1', name: 'q', room: 'e' };
+const mockData = { name: 'q', userId: '1' };
 
 describe('UserModel', () => {
   let mockObj: IUser;

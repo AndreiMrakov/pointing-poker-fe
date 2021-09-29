@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { PanelVoteCards } from '@/components/VoteCard';
-import { PanelUsers } from '@/components/User';
+import { useSelector } from 'react-redux';
+import {
+  PanelVoteCards,
+  PanelUsers,
+  CommonArea,
+  Controls,
+  Issues,
+  ChooseUserNameModal,
+} from '@/components';
 import styles from './Game.module.scss';
-import { CommonArea } from '@/components/CommonArea';
-import { Controls } from '@/components/Controls';
-import { Issues } from '@/components/Issues';
-import { ChooseUserNameModal } from '@/components/Modals';
-
-const title = 'Name room';
+import { Chat } from '@/containers';
+import { roomStateSelectors } from '@/store/selectors';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
+  const title = useSelector(roomStateSelectors.roomTitle);
   const [modal, setModal] = useState(true);
 
   const showModal = () => {
@@ -21,7 +25,10 @@ export const Game: React.FC = () => {
   return (
     <main className={styles.main}>
       <ChooseUserNameModal show={modal} setModal={setModal} onClick={showModal} />
-      <PanelUsers />
+      <section className={styles.sideSection}>
+        <PanelUsers />
+        <Chat />
+      </section>
       <article className={styles.wrapper}>
         <section>
           <h1 className={styles.title}>{title}</h1>

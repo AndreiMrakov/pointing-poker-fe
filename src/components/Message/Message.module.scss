@@ -1,0 +1,17 @@
+.messageWrapper {
+  display: flex;
+  width: calc(100% - 1rem);
+  margin-left: 0.5rem;
+  align-items: flex-start;
+
+  .messageText {
+    margin-left: 1rem;
+    max-width: 90%;
+    overflow-wrap: anywhere;
+  }
+}
+
+.messageWrapper:not(:first-child) {
+  margin-top: 0.5rem;
+}
+

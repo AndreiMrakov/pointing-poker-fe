@@ -1,12 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
+import { IUser } from '@/utils/interfaces';
 
-interface IAddGameSettings {
-  gameName: string;
-  voteSystem: string | undefined;
-  dealerRights: string | undefined;
-}
-
-export const addUserId = createAction<string>('addUserId');
-export const addUserName = createAction<string>('addUserName');
-export const addUserRoom = createAction<string>('addUserRoom');
-export const addGameSettings = createAction<IAddGameSettings>('addGameSettings');
+export const userActions = {
+  addUserData: createAction<IUser>('[USER]:addUserData'),
+  addUserName: createAction<string>('[USER]:addUserName'),
+  addRole: createAction<string>('[USER]:addRole'),
+  addScore: createAction<string>('[USER]:addScore'),
+};

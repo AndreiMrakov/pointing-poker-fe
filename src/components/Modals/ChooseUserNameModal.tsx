@@ -7,7 +7,7 @@ import { Modal } from '@/components/Modal';
 import { Input } from '@/components/Input';
 import styles from './Modals.module.scss';
 import { AppDispatch } from '@/store';
-import { addUserName } from '@/store/actions/userActions';
+import { userActions } from '@/store/actions';
 
 interface IChooseUserNameModalProps {
   show: boolean;
@@ -25,7 +25,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
     event.stopPropagation();
     event.preventDefault();
     // ToDo - add some functionality to validate form data
-    dispatch(addUserName(userName));
+    dispatch(userActions.addUserName(userName));
     setModal(!show);
   };
 

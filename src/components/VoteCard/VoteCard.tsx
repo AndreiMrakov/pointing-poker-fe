@@ -29,8 +29,9 @@ export const VoteCard: FC<IVoteCardProps> = ({
 
   function onCardClick(event: MouseEvent): void {
     const currentElem = event.target as HTMLElement;
-    if (!currentElem.textContent) return;
-    setSelectedCardValue(currentElem.textContent);
+    if (currentElem.textContent) {
+      setSelectedCardValue(currentElem.textContent);
+    }
   }
 
   return (

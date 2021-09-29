@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IUser } from '@/utils/interfaces/interfaces';
+import { IUser } from '@/utils/interfaces';
 import { http, httpClient } from '@/api/HttpClient';
 import { UserModel } from '@/models/UserModel';
 

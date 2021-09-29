@@ -1,24 +1,23 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {
-  addUserId, addUserName, addUserRoom,
-} from '@/store/actions/userActions';
+import { userActions } from '@/store/actions';
+import { IUser } from '@/utils/interfaces';
 
-const initialStateUser = {
-  id: '',
+const initialState: IUser = {
+  userId: '',
   name: '',
-  room: '',
+  role: '',
+  score: '',
 };
 
-export const user = createReducer(initialStateUser, (builder) => {
+export const user = createReducer(initialState, (builder) => {
   builder
-    .addCase(addUserId, (state, action) => {
-      state.id = action.payload;
+    .addCase(userActions.addUserData, (state, action) => ({ ...action.payload }))
+    .addCase(userActions.addUserName, (state, action) => ({ ...state, name: action.payload }))
+    .addCase(userActions.addRole, (state, action) => {
+      state.role = action.payload;
     })
-    .addCase(addUserName, (state, action) => {
-      state.name = action.payload;
-    })
-    .addCase(addUserRoom, (state, action) => {
-      state.room = action.payload;
+    .addCase(userActions.addScore, (state, action) => {
+      state.score = action.payload;
     })
     .addDefaultCase((state) => state);
 });

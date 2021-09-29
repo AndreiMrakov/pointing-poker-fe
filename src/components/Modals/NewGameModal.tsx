@@ -1,13 +1,15 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import Select from 'react-select';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { dealerOptions, voteOptions } from '@/mocks/options';
-import { Input } from '@/components/Input';
-import { Modal } from '@/components/Modal';
+import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';
+import { socketService } from '@/services';
+import { SocketEvent } from '@/utils/enums';
 import { AppDispatch } from '@/store';
-import { addGameSettings } from '@/store/actions/userActions';
+import { roomStateSelectors } from '@/store/selectors';
+import { roomStateActions } from '@/store/actions';
 
 interface INewGameModalProps {
   show: boolean;
@@ -21,11 +23,11 @@ interface OptionType {
 
 export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) => {
   const [form, setForm] = useState({
-    gameName: '',
-    voteSystem: voteOptions[0].value || undefined,
-    dealerRights: dealerOptions[0].value || undefined,
+    roomTitle: '',
+    voteSystem: voteOptions[0].value,
+    dealerRights: dealerOptions[0].value,
+    roomId: '',
   });
-
   const dispatch = useDispatch<AppDispatch>();
   const history = useHistory();
 
@@ -39,22 +41,26 @@ export const NewGameModal: React.FC<INewGameModalProps> = ({ show, onClick }) =>
   const voteSystemHandler = (selectedOption: OptionType | null | undefined) => {
     setForm({
       ...form,
-      voteSystem: selectedOption?.value,
+      voteSystem: selectedOption!.value,
     });
   };
 
   const dealerHandler = (selectedOption: OptionType | null | undefined) => {
     setForm({
       ...form,
-      dealerRights: selectedOption?.value,
+      dealerRights: selectedOption!.value,
     });
   };
 
   const submitHandler: FormEventHandler = (event): void => {
     event.preventDefault();
     // ToDo - add some functionality to validate form data
-    dispatch(addGameSettings(form));
+    dispatch(roomStateActions.setRoomState(form));
     history.push('/games/1');
+    if (form.roomTitle.length < 1) {
+      return;
+    }
+    socketService.emit(SocketEvent.CreateGame);
   };
 
   return (
