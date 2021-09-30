@@ -17,6 +17,7 @@ export const Input: React.FC<IInputProps> = ({
   <input
     name={name}
     type={type}
+    required
     className={classNames(styles.input, className)}
     onChange={onChange}
     value={value}
