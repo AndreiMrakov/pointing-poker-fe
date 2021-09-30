@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PrimaryButton, NewGameModal } from '@/components';
+import { PrimaryButton, ChooseUserNameModal } from '@/components';
 import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
             Create new game
           </PrimaryButton>
         </div>
-        <NewGameModal show={modal} onClick={showModal} />
+        <ChooseUserNameModal show={modal} onClick={showModal} />
       </article>
     </main>
   );
