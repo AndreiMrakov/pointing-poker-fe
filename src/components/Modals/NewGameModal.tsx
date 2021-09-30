@@ -1,9 +1,8 @@
 import React, {
-  ChangeEventHandler, FormEventHandler, useEffect, useState,
+  ChangeEventHandler, FormEventHandler, useState,
 } from 'react';
 import Select from 'react-select';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';
@@ -11,7 +10,6 @@ import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 import { AppDispatch } from '@/store';
 import { roomStateActions } from '@/store/actions';
-import { roomStateSelectors } from '@/store/selectors';
 import { httpClient } from '@/api/HttpClient';
 
 interface OptionType {
@@ -30,7 +28,6 @@ export const NewGameModal: React.FC = () => {
     roomTitle: '',
     voteSystem: voteOptions[0].value,
     dealerRights: dealerOptions[0].value,
-    roomId: '',
   });
   const dispatch = useDispatch<AppDispatch>();
 
@@ -59,12 +56,11 @@ export const NewGameModal: React.FC = () => {
     event.preventDefault();
     // httpClient.url = 'http://localhost:3000';
     // const newRoom: IRoomFromBE = await httpClient.http.post('/api/room/create');
-    dispatch(roomStateActions.setRoomState(form));
     dispatch(roomStateActions.setRoomId(mockRoomId));
     if (form.roomTitle.length < 1) {
       return;
     }
-    socketService.emit(SocketEvent.CreateGame);
+    socketService.emit(SocketEvent.CreateGame, form);
   };
 
   return (
