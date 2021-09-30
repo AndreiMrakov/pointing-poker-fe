@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { roomStateSelectors, tasksSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
-import { taskActions } from '@/store/actions/taskActions';
+import { taskActions } from '@/store/actions';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
