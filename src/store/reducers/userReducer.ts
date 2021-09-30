@@ -12,7 +12,6 @@ const initialState: IUser = {
 export const user = createReducer(initialState, (builder) => {
   builder
     .addCase(userActions.addUserData, (state, action) => ({ ...action.payload }))
-    .addCase(userActions.addUserName, (state, action) => ({ ...state, name: action.payload }))
     .addCase(userActions.addRole, (state, action) => {
       state.role = action.payload;
     })
