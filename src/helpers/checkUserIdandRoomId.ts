@@ -36,9 +36,7 @@ function getRoomByUrl() {
 
 async function getRoom() {
   try {
-    const roomId: string = await http.get(`/api/room/${getRoomByUrl()}
-  }
-`);
+    const roomId: string = await http.get(`/api/room/${getRoomByUrl()}`);
     return {
       roomId,
       status: 'fulfilled',
