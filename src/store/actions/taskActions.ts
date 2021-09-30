@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { httpClient } from '@/api/HttpClient';
 import { ITaskFromBE } from '@/utils/interfaces';
-import { TaskModel } from '@/models/TaskModel';
+import { TaskModel } from '@/models';
 
 export const taskActions = {
   getTasks: createAsyncThunk('[TASKS]:getTasks',

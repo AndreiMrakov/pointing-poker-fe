@@ -1,10 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import {
-  messages, user, roomState, members,
+  messages, user, roomState, members, tasks,
 } from './reducers';
 import { getEnvValue } from '@/helpers/getEnvValue';
-import { tasks } from './reducers/tasksReducer';
 
 export const store = configureStore({
   reducer: {
