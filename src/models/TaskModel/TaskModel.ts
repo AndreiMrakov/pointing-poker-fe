@@ -5,14 +5,14 @@ export class TaskModel {
 
   title: string;
 
-  score: number;
+  score: string;
 
   isActive: boolean;
 
   constructor(task: ITaskFromBE) {
     this.id = task.id;
     this.title = task.title;
-    this.score = task.score;
+    this.score = task.score.toString();
     this.isActive = task.isActive;
   }
 }
