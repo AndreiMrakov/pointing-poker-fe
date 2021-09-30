@@ -41,14 +41,14 @@ export const NewGameModal: React.FC = () => {
   const voteSystemHandler = (selectedOption: OptionType | null | undefined) => {
     setForm({
       ...form,
-      voteSystem: selectedOption!.value,
+      voteSystem: selectedOption?.value || voteOptions[0].value,
     });
   };
 
   const dealerHandler = (selectedOption: OptionType | null | undefined) => {
     setForm({
       ...form,
-      dealerRights: selectedOption!.value,
+      dealerRights: selectedOption?.value || dealerOptions[0].value,
     });
   };
 

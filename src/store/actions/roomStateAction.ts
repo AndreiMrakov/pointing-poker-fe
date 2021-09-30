@@ -4,7 +4,6 @@ interface IRoomState {
   roomTitle: string;
   voteSystem: string;
   dealerRights: string;
-  roomId: string;
 }
 
 export const roomStateActions = {
