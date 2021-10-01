@@ -11,12 +11,13 @@ const initialState: IUser = {
 
 export const user = createReducer(initialState, (builder) => {
   builder
-    .addCase(userActions.addUserData, (state, action) => ({ ...action.payload }))
+    .addCase(userActions.addUserData.fulfilled, (state, action) => ({ ...state, ...action.payload }))
     .addCase(userActions.addRole, (state, action) => {
       state.role = action.payload;
     })
     .addCase(userActions.addScore, (state, action) => {
       state.score = action.payload;
     })
+    .addCase(userActions.getUserDataByLS.fulfilled, (state, action) => ({ ...action.payload }))
     .addDefaultCase((state) => state);
 });
