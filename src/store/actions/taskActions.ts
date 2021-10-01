@@ -15,4 +15,5 @@ export const taskActions = {
       }
     }),
   addTask: createAction<ITask>('[TASKS]:addTask'),
+  updateTaskScore: createAction<ITask>('[TASKS]:updateTaskScore'),
 };

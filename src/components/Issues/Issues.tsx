@@ -27,8 +27,9 @@ export const Issues: React.FC = () => {
     console.log('Task delete');
   };
 
-  const updateScoreTaskHandler = () => {
-    console.log('Task score update');
+  const updateScoreTaskHandler = (task: ITaskFromBE) => {
+    const updatedTask = new TaskModel(task);
+    dispatch(taskActions.updateTaskScore(updatedTask));
   };
 
   const updateActiveTaskHandler = () => {

@@ -12,5 +12,12 @@ export const tasks = createReducer(initialStateTasks, (builder) => {
     .addCase(taskActions.addTask, (state, action) => {
       state.push(action.payload);
     })
+    .addCase(taskActions.updateTaskScore, (state, action) => {
+      state.forEach((task) => {
+        if (task.id === action.payload.id) {
+          task.score = action.payload.score;
+        }
+      });
+    })
     .addDefaultCase((state) => state);
 });
