@@ -6,6 +6,8 @@ import { useAppDispatch } from '@/store';
 import { taskActions } from '@/store/actions';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
+import { ITaskFromBE } from '@/utils/interfaces';
+import { TaskModel } from '@/models';
 
 export const Issues: React.FC = () => {
   const tasks = useSelector(tasksSelectors.tasks);
@@ -16,8 +18,9 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.getTasks(roomId));
   }, [roomId]);
 
-  const createTaskHandler = () => {
-    console.log('Task create');
+  const createTaskHandler = (task: ITaskFromBE) => {
+    const newTask = new TaskModel(task);
+    dispatch(taskActions.addTask(newTask));
   };
 
   const deleteTaskHandler = () => {

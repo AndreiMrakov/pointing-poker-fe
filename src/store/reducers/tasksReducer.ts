@@ -9,5 +9,8 @@ export const tasks = createReducer(initialStateTasks, (builder) => {
     .addCase(taskActions.getTasks.fulfilled, (state, action) => {
       state.push(...action.payload);
     })
+    .addCase(taskActions.addTask, (state, action) => {
+      state.push(action.payload);
+    })
     .addDefaultCase((state) => state);
 });

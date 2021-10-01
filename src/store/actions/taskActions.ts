@@ -1,6 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { httpClient } from '@/api/HttpClient';
-import { ITaskFromBE } from '@/utils/interfaces';
+import { ITask, ITaskFromBE } from '@/utils/interfaces';
 import { TaskModel } from '@/models';
 
 export const taskActions = {
@@ -14,4 +14,5 @@ export const taskActions = {
         return rejectWithValue(err);
       }
     }),
+  addTask: createAction<ITask>('[TASKS]:addTask'),
 };
