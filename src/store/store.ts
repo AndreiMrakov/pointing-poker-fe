@@ -7,7 +7,11 @@ import { getEnvValue } from '@/helpers/getEnvValue';
 
 export const store = configureStore({
   reducer: {
-    user, roomState, messages, members, tasks,
+    user,
+    roomState,
+    messages,
+    members,
+    tasks,
   },
   middleware: getDefaultMiddleware({
     immutableCheck: true,

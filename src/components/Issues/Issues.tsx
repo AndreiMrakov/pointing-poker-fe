@@ -12,25 +12,37 @@ export const Issues: React.FC = () => {
   const roomId = useSelector(roomStateSelectors.roomId);
   const dispatch = useAppDispatch();
 
-  const updateTasks = () => {
+  useEffect(() => {
     dispatch(taskActions.getTasks(roomId));
+  }, [roomId]);
+
+  const createTaskHandler = () => {
+    console.log('Task create');
+  };
+
+  const deleteTaskHandler = () => {
+    console.log('Task delete');
+  };
+
+  const updateScoreTaskHandler = () => {
+    console.log('Task score update');
+  };
+
+  const updateActiveTaskHandler = () => {
+    console.log('Task active update');
   };
 
   useEffect(() => {
-    updateTasks();
-  }, [roomId]);
-
-  useEffect(() => {
-    socketService.on(SocketEvent.TaskCreate, updateTasks);
-    socketService.on(SocketEvent.TaskDelete, updateTasks);
-    socketService.on(SocketEvent.TaskUpdateScore, updateTasks);
-    socketService.on(SocketEvent.TaskUpdateActive, updateTasks);
+    socketService.on(SocketEvent.TaskCreate, createTaskHandler);
+    socketService.on(SocketEvent.TaskDelete, deleteTaskHandler);
+    socketService.on(SocketEvent.TaskUpdateScore, updateScoreTaskHandler);
+    socketService.on(SocketEvent.TaskUpdateActive, updateActiveTaskHandler);
 
     return () => {
-      socketService.off(SocketEvent.TaskCreate, updateTasks);
-      socketService.off(SocketEvent.TaskDelete, updateTasks);
-      socketService.off(SocketEvent.TaskUpdateScore, updateTasks);
-      socketService.off(SocketEvent.TaskUpdateActive, updateTasks);
+      socketService.off(SocketEvent.TaskCreate, createTaskHandler);
+      socketService.off(SocketEvent.TaskDelete, deleteTaskHandler);
+      socketService.off(SocketEvent.TaskUpdateScore, updateScoreTaskHandler);
+      socketService.off(SocketEvent.TaskUpdateActive, updateActiveTaskHandler);
     };
   }, []);
 
