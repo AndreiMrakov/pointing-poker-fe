@@ -5,7 +5,7 @@ import { TaskModel } from '@/models';
 
 export const taskActions = {
   getTasks: createAsyncThunk('[TASKS]:getTasks',
-    async (arg: string, { rejectWithValue, getState }) => {
+    async (_, { rejectWithValue, getState }) => {
       try {
         const roomId = getState();
         const tasksFromBE: ITaskFromBE[] = await httpClient.http.get(`/api/task?roomId=${roomId}`);
@@ -18,5 +18,5 @@ export const taskActions = {
   addTask: createAction<ITask>('[TASKS]:addTask'),
   deleteTask: createAction<number>('[TASKS]:deleteTask'),
   updateTaskScore: createAction<ITask>('[TASKS]:updateTaskScore'),
-  updateTaskActive: createAction<number>('[TASKS]:updateTaskActive'),
+  updateTaskActive: createAction<ITask['id']>('[TASKS]:updateTaskActive'),
 };
