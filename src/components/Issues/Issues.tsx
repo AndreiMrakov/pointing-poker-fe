@@ -24,8 +24,7 @@ export const Issues: React.FC = () => {
   };
 
   const deleteTaskHandler = (task: ITaskFromBE) => {
-    const deletedTask = new TaskModel(task);
-    dispatch(taskActions.deleteTask(deletedTask));
+    dispatch(taskActions.deleteTask(task.id));
   };
 
   const updateScoreTaskHandler = (task: ITaskFromBE) => {
@@ -34,8 +33,7 @@ export const Issues: React.FC = () => {
   };
 
   const updateActiveTaskHandler = (task: ITaskFromBE) => {
-    const updatedTask = new TaskModel(task);
-    dispatch(taskActions.updateTaskActive(updatedTask));
+    dispatch(taskActions.updateTaskActive(task.id));
   };
 
   useEffect(() => {
@@ -56,7 +54,10 @@ export const Issues: React.FC = () => {
     <section className={styles.issues}>
       Issues
       {tasks.map((task) => (
-        <div>{task.title}</div>
+        <>
+          <div>{task.title}</div>
+          <div>{task.score}</div>
+        </>
       ))}
     </section>
   );

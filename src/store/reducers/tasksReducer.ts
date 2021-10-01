@@ -13,7 +13,7 @@ export const tasks = createReducer(initialStateTasks, (builder) => {
       state.push(action.payload);
     })
     .addCase(taskActions.deleteTask, (state, action) => {
-      state.filter((task) => task.id !== action.payload.id);
+      state.filter((task) => task.id !== action.payload);
     })
     .addCase(taskActions.updateTaskScore, (state, action) => {
       state.forEach((task) => {
@@ -24,8 +24,10 @@ export const tasks = createReducer(initialStateTasks, (builder) => {
     })
     .addCase(taskActions.updateTaskActive, (state, action) => {
       state.forEach((task) => {
-        if (task.id === action.payload.id) {
-          task.isActive = action.payload.isActive;
+        if (task.id === action.payload) {
+          task.isActive = true;
+        } else {
+          task.isActive = false;
         }
       });
     })
