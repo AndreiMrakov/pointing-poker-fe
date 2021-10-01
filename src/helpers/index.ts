@@ -1,2 +1,2 @@
 export { getEnvValue } from './getEnvValue';
-export { checkUserIdandRoomId } from './checkUserIdandRoomId';
+export { getRoomIdByUrl } from './getRoomIdByUrl';
