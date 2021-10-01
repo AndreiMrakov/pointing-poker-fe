@@ -3,25 +3,18 @@ import React, {
 } from 'react';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';
-import { socketService } from '@/services';
-import { SocketEvent } from '@/utils/enums';
 import { AppDispatch } from '@/store';
 import { roomStateActions } from '@/store/actions';
-import { httpClient } from '@/api/HttpClient';
+import { IRoomState } from '@/utils/interfaces';
 
 interface OptionType {
   value: string;
   label: string;
 }
-
-// interface IRoomFromBE {
-//   roomId: string;
-// }
-
-const mockRoomId = '11';
 
 export const NewGameModal: React.FC = () => {
   const [form, setForm] = useState({
@@ -30,6 +23,7 @@ export const NewGameModal: React.FC = () => {
     dealerRights: dealerOptions[0].value,
   });
   const dispatch = useDispatch<AppDispatch>();
+  const history = useHistory();
 
   const inputsHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
     setForm({
@@ -54,18 +48,18 @@ export const NewGameModal: React.FC = () => {
 
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
     event.preventDefault();
-    // httpClient.url = 'http://localhost:3000';
-    // const newRoom: IRoomFromBE = await httpClient.http.post('/api/room/create');
-    dispatch(roomStateActions.setRoomId(mockRoomId));
-    if (form.roomTitle.length < 1) {
-      return;
-    }
-    socketService.emit(SocketEvent.CreateGame, form);
+    dispatch(roomStateActions.createRoom(form)).then((e) => {
+      const status = e.meta.requestStatus;
+      const { roomId } = e.payload as IRoomState;
+      if (status === 'fulfilled') {
+        history.push(`games/${roomId}`);
+      }
+    });
   };
 
   return (
     <article className={styles.roomSettingsWrapper}>
-      <Modal styleName={styles.roomSettingsModal}>
+      <Modal className={styles.roomSettingsModal}>
         <section className={styles.content}>
           <h3 className={styles.title}>
             Choose a name and a voting system for your game.

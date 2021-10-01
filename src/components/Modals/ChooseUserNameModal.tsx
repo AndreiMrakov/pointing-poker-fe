@@ -8,16 +8,11 @@ import { Modal, Input } from '@/components';
 import styles from './Modals.module.scss';
 import { AppDispatch } from '@/store';
 import { userActions } from '@/store/actions';
-import { httpClient } from '@/api/HttpClient';
+import { IUser } from '@/utils/interfaces';
 
 interface IChooseUserNameModalProps {
   show: boolean;
   onClick: () => void;
-}
-
-interface IUserFromBE {
-  id: number;
-  name: string;
 }
 
 export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onClick, show }) => {
@@ -28,21 +23,21 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
     event.preventDefault();
     // ToDo - add some functionality to validate form data
-    httpClient.url = 'http://localhost:3000';
-    const user: IUserFromBE = await httpClient.http.post('/api/users',
-      {
-        name: `${userName}`,
-      });
-    dispatch(userActions.addUserData({ userId: (user.id).toString(), name: user.name }));
-    localStorage.setItem('userId', user.id.toString());
-    history.push('/games/new');
+    dispatch(userActions.addUserData(userName)).then((e) => {
+      const status = e.meta.requestStatus;
+      const { userId } = e.payload as IUser;
+      if (status === 'fulfilled') {
+        localStorage.setItem('userId', userId);
+        history.push('/new-game');
+      }
+    });
   };
 
   const toggleHandler: MouseEventHandler<HTMLButtonElement> = () => {
     console.log('spectator');
   };
 
-  const inputsHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const inputHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
     setUserName(event.target.value);
   };
 
@@ -56,7 +51,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
           <Input
             label="Your display name"
             name="userName"
-            onChange={inputsHandler}
+            onChange={inputHandler}
           />
           <FormControlLabel
             className={styles.toggle}

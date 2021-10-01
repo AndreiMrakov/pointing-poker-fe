@@ -7,61 +7,61 @@ import {
   CommonArea,
   Controls,
   Issues,
-  NewGameModal,
 } from '@/components';
 import styles from './Game.module.scss';
 import { Chat } from '@/containers';
 import { roomStateSelectors } from '@/store/selectors';
-import { checkUserIdandRoomId } from '@/helpers';
 import { useAppDispatch } from '@/store';
+import { roomStateActions, userActions } from '@/store/actions';
+import { getRoomIdByUrl } from '@/helpers';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
   const title = useSelector(roomStateSelectors.roomTitle);
-  const roomId = useSelector(roomStateSelectors.roomId);
-  const history = useHistory();
   const dispatch = useAppDispatch();
+  const history = useHistory();
 
   useEffect(() => {
-    checkUserIdandRoomId(dispatch, history);
+    const id = localStorage.getItem('userId');
+    dispatch(userActions.getUserDataByLS(id)).then((event) => {
+      if (event.meta.requestStatus === 'fulfilled') {
+        const url = getRoomIdByUrl();
+        dispatch(roomStateActions.getRoomByUrl(url)).then((e) => {
+          if (e.meta.requestStatus !== 'fulfilled') {
+            history.push('/new-game');
+          }
+        });
+      } else {
+        history.push('/');
+      }
+    });
   }, []);
 
-  useEffect(() => {
-    if (roomId) {
-      history.push(`/games/${roomId}`);
-    }
-  }, [roomId]);
-
   return (
-    <>
-      {!roomId ? <NewGameModal />
-        : (
-          <main className={styles.main}>
-            <section className={styles.sideSection}>
-              <PanelUsers />
-              <Chat />
-            </section>
-            <article className={styles.wrapper}>
-              <section>
-                <h1 className={styles.title}>{title}</h1>
-                <Controls />
-              </section>
-              <CommonArea
-                isCardOpened={isCardOpened}
-                selectedCardValue={selectedCardValue}
-                setIsCardIsVisible={setIsCardIsVisible}
-                setSelectedCardValue={setSelectedCardValue}
-              />
-              <PanelVoteCards
-                setSelectedCardValue={setSelectedCardValue}
-                selectedCardValue={selectedCardValue}
-                isCardOpened={isCardOpened}
-              />
-            </article>
-            <Issues />
-          </main>
-        )}
-    </>
+    <main className={styles.main}>
+      <section className={styles.sideSection}>
+        <PanelUsers />
+        <Chat />
+      </section>
+      <article className={styles.wrapper}>
+        <section>
+          <h1 className={styles.title}>{title}</h1>
+          <Controls />
+        </section>
+        <CommonArea
+          isCardOpened={isCardOpened}
+          selectedCardValue={selectedCardValue}
+          setIsCardIsVisible={setIsCardIsVisible}
+          setSelectedCardValue={setSelectedCardValue}
+        />
+        <PanelVoteCards
+          setSelectedCardValue={setSelectedCardValue}
+          selectedCardValue={selectedCardValue}
+          isCardOpened={isCardOpened}
+        />
+      </article>
+      <Issues />
+    </main>
   );
 };
