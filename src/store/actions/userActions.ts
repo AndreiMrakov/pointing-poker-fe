@@ -2,6 +2,7 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { IUserFromBE } from '@/utils/interfaces';
 import { http } from '@/api/HttpClient';
 import { UserModel } from '@/models';
+import history from '@/utils/history';
 
 export const userActions = {
   addRole: createAction<string>('[USER]:addRole'),
@@ -13,6 +14,9 @@ export const userActions = {
           name,
         });
       const user = new UserModel(userFromBE);
+      localStorage.setItem('userId', user.userId);
+      history.push('/new-game');
+      console.log(history.location);
       return user;
     } catch (err) {
       return rejectWithValue(err);

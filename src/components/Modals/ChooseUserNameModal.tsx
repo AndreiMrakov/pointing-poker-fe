@@ -23,14 +23,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
     event.preventDefault();
     // ToDo - add some functionality to validate form data
-    dispatch(userActions.addUserData(userName)).then((e) => {
-      const status = e.meta.requestStatus;
-      const { userId } = e.payload as IUser;
-      if (status === 'fulfilled') {
-        localStorage.setItem('userId', userId);
-        history.push('/new-game');
-      }
-    });
+    dispatch(userActions.addUserData(userName));
   };
 
   const toggleHandler: MouseEventHandler<HTMLButtonElement> = () => {

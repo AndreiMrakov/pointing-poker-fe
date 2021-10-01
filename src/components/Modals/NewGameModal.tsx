@@ -9,7 +9,6 @@ import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';
 import { AppDispatch } from '@/store';
 import { roomStateActions } from '@/store/actions';
-import { IRoomState } from '@/utils/interfaces';
 
 interface OptionType {
   value: string;
@@ -23,7 +22,6 @@ export const NewGameModal: React.FC = () => {
     dealerRights: dealerOptions[0].value,
   });
   const dispatch = useDispatch<AppDispatch>();
-  const history = useHistory();
 
   const inputsHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
     setForm({
@@ -48,13 +46,7 @@ export const NewGameModal: React.FC = () => {
 
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
     event.preventDefault();
-    dispatch(roomStateActions.createRoom(form)).then((e) => {
-      const status = e.meta.requestStatus;
-      const { roomId } = e.payload as IRoomState;
-      if (status === 'fulfilled') {
-        history.push(`games/${roomId}`);
-      }
-    });
+    dispatch(roomStateActions.createRoom(form));
   };
 
   return (

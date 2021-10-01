@@ -1,6 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { http } from '@/api/HttpClient';
 import { IRoomState } from '@/utils/interfaces';
+import history from '@/utils/history';
 
 interface IRoomSettings {
   roomTitle: string;
@@ -26,6 +27,7 @@ export const roomStateActions = {
     async (roomSettings: IRoomSettings, { rejectWithValue }) => {
       try {
         // const state: IRoomState = await http.post('/api/room', roomSettings);
+        history.push('games/11');
         // return state;
         return { ...roomSettings, roomId: '11' };
       } catch (err) {
