@@ -6,11 +6,11 @@ interface IModalProps {
   children: ReactNode;
   show?: boolean;
   onClick?: () => void;
-  styleName?: string;
+  className?: string;
 }
 
 export const Modal: React.FC<IModalProps> = ({
-  children, show, onClick, styleName,
+  children, show, onClick, className,
 }) => {
   const closeModal: MouseEventHandler = (event) => {
     const elem = event.target as HTMLElement;
@@ -21,9 +21,8 @@ export const Modal: React.FC<IModalProps> = ({
 
   return (
     <div
-      className={classNames(styleName,
+      className={classNames(className, styles.modal,
         {
-          [styles.modal]: show,
           [styles.modal_close]: !show,
         })}
       onClick={closeModal}
