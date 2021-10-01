@@ -23,8 +23,9 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.addTask(newTask));
   };
 
-  const deleteTaskHandler = () => {
-    console.log('Task delete');
+  const deleteTaskHandler = (task: ITaskFromBE) => {
+    const deletedTask = new TaskModel(task);
+    dispatch(taskActions.deleteTask(deletedTask));
   };
 
   const updateScoreTaskHandler = (task: ITaskFromBE) => {
