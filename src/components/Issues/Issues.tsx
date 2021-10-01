@@ -32,8 +32,9 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.updateTaskScore(updatedTask));
   };
 
-  const updateActiveTaskHandler = () => {
-    console.log('Task active update');
+  const updateActiveTaskHandler = (task: ITaskFromBE) => {
+    const updatedTask = new TaskModel(task);
+    dispatch(taskActions.updateTaskActive(updatedTask));
   };
 
   useEffect(() => {
