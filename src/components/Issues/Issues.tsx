@@ -15,7 +15,7 @@ export const Issues: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(taskActions.getTasks(roomId));
+    dispatch(taskActions.getTasks(''));
   }, [roomId]);
 
   const createTaskHandler = (task: ITaskFromBE) => {

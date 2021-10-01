@@ -5,8 +5,9 @@ import { TaskModel } from '@/models';
 
 export const taskActions = {
   getTasks: createAsyncThunk('[TASKS]:getTasks',
-    async (roomId: string, { rejectWithValue }) => {
+    async (arg: string, { rejectWithValue, getState }) => {
       try {
+        const roomId = getState();
         const tasksFromBE: ITaskFromBE[] = await httpClient.http.get(`/api/task?roomId=${roomId}`);
         const tasks = tasksFromBE.map((task) => new TaskModel(task));
         return tasks;
