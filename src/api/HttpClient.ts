@@ -15,7 +15,7 @@ export class HTTPClient {
     this._initializeInterceptors();
   }
 
-  static getInstance(baseURL = ''): HTTPClient {
+  static getInstance(baseURL = 'http://localhost:3000'): HTTPClient {
     if (!this._instance) {
       this._instance = new HTTPClient(baseURL);
     }
