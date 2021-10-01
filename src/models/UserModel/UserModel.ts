@@ -1,4 +1,4 @@
-import { IUser } from '@/utils/interfaces';
+import { IUserFromBE } from '@/utils/interfaces';
 
 export class UserModel {
   name: string;
@@ -9,10 +9,10 @@ export class UserModel {
 
   score?: string;
 
-  constructor(user: IUser) {
+  constructor(user: IUserFromBE) {
     this.role = user.role;
     this.name = user.name;
     this.score = user.score;
-    this.userId = user.userId;
+    this.userId = user.userId.toString();
   }
 }
