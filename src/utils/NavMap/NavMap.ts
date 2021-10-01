@@ -5,7 +5,7 @@ class NavMap {
 
   home = () => `${this.baseUrl}/`;
 
-  lobby = () => `${this.baseUrl}/lobbies/:id`;
+  lobby = () => `${this.baseUrl}/new-game`;
 
   game = () => `${this.baseUrl}/games/:id`;
 }

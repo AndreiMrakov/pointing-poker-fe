@@ -12,7 +12,7 @@ describe('Check class methods', () => {
   });
 
   test('Should return lobby path', () => {
-    expect(navMap.lobby()).toBe('/lobbies/:id');
+    expect(navMap.lobby()).toBe('/new-game');
   });
 
   test('Should return game path', () => {

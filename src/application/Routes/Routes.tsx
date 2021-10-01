@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 import styles from './Routes.module.scss';
 import { navMap } from '@/utils/NavMap';
-import { Game, Home, NotFound } from '@/pages';
+import {
+  Game, Home, NotFound, NewGame,
+} from '@/pages';
 
 export const Routes = (): JSX.Element => (
   <div className={styles.container}>
@@ -13,7 +15,9 @@ export const Routes = (): JSX.Element => (
       <Route exact path={navMap.home()}>
         <Home />
       </Route>
-      <Route path={navMap.lobby()} />
+      <Route path={navMap.lobby()}>
+        <NewGame />
+      </Route>
       <Route path={navMap.game()}>
         <Game />
       </Route>
