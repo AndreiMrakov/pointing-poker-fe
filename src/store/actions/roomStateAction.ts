@@ -32,7 +32,7 @@ export const roomStateActions = {
       try {
         // const state: IRoomState = await http.post('/api/room', roomSettings);
         const state: IRoomState = await delay({ ...roomSettings, roomId: '11' });
-        history.push(navMap.room(state.roomId));
+        history.push(navMap.game(state.roomId));
         return state;
       } catch (err) {
         return rejectWithValue(err);

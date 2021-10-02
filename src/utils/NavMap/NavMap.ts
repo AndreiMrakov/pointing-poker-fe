@@ -7,9 +7,12 @@ class NavMap {
 
   newGame = () => `${this.baseUrl}/newGame`;
 
-  game = () => `${this.baseUrl}/games/:id`;
-
-  room = (id: string) => `${this.baseUrl}/games/${id}`;
+  game = (id?: string) => {
+    if (id) {
+      return `${this.baseUrl}/games/${id}`;
+    }
+    return `${this.baseUrl}/games/:id`;
+  };
 
   error = () => `${this.baseUrl}/404`;
 }
