@@ -9,15 +9,22 @@ interface IInputProps {
   className?: string;
   label?: string;
   onChange?: ChangeEventHandler;
+  required?: boolean
 }
 
 export const Input: React.FC<IInputProps> = ({
-  type = 'text', name, className, label, onChange, value,
+  type = 'text',
+  name,
+  className,
+  label,
+  onChange,
+  value,
+  required,
 }) => (
   <input
     name={name}
     type={type}
-    required
+    required={required}
     className={classNames(styles.input, className)}
     onChange={onChange}
     value={value}

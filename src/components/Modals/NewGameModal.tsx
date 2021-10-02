@@ -61,6 +61,7 @@ export const NewGameModal: React.FC = () => {
               label="Enter game's name"
               name="gameName"
               onChange={inputsHandler}
+              required
             />
             <Select
               className={styles.form_select}

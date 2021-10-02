@@ -18,11 +18,9 @@ interface IChooseUserNameModalProps {
 export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onClick, show }) => {
   const [userName, setUserName] = useState('');
   const dispatch = useDispatch<AppDispatch>();
-  const history = useHistory();
 
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
     event.preventDefault();
-    // ToDo - add some functionality to validate form data
     dispatch(userActions.addUserData(userName));
   };
 
@@ -45,6 +43,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
             label="Your display name"
             name="userName"
             onChange={inputHandler}
+            required
           />
           <FormControlLabel
             className={styles.toggle}

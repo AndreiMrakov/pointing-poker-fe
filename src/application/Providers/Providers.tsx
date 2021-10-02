@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { store } from '@/store/store';
 import { ErrorBoundary } from './ErrorBoundary';
-import history from '@/utils/history';
+import { history } from '@/utils/history';
 
 export const Providers = memo(({ children }:{children: React.ReactNode}) => (
   <ErrorBoundary>

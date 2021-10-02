@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { http } from '@/api/HttpClient';
 import { IRoomState } from '@/utils/interfaces';
-import history from '@/utils/history';
+import { history } from '@/utils/history';
+import { delay } from '@/helpers';
 
 interface IRoomSettings {
   roomTitle: string;
@@ -11,25 +11,28 @@ interface IRoomSettings {
 
 export const roomStateActions = {
   setRoomState: createAction<IRoomState>('[ROOM_STATE]:setRoomState'),
-  getRoomByUrl: createAsyncThunk('[ROOM_STATE]:getRoomByUrl', async (roomIdByUrl: string, { rejectWithValue }) => {
-    try {
-      // const roomId: string = await http.get(`/api/room/${roomIdByUrl}`);
-      const roomId = '11';
-      if (!roomId) {
-        return rejectWithValue('Error witn room');
+  getRoomByUrl: createAsyncThunk('[ROOM_STATE]:getRoomByUrl',
+    async (roomIdByUrl: string, { rejectWithValue }) => {
+      try {
+        const roomId: string = await delay('11', 100);
+        if (!roomId) {
+          history.push('/newGame');
+          return rejectWithValue('Error witn room');
+        }
+        history.push(`games/${roomId}`);
+        return roomId;
+      } catch (err) {
+        history.push('/newGame');
+        return rejectWithValue(err);
       }
-      return roomId;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }),
+    }),
   createRoom: createAsyncThunk('[ROOM_STATE]:createRoom',
     async (roomSettings: IRoomSettings, { rejectWithValue }) => {
       try {
         // const state: IRoomState = await http.post('/api/room', roomSettings);
-        history.push('games/11');
-        // return state;
-        return { ...roomSettings, roomId: '11' };
+        const state: IRoomState = await delay({ ...roomSettings, roomId: '11' }, 100);
+        history.push(`games/${state.roomId}`);
+        return state;
       } catch (err) {
         return rejectWithValue(err);
       }

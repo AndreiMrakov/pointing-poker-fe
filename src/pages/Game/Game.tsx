@@ -20,20 +20,13 @@ export const Game: React.FC = () => {
   const [selectedCardValue, setSelectedCardValue] = useState('');
   const title = useSelector(roomStateSelectors.roomTitle);
   const dispatch = useAppDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     const id = localStorage.getItem('userId');
     dispatch(userActions.getUserDataByLS(id)).then((event) => {
       if (event.meta.requestStatus === 'fulfilled') {
         const url = getRoomIdByUrl();
-        dispatch(roomStateActions.getRoomByUrl(url)).then((e) => {
-          if (e.meta.requestStatus !== 'fulfilled') {
-            history.push('/new-game');
-          }
-        });
-      } else {
-        history.push('/');
+        dispatch(roomStateActions.getRoomByUrl(url));
       }
     });
   }, []);
