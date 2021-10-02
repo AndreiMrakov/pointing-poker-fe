@@ -23,8 +23,9 @@ export const userActions = {
       }
     }),
   getUserDataByLS: createAsyncThunk('[USER]:getUserDataByLS',
-    async (id: string | null, { rejectWithValue }) => {
+    async (_:void, { rejectWithValue }) => {
       try {
+        const id = localStorage.getItem('userId');
         if (!id) {
           history.push('/404');
           return rejectWithValue('There is nothing UserId in localStorage');

@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { IRoomState } from '@/utils/interfaces';
 import { history } from '@/utils/history';
-import { delay } from '@/helpers';
+import { delay, getRoomIdByUrl } from '@/helpers';
 
 interface IRoomSettings {
   roomTitle: string;
@@ -12,14 +12,14 @@ interface IRoomSettings {
 export const roomStateActions = {
   setRoomState: createAction<IRoomState>('[ROOM_STATE]:setRoomState'),
   getRoomByUrl: createAsyncThunk('[ROOM_STATE]:getRoomByUrl',
-    async (roomIdByUrl: string, { rejectWithValue }) => {
+    async (_: void, { rejectWithValue }) => {
       try {
+        // const idFromUrl = getRoomIdByUrl();
         const roomId: string = await delay('11', 100);
         if (!roomId) {
           history.push('/newGame');
           return rejectWithValue('Error witn room');
         }
-        history.push(`games/${roomId}`);
         return roomId;
       } catch (err) {
         history.push('/newGame');

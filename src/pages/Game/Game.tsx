@@ -21,11 +21,9 @@ export const Game: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const id = localStorage.getItem('userId');
-    dispatch(userActions.getUserDataByLS(id)).then((event) => {
+    dispatch(userActions.getUserDataByLS()).then((event) => {
       if (event.meta.requestStatus === 'fulfilled') {
-        const url = getRoomIdByUrl();
-        dispatch(roomStateActions.getRoomByUrl(url));
+        dispatch(roomStateActions.getRoomByUrl());
       }
     });
   }, []);
