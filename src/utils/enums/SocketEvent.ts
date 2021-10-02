@@ -7,5 +7,8 @@ export enum SocketEvent {
   UserVote = 'user_vote',
   CreateGame = 'create_game',
   MessageCreate = 'message_create',
-  AddName = 'add_name',
+  TaskCreate = 'task_create',
+  TaskDelete = 'task_delete',
+  TaskUpdateScore = 'task_set_score',
+  TaskUpdateActive = 'task_set_active'
 }
