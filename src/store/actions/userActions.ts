@@ -3,6 +3,7 @@ import { IUserFromBE } from '@/utils/interfaces';
 import { http } from '@/api/HttpClient';
 import { UserModel } from '@/models';
 import { history } from '@/utils/history';
+import { navMap } from '@/utils/NavMap';
 
 export const userActions = {
   addRole: createAction<string>('[USER]:addRole'),
@@ -16,7 +17,7 @@ export const userActions = {
           });
         const user = new UserModel(userFromBE);
         localStorage.setItem('userId', user.userId);
-        history.push('/newGame');
+        history.push(navMap.newGame());
         return user;
       } catch (err) {
         return rejectWithValue(err);
@@ -27,14 +28,14 @@ export const userActions = {
       try {
         const id = localStorage.getItem('userId');
         if (!id) {
-          history.push('/404');
+          history.push(navMap.error());
           return rejectWithValue('There is nothing UserId in localStorage');
         }
         const data: IUserFromBE = await http.get(`/api/users/${id}`);
         const user = new UserModel(data);
         return user;
       } catch (err) {
-        history.push('/404');
+        history.push(navMap.error());
         return rejectWithValue(err);
       }
     }),
