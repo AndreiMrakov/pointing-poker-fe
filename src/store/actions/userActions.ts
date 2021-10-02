@@ -28,8 +28,7 @@ export const userActions = {
       try {
         const id = localStorage.getItem('userId');
         if (!id) {
-          history.push(navMap.error());
-          return rejectWithValue('There is nothing UserId in localStorage');
+          throw new Error('There is nothing UserId in localStorage');
         }
         const data: IUserFromBE = await http.get(`/api/users/${id}`);
         const user = new UserModel(data);

@@ -18,8 +18,7 @@ export const roomStateActions = {
         // const idFromUrl = getRoomIdByUrl();
         const roomId: string = await delay('11');
         if (!roomId) {
-          history.push(navMap.newGame());
-          return rejectWithValue('Error witn room');
+          throw new Error('Error witn room');
         }
         return roomId;
       } catch (err) {
