@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { dealerOptions, voteOptions } from '@/mocks/options';
 import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';

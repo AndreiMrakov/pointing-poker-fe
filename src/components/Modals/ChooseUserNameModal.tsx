@@ -3,12 +3,10 @@ import React, {
 } from 'react';
 import { FormControlLabel, Switch } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { Modal, Input } from '@/components';
 import styles from './Modals.module.scss';
 import { AppDispatch } from '@/store';
 import { userActions } from '@/store/actions';
-import { IUser } from '@/utils/interfaces';
 
 interface IChooseUserNameModalProps {
   show: boolean;
