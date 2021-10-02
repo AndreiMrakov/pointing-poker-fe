@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 import { roomStateSelectors, tasksSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
@@ -10,9 +11,21 @@ import { ITaskFromBE } from '@/utils/interfaces';
 import { TaskModel } from '@/models';
 
 export const Issues: React.FC = () => {
+  const [isIssuesShow, setIsIssuesShow] = useState(false);
   const tasks = useSelector(tasksSelectors.tasks);
   const roomId = useSelector(roomStateSelectors.roomId);
   const dispatch = useAppDispatch();
+
+  const issuesHandler = () => {
+    setIsIssuesShow(!isIssuesShow);
+  };
+
+  const rightSideHandler: MouseEventHandler = (e) => {
+    const elem = e.target as HTMLElement;
+    if (!elem.classList.contains(styles.issues)) {
+      setIsIssuesShow(!isIssuesShow);
+    }
+  };
 
   useEffect(() => {
     dispatch(taskActions.getTasks());
@@ -51,14 +64,38 @@ export const Issues: React.FC = () => {
   }, []);
 
   return (
-    <section className={styles.issues}>
-      Issues
-      {tasks.map((task) => (
-        <>
-          <div>{task.title}</div>
-          <div>{task.score}</div>
-        </>
-      ))}
-    </section>
+    <>
+      <button
+        className={styles.issuesListWrapper}
+        onClick={issuesHandler}
+      >
+        <div className={styles.issuesList} />
+      </button>
+      {isIssuesShow
+      && (
+        <div
+          className={styles.issuesWrapper}
+          onClick={rightSideHandler}
+          role="button"
+          aria-hidden="true"
+        >
+          <section className={classNames(
+            styles.issues,
+            {
+              [styles.issues_show]: isIssuesShow,
+            },
+          )}
+          >
+            Issues
+            {tasks.map((task) => (
+              <>
+                <div>{task.title}</div>
+                <div>{task.score}</div>
+              </>
+            ))}
+          </section>
+        </div>
+      )}
+    </>
   );
 };

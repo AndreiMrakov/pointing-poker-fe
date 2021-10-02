@@ -7,8 +7,16 @@
   height: inherit;
   color: $font-color;
 
-  .sideSection {
+  .leftSection {
     width: 40rem;
+  }
+
+  .rightSection {
+    margin-top: 1rem;
+    width: 40rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
   }
 
   .wrapper {

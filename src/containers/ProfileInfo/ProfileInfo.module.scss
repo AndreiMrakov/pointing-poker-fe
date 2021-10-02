@@ -1,0 +1,43 @@
+@import "@/styles/variables.scss";
+
+.profileWrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border: 0;
+  padding: 0 1.6rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: all 0.2s linear;
+  outline: 0;
+  text-align: center;
+  height: 5.6rem;
+  background-color: transparent;
+  
+  .avatar{
+    width: 3rem;
+    height: 3rem;
+    background: center / cover no-repeat url(~@/assets/images/default-avatar.svg);
+  }
+
+  .name {
+    margin: 0 1rem;
+    font-size: 2rem;
+  }
+
+  .dropdownArrow {
+    margin-top: 4px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: center / contain no-repeat url(~@/assets/images/drop-arrow.svg);
+  }
+}
+
+.profileWrapper:hover {
+  cursor: pointer;
+  background-color: $table-color;
+}
+
+.profileWrapper:focus {
+  box-shadow: 0 0 0 2px $primary-color, 0 0 0 4px $table-color;
+}

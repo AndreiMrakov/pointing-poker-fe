@@ -12,6 +12,7 @@ import { Chat } from '@/containers';
 import { roomStateSelectors } from '@/store/selectors';
 import { useAppDispatch } from '@/store';
 import { roomStateActions, userActions } from '@/store/actions';
+import { ProfileInfo } from '@/containers/ProfileInfo/ProfileInfo';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
@@ -29,7 +30,7 @@ export const Game: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <section className={styles.sideSection}>
+      <section className={styles.leftSection}>
         <PanelUsers />
         <Chat />
       </section>
@@ -50,7 +51,10 @@ export const Game: React.FC = () => {
           isCardOpened={isCardOpened}
         />
       </article>
-      <Issues />
+      <section className={styles.rightSection}>
+        <ProfileInfo />
+        <Issues />
+      </section>
     </main>
   );
 };
