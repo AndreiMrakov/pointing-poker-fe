@@ -24,11 +24,11 @@ export const PanelUsers: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    socketService.on(SocketEvent.JoinUser, subscribeJoin);
-    socketService.on(SocketEvent.LeaveUser, subscribeLeave);
+    socketService.on(SocketEvent.RoomJoin, subscribeJoin);
+    socketService.on(SocketEvent.RoomLeave, subscribeLeave);
     return () => {
-      socketService.off(SocketEvent.JoinUser, subscribeJoin);
-      socketService.off(SocketEvent.LeaveUser, subscribeLeave);
+      socketService.off(SocketEvent.RoomJoin, subscribeJoin);
+      socketService.off(SocketEvent.RoomLeave, subscribeLeave);
     };
   }, []);
 
