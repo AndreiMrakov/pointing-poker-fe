@@ -13,6 +13,6 @@ export class UserModel {
     this.role = user.role;
     this.name = user.name;
     this.score = user.score;
-    this.userId = user.userId.toString();
+    this.userId = user.id.toString();
   }
 }

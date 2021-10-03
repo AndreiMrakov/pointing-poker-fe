@@ -1,5 +1,5 @@
 export interface IUserFromBE {
-  userId: number;
+  id: number;
   role?: string;
   name: string;
   score?: string;

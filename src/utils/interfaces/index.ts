@@ -5,3 +5,4 @@ export type { IUserFromBE } from './IUserFromBE';
 export type { IRoomState } from './IRoomState';
 export type { ITask } from './ITask';
 export type { ITaskFromBE } from './ITaskFromBE';
+export type { IRoomFromBE } from './IRoomFromBE';
