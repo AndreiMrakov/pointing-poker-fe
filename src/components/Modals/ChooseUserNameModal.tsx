@@ -1,0 +1,66 @@
+import React, {
+  ChangeEventHandler, FormEventHandler, MouseEventHandler, useState,
+} from 'react';
+import { FormControlLabel, Switch } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { Modal, Input } from '@/components';
+import styles from './Modals.module.scss';
+import { AppDispatch } from '@/store';
+import { userActions } from '@/store/actions';
+
+interface IChooseUserNameModalProps {
+  show: boolean;
+  onClick: () => void;
+}
+
+export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onClick, show }) => {
+  const [userName, setUserName] = useState('');
+  const dispatch = useDispatch<AppDispatch>();
+
+  const submitHandler: FormEventHandler = async (event): Promise<void> => {
+    event.preventDefault();
+    dispatch(userActions.addUserData(userName));
+  };
+
+  const toggleHandler: MouseEventHandler<HTMLButtonElement> = () => {
+    console.log('spectator');
+  };
+
+  const inputHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setUserName(event.target.value);
+  };
+
+  return (
+    <Modal show={show} onClick={onClick}>
+      <section className={styles.content}>
+        <h3 className={styles.title}>
+          Choose your display name
+        </h3>
+        <form className={styles.form} onSubmit={submitHandler}>
+          <Input
+            label="Your display name"
+            name="userName"
+            onChange={inputHandler}
+            required
+          />
+          <FormControlLabel
+            className={styles.toggle}
+            control={(
+              <Switch
+                onClick={toggleHandler}
+                disabled
+              />
+            )}
+            label="Join as spectator"
+          />
+          <Input
+            type="submit"
+            name="Continue to game"
+            value="Continue to game"
+            className={styles.form_submit}
+          />
+        </form>
+      </section>
+    </Modal>
+  );
+};

@@ -5,6 +5,6 @@ export { Input } from './Input';
 export { Issues } from './Issues';
 export { Message } from './Message';
 export { Modal } from './Modal';
-export { NewGameModal } from './NewGameModal';
+export { NewGameModal, ChooseUserNameModal } from './Modals';
 export { User, PanelUsers } from './User';
 export { VoteCard, PanelVoteCards } from './VoteCard';

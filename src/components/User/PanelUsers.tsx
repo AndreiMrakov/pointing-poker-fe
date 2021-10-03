@@ -5,7 +5,7 @@ import { socketService } from '@/services';
 import { User } from '@/components';
 import { SocketEvent } from '@/utils/enums';
 import { UserModel } from '@/models';
-import { IUser } from '@/utils/interfaces';
+import { IUserFromBE } from '@/utils/interfaces';
 import { useAppDispatch } from '@/store';
 import { membersActions } from '@/store/actions';
 import { membersSelectors } from '@/store/selectors';
@@ -14,12 +14,12 @@ export const PanelUsers: React.FC = () => {
   const users = useSelector(membersSelectors.members);
   const dispatch = useAppDispatch();
 
-  const subscribeJoin = useCallback((user: IUser) => {
+  const subscribeJoin = useCallback((user: IUserFromBE) => {
     const newUser = new UserModel(user);
     dispatch(membersActions.addRoomMember(newUser));
   }, []);
 
-  const subscribeLeave = useCallback((id: string | number) => {
+  const subscribeLeave = useCallback((id: number) => {
     dispatch(membersActions.deleteRoomMember(id.toString()));
   }, []);
 
