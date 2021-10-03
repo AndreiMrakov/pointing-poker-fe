@@ -2,13 +2,23 @@
 
 .main {
   display: flex;
+  position: relative;
   justify-content: space-between;
   width: 100%;
   height: inherit;
   color: $font-color;
+  overflow-x: hidden;
 
-  .sideSection {
+  .leftSection {
     width: 40rem;
+  }
+
+  .rightSection {
+    margin-top: 1rem;
+    width: 40rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
   }
 
   .wrapper {
@@ -22,6 +32,14 @@
   }
 }
 
-
-
-
+.profileModal {
+  position: absolute;
+  top: $profile-btn-height;
+  margin-top: 4px;
+  right: 0;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px $second-font-color;
+  border-radius: 0.5rem;
+}

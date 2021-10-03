@@ -1,0 +1,101 @@
+@import "@/styles/variables.scss";
+
+.profileWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileBtn {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  border: 0;
+  padding: 0 1.6rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  outline: 0;
+  text-align: center;
+  height: $profile-btn-height;
+  background-color: transparent;
+
+  .name {
+    margin: 0 1rem;
+    font-size: 2rem;
+  }
+
+  .dropdownArrow {
+    margin-top: 4px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: center / contain no-repeat url(~@/assets/images/drop-arrow.svg);
+  }
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  background: center / cover no-repeat url(~@/assets/images/default-avatar.svg);
+}
+
+.profileBtn:hover {
+  cursor: pointer;
+  background-color: $table-color;
+}
+
+.profileBtn:focus {
+  box-shadow: 0 0 0 2px $primary-color, 0 0 0 4px $table-color;
+}
+
+.profileModal {
+  position: absolute;
+  top: $profile-btn-height;
+  margin-top: 4px;
+  right: 0;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  background-color: $primary-color;
+  box-shadow: 0 4px 8px $second-font-color;
+  border-radius: 0.5rem;
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $input-border-color;
+
+  .nameRoleWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+  }
+}
+
+.role {
+  color: $second-font-color;
+}
+
+.leaveWrapper {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  background-color: $primary-color;
+}
+
+.leaveWrapper:hover {
+  background-color: $table-color;
+  cursor: pointer;
+}
+
+.leaveImg {
+  margin-left: auto;
+  width: 1.5rem;
+  height: 2rem;
+  background: center / contain no-repeat url(~@/assets/images/sign-out.svg);
+}

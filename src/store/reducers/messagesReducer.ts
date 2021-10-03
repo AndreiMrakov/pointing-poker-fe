@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { messageActions } from '@/store/actions';
+import { messageActions, userActions } from '@/store/actions';
 import { IMessage } from '@/utils/interfaces';
 
 const initialState: IMessage[] = [];
@@ -12,5 +12,6 @@ export const messages = createReducer(initialState, (builder) => {
     .addCase(messageActions.getMessages.fulfilled, (state, action) => {
       state.push(...action.payload);
     })
+    .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });
