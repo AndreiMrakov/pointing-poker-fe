@@ -18,6 +18,7 @@ export const taskActions = {
       }
     }),
   addTask: createAction<ITask>('[TASKS]:addTask'),
+  signOut: createAction('[TASKS]:signOut'),
   deleteTask: createAction<ITask['id']>('[TASKS]:deleteTask'),
   updateTaskScore: createAction<ITask>('[TASKS]:updateTaskScore'),
   updateTaskActive: createAction<ITask['id']>('[TASKS]:updateTaskActive'),

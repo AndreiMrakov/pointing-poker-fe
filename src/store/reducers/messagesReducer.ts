@@ -12,5 +12,6 @@ export const messages = createReducer(initialState, (builder) => {
     .addCase(messageActions.getMessages.fulfilled, (state, action) => {
       state.push(...action.payload);
     })
+    .addCase(messageActions.signOut, () => initialState)
     .addDefaultCase((state) => state);
 });

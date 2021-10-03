@@ -14,5 +14,6 @@ export const members = createReducer(initialState, (builder) => {
     })
     .addCase(membersActions.deleteRoomMember,
       (state, action) => state.filter((member) => member.userId !== action.payload))
+    .addCase(membersActions.signOut, () => initialState)
     .addDefaultCase((state) => state);
 });

@@ -4,8 +4,9 @@
   padding: 1rem;
   border: 2px solid $second-color;
   border-radius: 0.5rem;
+  background-color: transparent;
 
-  .issuesList{
+  .issuesList {
     width: 2.5rem;
     height: 2.5rem;
     background: center / cover no-repeat url(~@/assets/images/issues-list.svg);
@@ -23,8 +24,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: transparent;
-  transition: background-color 0.3s linear;
+  background-color: $shadow-background;
 }
 
 .issues {
@@ -47,9 +47,5 @@
   transition: right 0.3s linear;
 }
 
-.issuesWrapper:hover {
-  background-color: $shadow-background;
-  transition: background-color 0.3s linear;
-}
 
 

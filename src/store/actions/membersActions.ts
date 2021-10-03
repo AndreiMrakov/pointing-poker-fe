@@ -5,4 +5,5 @@ export const membersActions = {
   addRoomMembers: createAction<IUser[]>('[MEMBERS]:addRoomMembers'),
   addRoomMember: createAction<IUser>('[MEMBERS]:addRoomMember'),
   deleteRoomMember: createAction<IUser['userId']>('[MEMBERS]:deleteRoomMember'),
+  signOut: createAction('[MEMBERS]:signOut'),
 };

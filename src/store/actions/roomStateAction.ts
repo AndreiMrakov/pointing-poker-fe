@@ -11,6 +11,7 @@ interface IRoomSettings {
 
 export const roomStateActions = {
   setRoomState: createAction<IRoomState>('[ROOM_STATE]:setRoomState'),
+  signOut: createAction('[ROOM_STATE]:signOut'),
   getRoomByUrl: createAsyncThunk('[ROOM_STATE]:getRoomByUrl',
     async (_: void, { rejectWithValue }) => {
       try {

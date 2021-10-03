@@ -5,6 +5,7 @@ import { MessageModel } from '@/models';
 
 export const messageActions = {
   addMessage: createAction<IMessage>('[MESSAGES]:addMessage'),
+  signOut: createAction('[MESSAGES]:signOut'),
   getMessages: createAsyncThunk('[MESSAGES]:getMessages',
     async (roomId: string, { rejectWithValue }) => {
       try {

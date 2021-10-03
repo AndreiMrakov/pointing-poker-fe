@@ -16,11 +16,11 @@ export const Issues: React.FC = () => {
   const roomId = useSelector(roomStateSelectors.roomId);
   const dispatch = useAppDispatch();
 
-  const issuesHandler = () => {
+  const issuesListIconHandler = () => {
     setIsIssuesShow(!isIssuesShow);
   };
 
-  const rightSideHandler: MouseEventHandler = (e) => {
+  const issuesWrapperHandler: MouseEventHandler = (e) => {
     const elem = e.target as HTMLElement;
     if (!elem.classList.contains(styles.issues)) {
       setIsIssuesShow(!isIssuesShow);
@@ -67,7 +67,7 @@ export const Issues: React.FC = () => {
     <>
       <button
         className={styles.issuesListWrapper}
-        onClick={issuesHandler}
+        onClick={issuesListIconHandler}
       >
         <div className={styles.issuesList} />
       </button>
@@ -75,27 +75,26 @@ export const Issues: React.FC = () => {
       && (
         <div
           className={styles.issuesWrapper}
-          onClick={rightSideHandler}
+          onClick={issuesWrapperHandler}
           role="button"
           aria-hidden="true"
-        >
-          <section className={classNames(
-            styles.issues,
-            {
-              [styles.issues_show]: isIssuesShow,
-            },
-          )}
-          >
-            Issues
-            {tasks.map((task) => (
-              <>
-                <div>{task.title}</div>
-                <div>{task.score}</div>
-              </>
-            ))}
-          </section>
-        </div>
+        />
       )}
+      <section className={classNames(
+        styles.issues,
+        {
+          [styles.issues_show]: isIssuesShow,
+        },
+      )}
+      >
+        Issues
+        {tasks.map((task) => (
+          <>
+            <div>{task.title}</div>
+            <div>{task.score}</div>
+          </>
+        ))}
+      </section>
     </>
   );
 };

@@ -15,5 +15,6 @@ export const roomState = createReducer(initialState, (builder) => {
       state.roomId = action.payload;
     })
     .addCase(roomStateActions.createRoom.fulfilled, (state, action) => ({ ...state, ...action.payload }))
+    .addCase(roomStateActions.signOut, () => initialState)
     .addDefaultCase((state) => state);
 });

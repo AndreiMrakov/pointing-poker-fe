@@ -2,9 +2,9 @@ import { createReducer } from '@reduxjs/toolkit';
 import { ITask } from '@/utils/interfaces';
 import { taskActions } from '../actions/taskActions';
 
-const initialStateTasks: ITask[] = [];
+const initialState: ITask[] = [];
 
-export const tasks = createReducer(initialStateTasks, (builder) => {
+export const tasks = createReducer(initialState, (builder) => {
   builder
     .addCase(taskActions.getTasks.fulfilled, (state, action) => {
       state.push(...action.payload);
@@ -31,5 +31,6 @@ export const tasks = createReducer(initialStateTasks, (builder) => {
         }
       });
     })
+    .addCase(taskActions.signOut, () => initialState)
     .addDefaultCase((state) => state);
 });
