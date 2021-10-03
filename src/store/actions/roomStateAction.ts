@@ -2,6 +2,7 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { IRoomState } from '@/utils/interfaces';
 import { history } from '@/utils/history';
 import { delay, getRoomIdByUrl } from '@/helpers';
+import { navMap } from '@/utils/NavMap';
 
 interface IRoomSettings {
   roomTitle: string;
@@ -16,14 +17,13 @@ export const roomStateActions = {
     async (_: void, { rejectWithValue }) => {
       try {
         // const idFromUrl = getRoomIdByUrl();
-        const roomId: string = await delay('11', 100);
+        const roomId: string = await delay('11');
         if (!roomId) {
-          history.push('/newGame');
-          return rejectWithValue('Error witn room');
+          throw new Error('Error witn room');
         }
         return roomId;
       } catch (err) {
-        history.push('/newGame');
+        history.push(navMap.newGame());
         return rejectWithValue(err);
       }
     }),
@@ -31,8 +31,8 @@ export const roomStateActions = {
     async (roomSettings: IRoomSettings, { rejectWithValue }) => {
       try {
         // const state: IRoomState = await http.post('/api/room', roomSettings);
-        const state: IRoomState = await delay({ ...roomSettings, roomId: '11' }, 100);
-        history.push(`games/${state.roomId}`);
+        const state: IRoomState = await delay({ ...roomSettings, roomId: '11' });
+        history.push(navMap.game(state.roomId));
         return state;
       } catch (err) {
         return rejectWithValue(err);

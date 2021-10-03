@@ -5,9 +5,16 @@ class NavMap {
 
   home = () => `${this.baseUrl}/`;
 
-  lobby = () => `${this.baseUrl}/newGame`;
+  newGame = () => `${this.baseUrl}/newGame`;
 
-  game = () => `${this.baseUrl}/games/:id`;
+  game = (id?: string) => {
+    if (id) {
+      return `${this.baseUrl}/games/${id}`;
+    }
+    return `${this.baseUrl}/games/:id`;
+  };
+
+  error = () => `${this.baseUrl}/404`;
 }
 
 export const navMap = new NavMap();

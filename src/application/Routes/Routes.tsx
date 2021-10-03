@@ -15,7 +15,7 @@ export const Routes = (): JSX.Element => (
       <Route exact path={navMap.home()}>
         <Home />
       </Route>
-      <Route path={navMap.lobby()}>
+      <Route path={navMap.newGame()}>
         <NewGame />
       </Route>
       <Route path={navMap.game()}>
