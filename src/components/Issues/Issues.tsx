@@ -73,11 +73,10 @@ export const Issues: React.FC = () => {
       </button>
       {isIssuesShow
       && (
-        <div
+        <button
           className={styles.issuesWrapper}
           onClick={issuesWrapperHandler}
-          role="button"
-          aria-hidden="true"
+          aria-hidden
         />
       )}
       <section className={classNames(

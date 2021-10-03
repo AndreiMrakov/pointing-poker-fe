@@ -8,11 +8,10 @@ import {
   Issues,
 } from '@/components';
 import styles from './Game.module.scss';
-import { Chat } from '@/containers';
+import { Chat, ProfileInfo } from '@/containers';
 import { roomStateSelectors } from '@/store/selectors';
 import { useAppDispatch } from '@/store';
 import { roomStateActions, userActions } from '@/store/actions';
-import { ProfileInfo } from '@/containers/ProfileInfo/ProfileInfo';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);

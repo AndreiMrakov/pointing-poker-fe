@@ -20,13 +20,7 @@ export const ProfileInfo: React.FC = () => {
   };
 
   const signOutHandler = () => {
-    localStorage.removeItem('userId');
-    history.push(navMap.home());
     dispatch(userActions.signOut());
-    dispatch(roomStateActions.signOut());
-    dispatch(taskActions.signOut());
-    dispatch(messageActions.signOut());
-    dispatch(membersActions.signOut());
   };
 
   return (
@@ -55,15 +49,13 @@ export const ProfileInfo: React.FC = () => {
               </p>
             </div>
           </div>
-          <div
+          <button
             className={styles.leaveWrapper}
             onClick={signOutHandler}
-            role="button"
-            aria-hidden
           >
             <p>Sign out</p>
             <div className={styles.leaveImg} />
-          </div>
+          </button>
         </div>
       )}
     </section>

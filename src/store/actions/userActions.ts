@@ -8,7 +8,10 @@ import { navMap } from '@/utils/NavMap';
 export const userActions = {
   addRole: createAction<string>('[USER]:addRole'),
   addScore: createAction<string>('[USER]:addScore'),
-  signOut: createAction('[USER]:signOut'),
+  signOut: createAsyncThunk('[USER]:signOut', () => {
+    localStorage.removeItem('userId');
+    history.push(navMap.home());
+  }),
   addUserData: createAsyncThunk('[USER]:addUserData',
     async (name: string, { rejectWithValue }) => {
       try {

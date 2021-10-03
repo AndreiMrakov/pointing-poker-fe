@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { userActions } from '@/store/actions';
 import { ITask } from '@/utils/interfaces';
 import { taskActions } from '../actions/taskActions';
 
@@ -31,6 +32,6 @@ export const tasks = createReducer(initialState, (builder) => {
         }
       });
     })
-    .addCase(taskActions.signOut, () => initialState)
+    .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });

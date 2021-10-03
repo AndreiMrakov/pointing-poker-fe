@@ -55,6 +55,7 @@
   min-width: 20rem;
   display: flex;
   flex-direction: column;
+  background-color: $primary-color;
   box-shadow: 0 4px 8px $second-font-color;
   border-radius: 0.5rem;
 }
@@ -81,7 +82,10 @@
 .leaveWrapper {
   display: flex;
   align-items: center;
-  padding: 1rem
+  padding: 1rem;
+  outline: none;
+  border: none;
+  background-color: $primary-color;
 }
 
 .leaveWrapper:hover {

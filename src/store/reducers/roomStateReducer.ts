@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { roomStateActions } from '@/store/actions';
+import { roomStateActions, userActions } from '@/store/actions';
 
 const initialState = {
   roomTitle: '',
@@ -15,6 +15,6 @@ export const roomState = createReducer(initialState, (builder) => {
       state.roomId = action.payload;
     })
     .addCase(roomStateActions.createRoom.fulfilled, (state, action) => ({ ...state, ...action.payload }))
-    .addCase(roomStateActions.signOut, () => initialState)
+    .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });
