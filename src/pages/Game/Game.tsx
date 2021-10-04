@@ -10,22 +10,22 @@ import {
 import styles from './Game.module.scss';
 import { Chat, ProfileInfo } from '@/containers';
 import { roomStateSelectors } from '@/store/selectors';
-// import { useAppDispatch } from '@/store';
-// import { roomStateActions, userActions } from '@/store/actions';
+import { useAppDispatch } from '@/store';
+import { roomStateActions, userActions } from '@/store/actions';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
   const title = useSelector(roomStateSelectors.roomTitle);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-  /* useEffect(() => {
+  useEffect(() => {
     dispatch(userActions.getUserDataByLS()).then((event) => {
       if (event.meta.requestStatus === 'fulfilled') {
         dispatch(roomStateActions.getRoomByUrl());
       }
     });
-  }, []); */
+  }, []);
 
   return (
     <main className={styles.main}>
