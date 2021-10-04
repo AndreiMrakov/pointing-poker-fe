@@ -6,6 +6,6 @@ export const socketService = io(URL, {
   transports: ['websocket'],
 });
 
-socketService.onAny((e) => {
-  console.log(e);
+socketService.onAny((e, payload) => {
+  console.log(e, payload);
 });
