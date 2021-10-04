@@ -30,7 +30,7 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
     >
 
       <div className={styles.task__head}>
-        <h5>{`PP-${task.id}`}</h5>
+        <h5>{task.id}</h5>
         <Button
           className={styles.remove__btn}
           onClick={removeTask}

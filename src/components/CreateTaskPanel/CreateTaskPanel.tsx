@@ -13,8 +13,7 @@ export const CreateTaskPanel: React.FC = () => {
   const roomId = useSelector(roomStateSelectors.roomId);
 
   const textareaHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    const { value } = event.target;
-    setTaskTitle(value);
+    setTaskTitle(event.target.value);
   };
 
   const taskEditorHandler = () => {
