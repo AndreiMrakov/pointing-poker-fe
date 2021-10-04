@@ -18,7 +18,11 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
   };
 
   const removeTask = () => {
-    socketService.emit(SocketEvent.TaskDelete, task.id);
+    // eslint-disable-next-line no-restricted-globals
+    const res = confirm('Are you want to delete this task?');
+    if (res) {
+      socketService.emit(SocketEvent.TaskDelete, task.id);
+    }
   };
 
   return (

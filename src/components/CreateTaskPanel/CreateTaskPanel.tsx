@@ -29,7 +29,6 @@ export const CreateTaskPanel: React.FC = () => {
       });
 
       socketService.emit(SocketEvent.TaskCreate, task);
-      console.log(task);
     }
   };
 

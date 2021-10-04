@@ -5,12 +5,12 @@ interface task {
 }
 
 export class SendTaskModel {
-  text: string;
+  title: string;
 
   roomId: string;
 
   constructor(task: task) {
-    this.text = task.title;
+    this.title = task.title;
     this.roomId = task.roomId;
   }
 }
