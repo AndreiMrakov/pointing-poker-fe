@@ -6,10 +6,11 @@ import { PrimaryButton, SecondaryButton } from '..';
 import styles from './CreateTaskPanel.module.scss';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
+import { SendTaskModel } from '@/models/SendTaskModel';
 
 export const CreateTaskPanel: React.FC = () => {
   const [isTaskEditorOpen, setIsTaskEditorOpen] = useState(false);
-  const [taskTitle, setTaskTitle] = useState('');
+  const [title, setTaskTitle] = useState('');
   const roomId = useSelector(roomStateSelectors.roomId);
 
   const textareaHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
@@ -21,14 +22,14 @@ export const CreateTaskPanel: React.FC = () => {
   };
 
   const createTask = () => {
-    if (taskTitle !== '') {
-      const task = {
-        title: taskTitle,
+    if (title !== '') {
+      const task = new SendTaskModel({
+        title,
         roomId,
-      };
+      });
 
       socketService.emit(SocketEvent.TaskCreate, task);
-      taskEditorHandler();
+      console.log(task);
     }
   };
 
