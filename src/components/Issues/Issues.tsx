@@ -10,6 +10,7 @@ import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 import { ITaskFromBE } from '@/utils/interfaces';
 import { TaskModel } from '@/models';
+import { CreateTaskPanel } from '../CreateTaskPanel';
 
 export const Issues: React.FC = () => {
   const [isIssuesShow, setIsIssuesShow] = useState(false);
@@ -88,6 +89,7 @@ export const Issues: React.FC = () => {
       )}
       >
         Issues
+        <CreateTaskPanel />
         {tasks.map((task) => (
           <Task task={task} key={task.id} />
         ))}
