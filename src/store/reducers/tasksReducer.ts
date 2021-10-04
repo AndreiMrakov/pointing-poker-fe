@@ -3,7 +3,14 @@ import { userActions } from '@/store/actions';
 import { ITask } from '@/utils/interfaces';
 import { taskActions } from '../actions/taskActions';
 
-const initialState: ITask[] = [];
+const initialState: ITask[] = [
+  {
+    id: 1,
+    title: 'title',
+    isActive: true,
+    score: '0',
+  },
+];
 
 export const tasks = createReducer(initialState, (builder) => {
   builder

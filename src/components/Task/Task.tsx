@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Task.module.scss';
 import { ITask } from '@/utils/interfaces';
-import { Button, PrimaryButton } from '..';
+import { Button, Input, PrimaryButton } from '..';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
@@ -23,6 +23,17 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
     if (res) {
       socketService.emit(SocketEvent.TaskDelete, task.id);
     }
+  };
+
+  const [score, setScore] = useState(task.score);
+
+  const updateTaskScore: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const newScore = e.target.value;
+    setScore(newScore);
+    socketService.emit(SocketEvent.TaskUpdateScore, {
+      id: task.id,
+      score: newScore,
+    });
   };
 
   return (
@@ -50,7 +61,11 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
         >
           Voting now...
         </PrimaryButton>
-        <p>{task.score}</p>
+        <Input
+          className={styles.score__input}
+          value={score}
+          onChange={updateTaskScore}
+        />
       </div>
     </div>
   );
