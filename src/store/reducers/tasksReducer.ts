@@ -20,15 +20,12 @@ export const tasks = createReducer(initialState, (builder) => {
       }
       return task;
     }))
-    .addCase(taskActions.updateTaskActive, (state, action) => {
-      state.forEach((task) => {
-        if (task.id === action.payload) {
-          task.isActive = true;
-        } else {
-          task.isActive = false;
-        }
-      });
-    })
+    .addCase(taskActions.updateTaskActive, (state, action) => state.map((task) => {
+      if (task.id === action.payload) {
+        return { ...task, isActive: true };
+      }
+      return { ...task, isActive: false };
+    }))
     .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });

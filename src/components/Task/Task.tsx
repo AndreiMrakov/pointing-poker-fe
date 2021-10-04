@@ -18,7 +18,7 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
 
   const setActiveTask = () => {
     if (!task.isActive) {
-      socketService.emit(SocketEvent.TaskUpdateActive, task.id);
+      socketService.emit(SocketEvent.TaskUpdateActive, { id: task.id });
     }
   };
 
