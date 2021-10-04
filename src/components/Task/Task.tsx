@@ -11,6 +11,8 @@ interface ITaskProps {
 }
 
 export const Task: React.FC<ITaskProps> = ({ task }) => {
+  const [score, setScore] = useState(task.score);
+
   const setActiveTask = () => {
     if (!task.isActive) {
       socketService.emit(SocketEvent.TaskUpdateActive, task.id);
@@ -25,18 +27,18 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
     }
   };
 
-  const [score, setScore] = useState(task.score);
-
   const setTaskScore: ChangeEventHandler<HTMLInputElement> = (e) => {
     const newScore = e.target.value;
     setScore(newScore);
   };
 
   const updateTaskScore: ChangeEventHandler<HTMLInputElement> = () => {
-    socketService.emit(SocketEvent.TaskUpdateScore, {
-      id: task.id,
-      score,
-    });
+    if (task.score !== score) {
+      socketService.emit(SocketEvent.TaskUpdateScore, {
+        id: task.id,
+        score,
+      });
+    }
   };
 
   return (
