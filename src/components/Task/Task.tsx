@@ -1,17 +1,20 @@
-import React, { ChangeEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import styles from './Task.module.scss';
 import { ITask } from '@/utils/interfaces';
-import { Button, Input, PrimaryButton } from '..';
+import { Button, PrimaryButton } from '..';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
+import { cards } from '@/mocks/cards';
 
 interface ITaskProps {
   task: ITask;
 }
 
 export const Task: React.FC<ITaskProps> = ({ task }) => {
-  const [score, setScore] = useState(task.score);
+  const defaultScore = task.score === '0' ? '?' : task.score;
+  const [score, setScore] = useState(defaultScore);
 
   const setActiveTask = () => {
     if (!task.isActive) {
@@ -27,16 +30,13 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
     }
   };
 
-  const setTaskScore: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const updateTaskScore = (e: SelectChangeEvent) => {
     const newScore = e.target.value;
     setScore(newScore);
-  };
-
-  const updateTaskScore: ChangeEventHandler<HTMLInputElement> = () => {
-    if (task.score !== score) {
+    if (task.score !== newScore) {
       socketService.emit(SocketEvent.TaskUpdateScore, {
         id: task.id,
-        score,
+        score: newScore,
       });
     }
   };
@@ -68,12 +68,14 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
         >
           Voting now...
         </PrimaryButton>
-        <Input
-          className={styles.score__input}
+        <Select
           value={score}
-          onChange={setTaskScore}
-          onBlur={updateTaskScore}
-        />
+          onChange={updateTaskScore}
+        >
+          {cards.map((option) => (
+            <MenuItem value={option} key={option}>{option}</MenuItem>
+          ))}
+        </Select>
       </div>
     </div>
   );
