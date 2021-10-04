@@ -1,6 +1,7 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
+import { Task } from '@/components/Task';
 import { roomStateSelectors, tasksSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
@@ -88,10 +89,7 @@ export const Issues: React.FC = () => {
       >
         Issues
         {tasks.map((task) => (
-          <>
-            <div>{task.title}</div>
-            <div>{task.score}</div>
-          </>
+          <Task task={task} key={task.id} />
         ))}
       </section>
     </>

@@ -47,7 +47,7 @@
 .issues_show {
   right: 0rem;
   transition: right 0.3s linear;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-
-

@@ -1,0 +1,62 @@
+@import "@/styles/variables.scss";
+
+.task {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 90%;
+  height: 15rem;
+  color: $shadow-grey;
+  border: 2px solid $shadow-grey;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 2rem;
+
+  &__active {
+    border: 2px solid $second-color;
+    color: $font-color;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+  }
+
+  &__handlers {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.vote_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-weight: $bold-font-weight;
+  letter-spacing: 0.2px;
+  outline: 0;
+  font-size: 1.4rem;
+  height: 4rem;
+  text-decoration: none;
+
+  color: $primary-color;
+  background-color: $second-color;
+
+  &:hover {
+    background-color: $second-color-light;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition: transform 0.1s linear;
+  }
+}
