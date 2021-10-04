@@ -13,8 +13,7 @@ interface ITaskProps {
 }
 
 export const Task: React.FC<ITaskProps> = ({ task }) => {
-  const defaultScore = task.score === '0' ? '?' : task.score;
-  const [score, setScore] = useState(defaultScore);
+  const [score, setScore] = useState(task.score || '?');
 
   const setActiveTask = () => {
     if (!task.isActive) {
@@ -44,7 +43,7 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
   return (
     <div className={classNames(
       styles.task, {
-        [styles.task__active]: task.isActive === true,
+        [styles.task__active]: task.isActive,
       },
     )}
     >
