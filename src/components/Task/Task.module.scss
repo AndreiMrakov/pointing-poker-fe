@@ -87,6 +87,19 @@ $size-kick: 2rem;
     transform: scale(0.95);
     transition: transform 0.1s linear;
   }
+
+  &__disabled {
+    background-color: $shadow-grey;
+    cursor: auto;
+
+    &:hover {
+      background-color: $shadow-grey;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
 }
 
 .score__input {

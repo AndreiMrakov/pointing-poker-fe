@@ -1,4 +1,4 @@
-interface task {
+interface INewTask {
   title: string;
 
   roomId: string;
@@ -9,7 +9,7 @@ export class SendTaskModel {
 
   roomId: string;
 
-  constructor(task: task) {
+  constructor(task: INewTask) {
     this.title = task.title;
     this.roomId = task.roomId;
   }

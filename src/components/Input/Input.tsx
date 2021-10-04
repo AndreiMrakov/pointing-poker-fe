@@ -9,6 +9,7 @@ interface IInputProps {
   className?: string;
   label?: string;
   onChange?: ChangeEventHandler;
+  onBlur?: ChangeEventHandler;
   required?: boolean
 }
 
@@ -18,6 +19,7 @@ export const Input: React.FC<IInputProps> = ({
   className,
   label,
   onChange,
+  onBlur,
   value,
   required,
 }) => (
@@ -27,6 +29,7 @@ export const Input: React.FC<IInputProps> = ({
     required={required}
     className={classNames(styles.input, className)}
     onChange={onChange}
+    onBlur={onBlur}
     value={value}
     placeholder={label}
   />

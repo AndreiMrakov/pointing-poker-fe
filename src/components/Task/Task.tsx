@@ -27,12 +27,15 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
 
   const [score, setScore] = useState(task.score);
 
-  const updateTaskScore: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const setTaskScore: ChangeEventHandler<HTMLInputElement> = (e) => {
     const newScore = e.target.value;
     setScore(newScore);
+  };
+
+  const updateTaskScore: ChangeEventHandler<HTMLInputElement> = () => {
     socketService.emit(SocketEvent.TaskUpdateScore, {
       id: task.id,
-      score: newScore,
+      score,
     });
   };
 
@@ -56,7 +59,9 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
       <p className={styles.task__title}>{task.title}</p>
       <div className={styles.task__bottom}>
         <PrimaryButton
-          className={styles.vote_btn}
+          className={classNames(styles.vote_btn, {
+            [styles.vote_btn__disabled]: task.isActive,
+          })}
           onClick={setActiveTask}
         >
           Voting now...
@@ -64,7 +69,8 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
         <Input
           className={styles.score__input}
           value={score}
-          onChange={updateTaskScore}
+          onChange={setTaskScore}
+          onBlur={updateTaskScore}
         />
       </div>
     </div>
