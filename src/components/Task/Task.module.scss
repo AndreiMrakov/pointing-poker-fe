@@ -1,5 +1,7 @@
 @import "@/styles/variables.scss";
 
+$size-kick: 2rem;
+
 .task {
   display: flex;
   flex-direction: column;
@@ -24,11 +26,37 @@
     font-size: 1.5rem;
   }
 
-  &__handlers {
+  &__bottom,
+  &__head {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+.remove__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.kick {
+  display: flex;
+  width: $size-kick;
+  height: $size-kick;
+  background: url(~@/assets/images/kick.svg) center no-repeat;
+  background-size: cover;
+  margin-right: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 }
 

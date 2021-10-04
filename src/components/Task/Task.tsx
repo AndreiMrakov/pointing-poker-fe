@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './Task.module.scss';
 import { ITask } from '@/utils/interfaces';
-import { PrimaryButton } from '..';
+import { Button, PrimaryButton } from '..';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
@@ -17,6 +17,10 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
     }
   };
 
+  const removeTask = () => {
+    socketService.emit(SocketEvent.TaskDelete, task.id);
+  };
+
   return (
     <div className={classNames(
       styles.task, {
@@ -24,9 +28,18 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
       },
     )}
     >
-      <h5>{`PP-${task.id}`}</h5>
+
+      <div className={styles.task__head}>
+        <h5>{`PP-${task.id}`}</h5>
+        <Button
+          className={styles.remove__btn}
+          onClick={removeTask}
+        >
+          <div className={styles.kick} />
+        </Button>
+      </div>
       <p className={styles.task__title}>{task.title}</p>
-      <div className={styles.task__handlers}>
+      <div className={styles.task__bottom}>
         <PrimaryButton
           className={styles.vote_btn}
           onClick={setActiveTask}
