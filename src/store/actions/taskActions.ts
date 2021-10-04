@@ -10,7 +10,7 @@ export const taskActions = {
     async (_, { rejectWithValue, getState }) => {
       try {
         const roomId = roomStateSelectors.roomId(getState() as RootState);
-        const tasksFromBE: ITaskFromBE[] = await httpClient.http.get(`/api/task?roomId=${roomId}`);
+        const tasksFromBE: ITaskFromBE[] = await httpClient.http.get(`/api/tasks?roomId=${roomId}`);
         const tasks = tasksFromBE.map((task) => new TaskModel(task));
         return tasks;
       } catch (err) {
@@ -18,7 +18,7 @@ export const taskActions = {
       }
     }),
   addTask: createAction<ITask>('[TASKS]:addTask'),
-  deleteTask: createAction<ITask['id']>('[TASKS]:deleteTask'),
+  deleteTask: createAction<number>('[TASKS]:deleteTask'),
   updateTaskScore: createAction<ITask>('[TASKS]:updateTaskScore'),
   updateTaskActive: createAction<ITask['id']>('[TASKS]:updateTaskActive'),
 };

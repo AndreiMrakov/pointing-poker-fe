@@ -38,8 +38,8 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.addTask(newTask));
   };
 
-  const deleteTaskHandler = (task: ITaskFromBE) => {
-    dispatch(taskActions.deleteTask(task.id));
+  const deleteTaskHandler = (id: number) => {
+    dispatch(taskActions.deleteTask(id));
   };
 
   const updateScoreTaskHandler = (task: ITaskFromBE) => {

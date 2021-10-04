@@ -13,6 +13,6 @@ export class TaskModel {
     this.id = task.id;
     this.title = task.title;
     this.score = task.score?.toString() || '0';
-    this.isActive = task.isActive;
+    this.isActive = task.isActive || false;
   }
 }

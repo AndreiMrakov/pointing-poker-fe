@@ -4,7 +4,7 @@ export interface ITaskFromBE {
   roomId: string;
   description?: string;
   isActive: boolean;
-  score?: number;
+  score?: string;
   avgScore?: number;
   createdAt: Date;
 }
