@@ -15,7 +15,7 @@ export class HTTPClient {
     this._initializeInterceptors();
   }
 
-  static getInstance(baseURL = process.env.REACT_BASE_URL): HTTPClient {
+  static getInstance(baseURL = process.env.REACT_APP_BASE_URL): HTTPClient {
     if (!this._instance) {
       this._instance = new HTTPClient(baseURL);
     }
