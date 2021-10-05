@@ -12,15 +12,15 @@ const NAMES_BTN = {
 
 export const Controls: React.FC = () => {
   const handlerRun = () => {
-    socketService.emit(SocketEvent.StartGame);
+    socketService.emit(SocketEvent.RoomStart);
   };
 
   const handlerRestart = () => {
-    socketService.emit(SocketEvent.RestartGame);
+    socketService.emit(SocketEvent.RoomRestart);
   };
 
   const handlerStop = () => {
-    socketService.emit(SocketEvent.FinishGame);
+    socketService.emit(SocketEvent.RoomFinish);
   };
 
   return (

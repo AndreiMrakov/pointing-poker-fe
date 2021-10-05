@@ -9,14 +9,18 @@ import {
 } from '@/components';
 import styles from './Game.module.scss';
 import { Chat, ProfileInfo } from '@/containers';
-import { roomStateSelectors } from '@/store/selectors';
+import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { useAppDispatch } from '@/store';
-import { roomStateActions, userActions } from '@/store/actions';
+import { membersActions, roomStateActions, userActions } from '@/store/actions';
+import { socketService } from '@/services';
+import { SocketEvent } from '@/utils/enums';
 
 export const Game: React.FC = () => {
   const [isCardOpened, setIsCardIsVisible] = useState(false);
   const [selectedCardValue, setSelectedCardValue] = useState('');
   const title = useSelector(roomStateSelectors.roomTitle);
+  const userId = useSelector(userSelectors.userId);
+  const roomId = useSelector(roomStateSelectors.roomId);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -26,6 +30,13 @@ export const Game: React.FC = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (userId && roomId) {
+      dispatch(membersActions.getMembers());
+      socketService.emit(SocketEvent.RoomJoin, { userId, roomId });
+    }
+  }, [userId, roomId]);
 
   return (
     <main className={styles.main}>
