@@ -33,12 +33,14 @@ export const Table: React.FC = () => {
         && <p>Pick your cards!</p>
       }
       {
-        roomState !== StateRoomTitle.showCards
+        role === 'admin'
+        && roomState !== StateRoomTitle.showCards
         && score
         && <PrimaryButton onClick={() => showCards()}>Show cards</PrimaryButton>
       }
       {
-        roomState === StateRoomTitle.showCards
+        role === 'admin'
+        && roomState === StateRoomTitle.showCards
           && <SecondaryButton onClick={() => gameFinish()}>Reset</SecondaryButton>
       }
     </div>
