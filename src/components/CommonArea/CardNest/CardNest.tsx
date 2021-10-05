@@ -24,7 +24,7 @@ export const CardNest: React.FC<ICardNestProps> = ({
         className,
         {
           [styles.spectator]: userRole === 'spectator',
-          [styles.showCard]: roomState === StateRoomTitle.showCards,
+          [styles.showCard]: roomState === StateRoomTitle.showCards && score,
         },
       )}
     >

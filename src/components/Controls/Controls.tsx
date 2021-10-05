@@ -84,7 +84,6 @@ export const Controls: React.FC = () => {
            {NAMES_BTN.run}
          </PrimaryButton>
          <PrimaryButton
-           //  className={styles.singleBtn}
            className={classNames(styles.singleBtn,
              {
                [styles.disabled]: roomState !== StateRoomTitle.start,
