@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userSelectors } from '@/store/selectors';
 import styles from './ProfileInfo.module.scss';
-import { history } from '@/utils/history';
-import { navMap } from '@/utils/NavMap';
 import { useAppDispatch } from '@/store';
-import {
-  membersActions, messageActions, roomStateActions, taskActions, userActions,
-} from '@/store/actions';
+import { userActions } from '@/store/actions';
 
 export const ProfileInfo: React.FC = () => {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const name = useSelector(userSelectors.name);
-  const role = useSelector(userSelectors.role);
+  const role = useSelector(userSelectors.role)?.role;
   const dispatch = useAppDispatch();
 
   const profileBtnHandler = () => {
