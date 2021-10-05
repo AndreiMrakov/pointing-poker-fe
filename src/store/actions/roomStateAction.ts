@@ -14,7 +14,7 @@ interface IRoomSettings {
 }
 
 export const roomStateActions = {
-  setRoomState: createAction<IRoomState>('[ROOM_STATE]:setRoomState'),
+  setRoomState: createAction<IRoomState['roomState']>('[ROOM_STATE]:setRoomState'),
   getRoomByUrl: createAsyncThunk('[ROOM_STATE]:getRoomByUrl',
     async (_: void, { rejectWithValue }) => {
       try {

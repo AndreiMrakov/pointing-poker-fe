@@ -5,7 +5,7 @@ import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Controls.module.scss';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
-import { roomStateSelectors, tasksSelectors } from '@/store/selectors';
+import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
 import { IRoomState } from '@/utils/interfaces';
 import { useAppDispatch } from '@/store';
 import { membersActions, roomStateActions, taskActions } from '@/store/actions';
@@ -19,14 +19,14 @@ const NAMES_BTN = {
 export const Controls: React.FC = () => {
   const activeTask = useSelector(tasksSelectors.activeTask);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role)?.role;
   const dispatch = useAppDispatch();
 
-  const changeStateRoom = (room: IRoomState) => {
-    console.log(room);
+  const changeStateRoom = (room: IRoomState['roomState']) => {
     dispatch(roomStateActions.setRoomState(room));
   };
 
-  const resetStateRoom = (room: IRoomState) => {
+  const resetStateRoom = (room: IRoomState['roomState']) => {
     dispatch(membersActions.resetMembersScores());
     dispatch(roomStateActions.setRoomState(room));
   };
@@ -63,29 +63,34 @@ export const Controls: React.FC = () => {
   };
 
   return (
-    <section className={styles.groupBtn}>
-      <PrimaryButton
-        className={classNames(styles.singleBtn,
-          {
-            [styles.disable]: !activeTask,
-          })}
-        onClick={handlerStart}
-        disabled={!activeTask}
-      >
-        {NAMES_BTN.run}
-      </PrimaryButton>
-      <PrimaryButton
-        className={styles.singleBtn}
-        onClick={handlerShow}
-      >
-        {NAMES_BTN.show}
-      </PrimaryButton>
-      <SecondaryButton
-        className={styles.singleBtn}
-        onClick={handlerReset}
-      >
-        {NAMES_BTN.stop}
-      </SecondaryButton>
-    </section>
+    <>
+      { role
+     && (
+       <section className={styles.groupBtn}>
+         <PrimaryButton
+           className={classNames(styles.singleBtn,
+             {
+               [styles.disable]: !activeTask,
+             })}
+           onClick={handlerStart}
+           disabled={!activeTask}
+         >
+           {NAMES_BTN.run}
+         </PrimaryButton>
+         <PrimaryButton
+           className={styles.singleBtn}
+           onClick={handlerShow}
+         >
+           {NAMES_BTN.show}
+         </PrimaryButton>
+         <SecondaryButton
+           className={styles.singleBtn}
+           onClick={handlerReset}
+         >
+           {NAMES_BTN.stop}
+         </SecondaryButton>
+       </section>
+     )}
+    </>
   );
 };

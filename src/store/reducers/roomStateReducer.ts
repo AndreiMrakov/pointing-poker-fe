@@ -12,7 +12,7 @@ const initialState = {
 
 export const roomState = createReducer(initialState, (builder) => {
   builder
-    .addCase(roomStateActions.setRoomState, (state, action) => ({ ...state, ...action.payload }))
+    .addCase(roomStateActions.setRoomState, (state, action) => ({ ...state, roomState: action.payload }))
     .addCase(roomStateActions.getRoomByUrl.fulfilled, (state, action) => {
       state.roomId = action.payload;
     })
