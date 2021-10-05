@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { useSelector } from 'react-redux';
 import styles from './Task.module.scss';
 import { ITask } from '@/utils/interfaces';
 import { Button, PrimaryButton } from '..';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 import { cards } from '@/mocks/cards';
+import { userSelectors } from '@/store/selectors';
 
 interface ITaskProps {
   task: ITask;
 }
 
 export const Task: React.FC<ITaskProps> = ({ task }) => {
-  const [score, setScore] = useState(task.score || '?');
+  const role = useSelector(userSelectors.role)?.role;
 
   const setActiveTask = () => {
     if (!task.isActive) {
@@ -31,7 +33,6 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
 
   const updateTaskScore = (e: SelectChangeEvent) => {
     const newScore = e.target.value;
-    setScore(newScore);
     if (task.score !== newScore) {
       socketService.emit(SocketEvent.TaskUpdateScore, {
         id: task.id,
@@ -68,8 +69,9 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
           Voting now...
         </PrimaryButton>
         <Select
-          value={score}
+          value={task.score}
           onChange={updateTaskScore}
+          disabled={role !== 'admin'}
         >
           {cards.map((option) => (
             <MenuItem value={option} key={option}>{option}</MenuItem>

@@ -3,4 +3,5 @@ export interface ITask {
   title: string;
   score: string;
   isActive: boolean;
+  avgScore?: number
 }

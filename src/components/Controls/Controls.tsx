@@ -10,6 +10,11 @@ import { IRoomState } from '@/utils/interfaces';
 import { useAppDispatch } from '@/store';
 import { membersActions, roomStateActions, taskActions } from '@/store/actions';
 
+interface IRoomShow {
+  roomState: IRoomState['roomState'];
+  scoreTask: number
+}
+
 const NAMES_BTN = {
   run: 'Start',
   show: 'Show cards',
@@ -31,16 +36,17 @@ export const Controls: React.FC = () => {
     dispatch(roomStateActions.setRoomState(room));
   };
 
-  // const roomShowHandler = (avgScore: number) => {
-  //   dispatch(taskActions.updateTaskScore())
-  // }
+  const roomShowHandler = (state: IRoomShow) => {
+    dispatch(roomStateActions.setRoomState(state.roomState));
+    dispatch(taskActions.updateActiveTaskScore(state.scoreTask.toString()));
+  };
 
   useEffect(() => {
-    socketService.on(SocketEvent.RoomShow, changeStateRoom);
+    socketService.on(SocketEvent.RoomShow, roomShowHandler);
     socketService.on(SocketEvent.RoomStart, changeStateRoom);
     socketService.on(SocketEvent.RoomFinish, resetStateRoom);
     return () => {
-      socketService.off(SocketEvent.RoomShow, changeStateRoom);
+      socketService.off(SocketEvent.RoomShow, roomShowHandler);
       socketService.off(SocketEvent.RoomStart, changeStateRoom);
       socketService.off(SocketEvent.RoomFinish, resetStateRoom);
     };
