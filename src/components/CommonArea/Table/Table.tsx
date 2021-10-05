@@ -20,7 +20,9 @@ export const Table: React.FC = () => {
   }
 
   function gameFinish() {
-    socketService.emit(SocketEvent.RoomFinish, { id });
+    if (activeTask) {
+      socketService.emit(SocketEvent.RoomFinish, { id: activeTask.id });
+    }
   }
 
   return (
@@ -38,7 +40,7 @@ export const Table: React.FC = () => {
       }
       {
         roomState === StateRoomTitle.showCards
-          && <SecondaryButton onClick={() => gameFinish()}>New voting</SecondaryButton>
+          && <SecondaryButton onClick={() => gameFinish()}>Reset</SecondaryButton>
       }
     </div>
   );
