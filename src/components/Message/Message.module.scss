@@ -2,12 +2,17 @@
   display: flex;
   width: calc(100% - 1rem);
   margin-left: 0.5rem;
-  align-items: flex-start;
+  align-items: baseline;
 
   .messageText {
     margin-left: 1rem;
     max-width: 90%;
     overflow-wrap: anywhere;
+  }
+
+  .userName,
+  .messageText {
+    height: 100%;
   }
 }
 

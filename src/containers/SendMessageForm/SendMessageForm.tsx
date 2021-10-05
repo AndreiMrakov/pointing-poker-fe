@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 import { socketService } from '@/services';
 import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { SendMessageModel } from '@/models';
@@ -37,8 +38,11 @@ export const SendMessageForm: React.FC = () => {
         onChange={sendMessageHandler}
       />
       <PrimaryButton
-        className={styles.submit}
+        className={classNames(styles.submit, {
+          [styles.disabled]: text.length === 0,
+        })}
         type="submit"
+        // disabled={!!text}
       >
         Send message
       </PrimaryButton>
