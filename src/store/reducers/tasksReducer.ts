@@ -26,7 +26,7 @@ export const tasks = createReducer(initialState, (builder) => {
       }
       return task;
     }))
-    .addCase(taskActions.updateTaskActive, (state, action) => state.map((task) => {
+    .addCase(taskActions.updateTaskActive.fulfilled, (state, action) => state.map((task) => {
       if (task.id === action.payload) {
         return { ...task, isActive: true };
       }
