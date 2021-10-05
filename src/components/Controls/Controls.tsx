@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Controls.module.scss';
 import { socketService } from '@/services';
-import { SocketEvent } from '@/utils/enums';
+import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
 import { IRoomState } from '@/utils/interfaces';
 import { useAppDispatch } from '@/store';
@@ -25,6 +25,7 @@ export const Controls: React.FC = () => {
   const activeTask = useSelector(tasksSelectors.activeTask);
   const roomId = useSelector(roomStateSelectors.roomId);
   const role = useSelector(userSelectors.role)?.role;
+  const roomState = useSelector(roomStateSelectors.roomState);
   const dispatch = useAppDispatch();
 
   const changeStateRoom = (room: IRoomState['roomState']) => {
@@ -76,15 +77,18 @@ export const Controls: React.FC = () => {
          <PrimaryButton
            className={classNames(styles.singleBtn,
              {
-               [styles.disable]: !activeTask,
+               [styles.disabled]: !activeTask || roomState !== StateRoomTitle.reset,
              })}
            onClick={handlerStart}
-           disabled={!activeTask}
          >
            {NAMES_BTN.run}
          </PrimaryButton>
          <PrimaryButton
-           className={styles.singleBtn}
+           //  className={styles.singleBtn}
+           className={classNames(styles.singleBtn,
+             {
+               [styles.disabled]: roomState !== StateRoomTitle.start,
+             })}
            onClick={handlerShow}
          >
            {NAMES_BTN.show}
