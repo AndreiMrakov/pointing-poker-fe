@@ -6,11 +6,11 @@ const initialState: IUser[] = [];
 
 export const members = createReducer(initialState, (builder) => {
   builder
-    .addCase(membersActions.addRoomMembers, (state, action) => {
-      state.push(...action.payload);
-    })
+    .addCase(membersActions.getMembers.fulfilled, (state, action) => action.payload)
     .addCase(membersActions.addRoomMember, (state, action) => {
-      state.push(action.payload);
+      if (!state.find((elem) => elem.userId === action.payload.userId)) {
+        state.push(action.payload);
+      }
     })
     .addCase(membersActions.deleteRoomMember,
       (state, action) => state.filter((member) => member.userId !== action.payload))

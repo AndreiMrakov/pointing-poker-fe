@@ -10,7 +10,7 @@ export const taskActions = {
     async (_, { rejectWithValue, getState }) => {
       try {
         const roomId = roomStateSelectors.roomId(getState() as RootState);
-        const tasksFromBE: ITaskFromBE[] = await httpClient.http.get(`/api/task?roomId=${roomId}`);
+        const tasksFromBE: ITaskFromBE[] = await httpClient.http.get(`/api/tasks?roomId=${roomId}`);
         const tasks = tasksFromBE.map((task) => new TaskModel(task));
         return tasks;
       } catch (err) {

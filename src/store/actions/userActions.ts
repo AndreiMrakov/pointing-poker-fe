@@ -1,17 +1,29 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { userSelectors, roomStateSelectors } from '@/store/selectors';
+import { RootState } from '@/store';
 import { IUserFromBE } from '@/utils/interfaces';
 import { http } from '@/api/HttpClient';
 import { UserModel } from '@/models';
 import { history } from '@/utils/history';
 import { navMap } from '@/utils/NavMap';
+import { socketService } from '@/services';
+import { SocketEvent } from '@/utils/enums';
 
 export const userActions = {
   addRole: createAction<string>('[USER]:addRole'),
   addScore: createAction<string>('[USER]:addScore'),
-  signOut: createAsyncThunk('[USER]:signOut', () => {
-    localStorage.removeItem('userId');
-    history.push(navMap.home());
-  }),
+  signOut: createAsyncThunk('[USER]:signOut',
+    async (_:void, { rejectWithValue, getState }) => {
+      try {
+        const roomId = roomStateSelectors.roomId(getState() as RootState);
+        const userId = userSelectors.userId(getState() as RootState);
+        localStorage.removeItem('userId');
+        history.push(navMap.home());
+        socketService.emit(SocketEvent.RoomLeave, { roomId, userId });
+      } catch (err) {
+        rejectWithValue(err);
+      }
+    }),
   addUserData: createAsyncThunk('[USER]:addUserData',
     async (name: string, { rejectWithValue }) => {
       try {
