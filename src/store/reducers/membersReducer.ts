@@ -12,7 +12,7 @@ export const members = createReducer(initialState, (builder) => {
         state.push(action.payload);
       }
     })
-    .addCase(membersActions.deleteRoomMember,
+    .addCase(membersActions.deleteRoomMember.fulfilled,
       (state, action) => state.filter((member) => member.userId !== action.payload))
     .addCase(membersActions.updateMemberScore,
       (state, action) => state.map((member) => {

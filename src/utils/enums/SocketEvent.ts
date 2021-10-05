@@ -1,5 +1,6 @@
 export enum SocketEvent {
   UserVote = 'user_vote',
+  UserKick = 'user_kick',
   TaskCreate = 'task_create',
   TaskDelete = 'task_delete',
   TaskUpdateScore = 'task_set_score',

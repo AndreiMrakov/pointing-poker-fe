@@ -8,10 +8,13 @@ import { UserModel } from '@/models';
 import { IUserFromBE } from '@/utils/interfaces';
 import { useAppDispatch } from '@/store';
 import { membersActions } from '@/store/actions';
-import { membersSelectors } from '@/store/selectors';
+import { membersSelectors, userSelectors } from '@/store/selectors';
+import { navMap } from '@/utils/NavMap';
+import { history } from '@/utils/history';
 
 export const PanelUsers: React.FC = () => {
   const users = useSelector(membersSelectors.members);
+  const userId = useSelector(userSelectors.userId);
   const dispatch = useAppDispatch();
 
   const subscribeJoin = useCallback((user: IUserFromBE) => {
@@ -26,9 +29,11 @@ export const PanelUsers: React.FC = () => {
   useEffect(() => {
     socketService.on(SocketEvent.RoomJoin, subscribeJoin);
     socketService.on(SocketEvent.RoomLeave, subscribeLeave);
+    socketService.on(SocketEvent.UserKick, subscribeLeave);
     return () => {
       socketService.off(SocketEvent.RoomJoin, subscribeJoin);
       socketService.off(SocketEvent.RoomLeave, subscribeLeave);
+      socketService.on(SocketEvent.UserKick, subscribeLeave);
     };
   }, []);
 

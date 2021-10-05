@@ -1,9 +1,12 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { userSelectors, roomStateSelectors } from '@/store/selectors';
 import { RootState } from '../store';
 import { IUser, IUserFromBE, IUserScore } from '@/utils/interfaces';
 import { http } from '@/api/HttpClient';
-import { roomStateSelectors } from '../selectors';
+
 import { UserModel } from '@/models';
+import { history } from '@/utils/history';
+import { navMap } from '@/utils/NavMap';
 
 export const membersActions = {
   getMembers: createAsyncThunk('[MEMBERS]:addRoomMembers',
@@ -23,5 +26,12 @@ export const membersActions = {
   updateMemberScore: createAction<IUserScore>('[MEMBERS]:updateMemberScore'),
   addRoomMember: createAction<IUser>('[MEMBERS]:addRoomMember'),
   resetMembersScores: createAction('[MEMBERS]:resetMembersScores'),
-  deleteRoomMember: createAction<IUser['userId']>('[MEMBERS]:deleteRoomMember'),
+  deleteRoomMember: createAsyncThunk('[MEMBERS]:deleteRoomMember',
+    async (id:IUser['userId'], { getState }) => {
+      const userId = userSelectors.userId(getState() as RootState);
+      if (userId === id) {
+        history.push(navMap.newGame());
+      }
+      return id;
+    }),
 };

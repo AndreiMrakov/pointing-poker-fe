@@ -74,6 +74,8 @@ $size-admin: 2rem;
   background-size: cover;
   margin-right: 0.5rem;
   cursor: pointer;
+  border: none;
+  outline: none;
 
   &:hover {
     transform: scale(1.1);
