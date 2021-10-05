@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Table.module.scss';
@@ -8,7 +8,6 @@ import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 
 export const Table: React.FC = () => {
   const score = useSelector(userSelectors.score);
-  const id = useSelector(roomStateSelectors.roomId);
   const activeTask = useSelector(tasksSelectors.activeTask);
   const roomState = useSelector(roomStateSelectors.roomState);
   const role = useSelector(userSelectors.role)?.role;

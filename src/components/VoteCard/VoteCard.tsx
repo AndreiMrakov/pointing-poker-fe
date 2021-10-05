@@ -1,8 +1,5 @@
 import React, {
-  Dispatch,
   FC,
-  SetStateAction,
-  // useMemo,
   MouseEvent,
 } from 'react';
 import classNames from 'classnames';
