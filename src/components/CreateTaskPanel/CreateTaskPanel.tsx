@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { ChangeEventHandler, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { roomStateSelectors } from '@/store/selectors';
+import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { PrimaryButton, SecondaryButton } from '..';
 import styles from './CreateTaskPanel.module.scss';
 import { socketService } from '@/services';
@@ -12,6 +12,7 @@ export const CreateTaskPanel: React.FC = () => {
   const [isTaskEditorOpen, setIsTaskEditorOpen] = useState(false);
   const [title, setTaskTitle] = useState('');
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role)?.role;
 
   const textareaHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     setTaskTitle(event.target.value);
@@ -35,16 +36,19 @@ export const CreateTaskPanel: React.FC = () => {
 
   return (
     <div className={styles.createTaskPanel}>
-      <PrimaryButton
-        className={classNames(
-          styles.taskEditor__btn, {
-            [styles.taskEditor__btn_close]: isTaskEditorOpen === true,
-          },
-        )}
-        onClick={taskEditorHandler}
-      >
-        + Add an issue
-      </PrimaryButton>
+      {role === 'admin'
+      && (
+        <PrimaryButton
+          className={classNames(
+            styles.taskEditor__btn, {
+              [styles.taskEditor__btn_close]: isTaskEditorOpen === true,
+            },
+          )}
+          onClick={taskEditorHandler}
+        >
+          + Add an issue
+        </PrimaryButton>
+      )}
 
       <div className={classNames(
         styles.taskEditor, {

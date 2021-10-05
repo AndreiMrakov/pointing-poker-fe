@@ -51,18 +51,21 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
 
       <div className={styles.task__head}>
         <h5>{task.id}</h5>
-        <Button
-          className={styles.remove__btn}
-          onClick={removeTask}
-        >
-          <div className={styles.kick} />
-        </Button>
+        {role === 'admin'
+        && (
+          <Button
+            className={styles.remove__btn}
+            onClick={removeTask}
+          >
+            <div className={styles.kick} />
+          </Button>
+        )}
       </div>
       <p className={styles.task__title}>{task.title}</p>
       <div className={styles.task__bottom}>
         <PrimaryButton
           className={classNames(styles.vote_btn, {
-            [styles.vote_btn__disabled]: task.isActive,
+            [styles.vote_btn__disabled]: task.isActive || role !== 'admin',
           })}
           onClick={setActiveTask}
         >

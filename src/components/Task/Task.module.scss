@@ -91,6 +91,7 @@ $size-kick: 2rem;
   &__disabled {
     background-color: $shadow-grey;
     cursor: auto;
+    pointer-events: none;
 
     &:hover {
       background-color: $shadow-grey;

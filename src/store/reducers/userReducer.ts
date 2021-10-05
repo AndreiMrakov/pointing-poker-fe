@@ -21,7 +21,7 @@ export const user = createReducer(initialState, (builder) => {
       }
     })
     .addCase(userActions.getUserDataByLS.fulfilled, (state, action) => ({ ...action.payload }))
-    .addCase(membersActions.resetMembersScores, (state, action) => ({ ...state, score: '' }))
+    .addCase(membersActions.resetMembersScores, (state) => ({ ...state, score: '' }))
     .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });

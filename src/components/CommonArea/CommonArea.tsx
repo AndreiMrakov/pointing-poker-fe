@@ -1,6 +1,4 @@
-import React, {
-  Dispatch, SetStateAction, useCallback, useEffect,
-} from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { CardNest } from './CardNest';
 import { Table } from './Table';
