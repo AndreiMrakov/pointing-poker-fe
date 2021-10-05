@@ -15,16 +15,12 @@ export class HTTPClient {
     this._initializeInterceptors();
   }
 
-  static getInstance(baseURL = process.env.REACT_APP_BASE_URL): HTTPClient {
+  static getInstance(baseURL = ''): HTTPClient {
     if (!this._instance) {
       this._instance = new HTTPClient(baseURL);
     }
 
     return this._instance;
-  }
-
-  set url(baseURL: string) {
-    this._axios.defaults.baseURL = baseURL;
   }
 
   get http(): AxiosInstance {
@@ -53,5 +49,5 @@ export class HTTPClient {
   };
 }
 
-export const httpClient = HTTPClient.getInstance();
+export const httpClient = HTTPClient.getInstance(process.env.REACT_APP_BASE_URL);
 export const { http } = httpClient;

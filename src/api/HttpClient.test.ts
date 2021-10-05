@@ -10,12 +10,3 @@ describe('Create class', () => {
     expect(httpClient === httpClientDouble).toBe(true);
   });
 });
-
-describe('Base url', () => {
-  test('Should return url', () => {
-    expect(httpClient.http.defaults.baseURL === process.env.REACT_APP_BASE_URL).toBe(true);
-    httpClient.url = 'url';
-
-    expect(httpClient.http.defaults.baseURL === 'url').toBe(true);
-  });
-});
