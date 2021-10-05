@@ -14,6 +14,7 @@ import { userSelectors } from '@/store/selectors';
 export const CommonArea: React.FC = () => {
   const dispatch = useAppDispatch();
   const score = useSelector(userSelectors.score);
+  const name = useSelector(userSelectors.name);
 
   const subscribeScore = useCallback((scoreFromBE: IUserScoreFromBE) => {
     const newUser = new ScoreModel(scoreFromBE);
@@ -33,6 +34,7 @@ export const CommonArea: React.FC = () => {
       <CardNest
         score={score}
         className={styles.cardMargin}
+        name={name}
       />
     </section>
   );

@@ -9,26 +9,29 @@ interface ICardNestProps {
   score?: string;
   className?: string;
   userRole?: string;
+  name?: string;
 }
 
 export const CardNest: React.FC<ICardNestProps> = ({
   score,
   className,
   userRole = 'member',
+  name,
 }) => {
   const roomState = useSelector(roomStateSelectors.roomState);
   return (
-    <section
-      className={classNames(
-        styles.cardNest,
-        className,
-        {
-          [styles.spectator]: userRole === 'spectator',
-          [styles.showCard]: roomState === StateRoomTitle.showCards && score,
-        },
-      )}
-    >
-      {userRole !== 'spectator'
+    <>
+      <section
+        className={classNames(
+          styles.cardNest,
+          className,
+          {
+            [styles.spectator]: userRole === 'spectator',
+            [styles.showCard]: roomState === StateRoomTitle.showCards && score,
+          },
+        )}
+      >
+        {userRole !== 'spectator'
           && (
             <>
               <div className={styles.frontSide}>
@@ -42,6 +45,12 @@ export const CardNest: React.FC<ICardNestProps> = ({
               />
             </>
           )}
-    </section>
+      </section>
+      {name && (
+        <h2 className={styles.name}>
+          {name}
+        </h2>
+      )}
+    </>
   );
 };

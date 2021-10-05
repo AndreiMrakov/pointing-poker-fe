@@ -8,13 +8,10 @@ import { UserModel } from '@/models';
 import { IUserFromBE } from '@/utils/interfaces';
 import { useAppDispatch } from '@/store';
 import { membersActions } from '@/store/actions';
-import { membersSelectors, userSelectors } from '@/store/selectors';
-import { navMap } from '@/utils/NavMap';
-import { history } from '@/utils/history';
+import { membersSelectors } from '@/store/selectors';
 
 export const PanelUsers: React.FC = () => {
   const users = useSelector(membersSelectors.members);
-  const userId = useSelector(userSelectors.userId);
   const dispatch = useAppDispatch();
 
   const subscribeJoin = useCallback((user: IUserFromBE) => {
