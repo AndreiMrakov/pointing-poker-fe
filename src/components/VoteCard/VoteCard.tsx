@@ -2,41 +2,45 @@ import React, {
   Dispatch,
   FC,
   SetStateAction,
-  useMemo,
+  // useMemo,
   MouseEvent,
 } from 'react';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 import styles from './VoteCard.module.scss';
+import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
+import { socketService } from '@/services';
+import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 
 interface IVoteCardProps {
   score: string;
-  setSelectedCardValue: Dispatch<SetStateAction<string>>;
-  isCardOpened: boolean;
-  selectedCardValue: string;
 }
 
-export const VoteCard: FC<IVoteCardProps> = ({
-  score,
-  setSelectedCardValue,
-  isCardOpened,
-  selectedCardValue,
-}) => {
-  const className = useMemo(() => classNames(styles.card, {
-    [styles.unactive]: isCardOpened,
-    [styles.active]: score === selectedCardValue,
-  }),
-  [isCardOpened, selectedCardValue]);
+export const VoteCard: FC<IVoteCardProps> = ({ score }) => {
+  const activeTask = useSelector(tasksSelectors.activeTask);
+  const userId = useSelector(userSelectors.userId);
+  const roomState = useSelector(roomStateSelectors.roomState);
+  const userScore = useSelector(userSelectors.score);
 
   function onCardClick(event: MouseEvent): void {
     const currentElem = event.target as HTMLElement;
-    if (currentElem.textContent) {
-      setSelectedCardValue(currentElem.textContent);
+    if (activeTask && currentElem.textContent) {
+      socketService.emit(SocketEvent.UserVote, {
+        userId,
+        taskId: activeTask.id,
+        score: currentElem.textContent,
+      });
     }
   }
 
   return (
     <li
-      className={className}
+      className={classNames(styles.card,
+        {
+          [styles.unactive]:
+          roomState !== StateRoomTitle.start,
+          [styles.active]: score === userScore,
+        })}
       onClick={onCardClick}
       aria-hidden="true"
     >

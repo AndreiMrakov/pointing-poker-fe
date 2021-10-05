@@ -16,11 +16,10 @@ import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
 export const Game: React.FC = () => {
-  const [isCardOpened, setIsCardIsVisible] = useState(false);
-  const [selectedCardValue, setSelectedCardValue] = useState('');
   const title = useSelector(roomStateSelectors.roomTitle);
   const userId = useSelector(userSelectors.userId);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role)?.role;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -47,19 +46,10 @@ export const Game: React.FC = () => {
       <article className={styles.wrapper}>
         <section>
           <h1 className={styles.title}>{title}</h1>
-          <Controls />
+          {role === 'admin' && <Controls />}
         </section>
-        <CommonArea
-          isCardOpened={isCardOpened}
-          selectedCardValue={selectedCardValue}
-          setIsCardIsVisible={setIsCardIsVisible}
-          setSelectedCardValue={setSelectedCardValue}
-        />
-        <PanelVoteCards
-          setSelectedCardValue={setSelectedCardValue}
-          selectedCardValue={selectedCardValue}
-          isCardOpened={isCardOpened}
-        />
+        <CommonArea />
+        <PanelVoteCards />
       </article>
       <section className={styles.rightSection}>
         <ProfileInfo />

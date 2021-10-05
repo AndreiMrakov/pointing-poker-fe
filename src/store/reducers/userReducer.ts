@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { userActions } from '@/store/actions';
+import { membersActions, userActions } from '@/store/actions';
 import { IUser } from '@/utils/interfaces';
 
 const initialState: IUser = {
@@ -15,10 +15,13 @@ export const user = createReducer(initialState, (builder) => {
     .addCase(userActions.addRole, (state, action) => {
       state.role = action.payload;
     })
-    .addCase(userActions.addScore, (state, action) => {
-      state.score = action.payload;
+    .addCase(membersActions.updateMemberScore, (state, action) => {
+      if (state.userId === action.payload.userId) {
+        state.score = action.payload.score;
+      }
     })
     .addCase(userActions.getUserDataByLS.fulfilled, (state, action) => ({ ...action.payload }))
+    .addCase(membersActions.resetMembersScores, (state, action) => ({ ...state, score: '' }))
     .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });

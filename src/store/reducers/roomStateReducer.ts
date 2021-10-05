@@ -1,11 +1,13 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { roomStateActions, userActions } from '@/store/actions';
+import { StateRoomTitle } from '@/utils/enums';
 
 const initialState = {
   roomTitle: '',
   voteSystem: '',
   dealerRights: '',
   roomId: '',
+  roomState: StateRoomTitle.reset.toString(),
 };
 
 export const roomState = createReducer(initialState, (builder) => {

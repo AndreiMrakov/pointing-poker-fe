@@ -9,7 +9,7 @@ interface IUserProps {
 }
 
 export const User: FC<IUserProps> = ({ user }) => {
-  const { role } = user;
+  const { role, name } = user;
 
   return (
     <li className={styles.item}>
@@ -22,13 +22,13 @@ export const User: FC<IUserProps> = ({ user }) => {
       )}
       >
         <div className={styles.name}>
-          {user.name}
+          {name}
         </div>
         <div className={styles.kick} />
       </div>
       <CardNest
-        selectedCardValue={user.score || ''}
-        userRole={user.role}
+        score={user.score || ''}
+        userRole={role}
       />
     </li>
   );

@@ -1,44 +1,44 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { useSelector } from 'react-redux';
 import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Table.module.scss';
+import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
+import { socketService } from '@/services';
+import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 
-interface ITableProps {
-  isCardOpened: boolean;
-  selectedCardValue: string;
-  setIsCardIsVisible: Dispatch<SetStateAction<boolean>>;
-  setSelectedCardValue: Dispatch<SetStateAction<string>>;
-}
+export const Table: React.FC = () => {
+  const score = useSelector(userSelectors.score);
+  const id = useSelector(roomStateSelectors.roomId);
+  const activeTask = useSelector(tasksSelectors.activeTask);
+  const roomState = useSelector(roomStateSelectors.roomState);
+  const role = useSelector(userSelectors.role)?.role;
 
-export const Table: React.FC<ITableProps> = ({
-  selectedCardValue,
-  isCardOpened,
-  setIsCardIsVisible,
-  setSelectedCardValue,
-}) => {
   function showCards() {
-    setIsCardIsVisible(true);
+    if (activeTask) {
+      socketService.emit(SocketEvent.RoomShow, { id: activeTask.id });
+    }
   }
 
-  function removeChosenCard() {
-    setSelectedCardValue('');
-    setIsCardIsVisible(false);
+  function gameFinish() {
+    socketService.emit(SocketEvent.RoomFinish, { id });
   }
 
   return (
     <div className={styles.table}>
       {
-        !selectedCardValue
-        && !isCardOpened
+        ((roomState !== StateRoomTitle.showCards
+        && !score)
+        || role !== 'admin')
         && <p>Pick your cards!</p>
       }
       {
-        selectedCardValue
-        && !isCardOpened
+        roomState !== StateRoomTitle.showCards
+        && score
         && <PrimaryButton onClick={() => showCards()}>Show cards</PrimaryButton>
       }
       {
-        isCardOpened
-        && <SecondaryButton onClick={() => removeChosenCard()}>New voting</SecondaryButton>
+        roomState === StateRoomTitle.showCards
+          && <SecondaryButton onClick={() => gameFinish()}>New voting</SecondaryButton>
       }
     </div>
   );

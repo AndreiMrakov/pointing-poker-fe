@@ -11,7 +11,6 @@ import { SocketEvent } from '@/utils/enums';
 
 export const userActions = {
   addRole: createAction<string>('[USER]:addRole'),
-  addScore: createAction<string>('[USER]:addScore'),
   signOut: createAsyncThunk('[USER]:signOut',
     async (_:void, { rejectWithValue, getState }) => {
       try {

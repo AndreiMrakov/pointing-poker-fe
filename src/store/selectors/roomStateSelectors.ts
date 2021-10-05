@@ -8,4 +8,5 @@ export const roomStateSelectors = {
   voteSystem: createSelector(rootStateSelector, (state) => state.voteSystem),
   dealerRights: createSelector(rootStateSelector, (state) => state.dealerRights),
   roomId: createSelector(rootStateSelector, (state) => state.roomId),
+  roomState: createSelector(rootStateSelector, (state) => state.roomState),
 };

@@ -1,0 +1,1 @@
+export { ScoreModel } from './ScoreModel';

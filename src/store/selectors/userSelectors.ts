@@ -7,5 +7,6 @@ export const userSelectors = {
   userId: createSelector(rootStateSelector, (state) => state.userId),
   name: createSelector(rootStateSelector, (state) => state.name),
   score: createSelector(rootStateSelector, (state) => state.score),
-  role: createSelector(rootStateSelector, (state) => state.role),
+  role: createSelector((state: RootState) => state,
+    (state) => state.members.find((member) => member.userId === state.user.userId)),
 };
