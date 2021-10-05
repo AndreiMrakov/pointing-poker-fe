@@ -48,3 +48,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_APP_EMAIL}}
+        run: heroku config: set
+          REACT_APP_SOCKET_URL=${{ secrets.REACT_APP_SOCKET_URL }}
+          REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}
