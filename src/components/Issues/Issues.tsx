@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/store';
 import { taskActions } from '@/store/actions';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
-import { ITaskFromBE } from '@/utils/interfaces';
+import { ITask, ITaskFromBE } from '@/utils/interfaces';
 import { TaskModel } from '@/models';
 import { CreateTaskPanel } from '../CreateTaskPanel';
 
@@ -38,7 +38,7 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.addTask(newTask));
   };
 
-  const deleteTaskHandler = (id: number) => {
+  const deleteTaskHandler = (id: ITask['id']) => {
     dispatch(taskActions.deleteTask(id));
   };
 

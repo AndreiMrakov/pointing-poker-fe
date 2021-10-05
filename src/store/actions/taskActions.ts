@@ -20,7 +20,7 @@ export const taskActions = {
       }
     }),
   addTask: createAction<ITask>('[TASKS]:addTask'),
-  deleteTask: createAction<number>('[TASKS]:deleteTask'),
+  deleteTask: createAction<ITask['id']>('[TASKS]:deleteTask'),
   updateTaskScore: createAction<ITask>('[TASKS]:updateTaskScore'),
   updateTaskActive: createAction<ITask['id']>('[TASKS]:updateTaskActive'),
 };
