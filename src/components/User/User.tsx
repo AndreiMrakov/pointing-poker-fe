@@ -13,7 +13,9 @@ interface IUserProps {
 }
 
 export const User: FC<IUserProps> = ({ user }) => {
-  const { role, name, userId } = user;
+  const {
+    role, name, userId, score,
+  } = user;
   const mainRole = useSelector(userSelectors.role)?.role;
   const roomId = useSelector(roomStateSelectors.roomId);
 
@@ -45,7 +47,7 @@ export const User: FC<IUserProps> = ({ user }) => {
         )}
       </div>
       <CardNest
-        score={user.score || ''}
+        score={score}
         userRole={role}
       />
     </li>

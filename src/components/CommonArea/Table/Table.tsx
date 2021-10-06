@@ -12,17 +12,17 @@ export const Table: React.FC = () => {
   const roomState = useSelector(roomStateSelectors.roomState);
   const role = useSelector(userSelectors.role)?.role;
 
-  function showCards() {
+  const showCards = () => {
     if (activeTask) {
       socketService.emit(SocketEvent.RoomShow, activeTask.id);
     }
-  }
+  };
 
-  function gameFinish() {
+  const gameFinish = () => {
     if (activeTask) {
       socketService.emit(SocketEvent.RoomFinish, activeTask.id);
     }
-  }
+  };
 
   return (
     <div className={styles.table}>
@@ -36,12 +36,12 @@ export const Table: React.FC = () => {
         role === 'admin'
         && roomState !== StateRoomTitle.showCards
         && score
-        && <PrimaryButton onClick={() => showCards()}>Show cards</PrimaryButton>
+        && <PrimaryButton onClick={showCards}>Show cards</PrimaryButton>
       }
       {
         role === 'admin'
         && roomState === StateRoomTitle.showCards
-          && <SecondaryButton onClick={() => gameFinish()}>Reset</SecondaryButton>
+          && <SecondaryButton onClick={gameFinish}>Reset</SecondaryButton>
       }
     </div>
   );
