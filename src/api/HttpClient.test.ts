@@ -10,12 +10,3 @@ describe('Create class', () => {
     expect(httpClient === httpClientDouble).toBe(true);
   });
 });
-
-describe('Base url', () => {
-  test('Should return url', () => {
-    expect(httpClient.http.defaults.baseURL === 'http://localhost:3000').toBe(true);
-    httpClient.url = 'url';
-
-    expect(httpClient.http.defaults.baseURL === 'url').toBe(true);
-  });
-});
