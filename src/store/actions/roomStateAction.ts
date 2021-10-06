@@ -23,7 +23,7 @@ export const roomStateActions = {
         if (!roomStateFromBE) {
           throw new Error('Error witn room');
         }
-        return roomStateFromBE.id;
+        return roomStateFromBE;
       } catch (err) {
         history.push(navMap.newGame());
         return rejectWithValue(err);
