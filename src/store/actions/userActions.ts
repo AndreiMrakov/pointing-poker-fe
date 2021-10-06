@@ -1,7 +1,7 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userSelectors, roomStateSelectors } from '@/store/selectors';
 import { RootState } from '@/store';
-import { IUser, IUserFromBE } from '@/utils/interfaces';
+import { IUserFromBE } from '@/utils/interfaces';
 import { http } from '@/api/HttpClient';
 import { UserModel } from '@/models';
 import { history } from '@/utils/history';

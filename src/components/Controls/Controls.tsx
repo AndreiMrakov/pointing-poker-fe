@@ -70,7 +70,7 @@ export const Controls: React.FC = () => {
 
   return (
     <>
-      { role
+      { role === 'admin'
      && (
        <section className={styles.groupBtn}>
          <PrimaryButton
