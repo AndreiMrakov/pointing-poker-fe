@@ -23,6 +23,25 @@
   width: 50rem;
   height: 22rem;
 
+  .joinBlock {
+    display: flex;
+    align-items: center;
+
+    .joinText {
+      margin-right: 0.5rem;
+      width: 6rem;
+    }
+
+    .joinInput {
+      width: 100%;
+    }
+  }
+
+  .helpText {
+    margin: 1rem auto 0;
+    font-size: 1.2rem;
+  }
+
   &_submit {
     background-color: $second-color;
     color: $primary-color;

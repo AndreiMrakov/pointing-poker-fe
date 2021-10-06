@@ -8,6 +8,12 @@ import { history } from '@/utils/history';
 import { navMap } from '@/utils/NavMap';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
+import { getRoomPathFromLink } from '@/helpers';
+
+interface IUserJoin {
+  name: string;
+  link?: string
+}
 
 export const userActions = {
   addRole: createAction<string>('[USER]:addRole'),
@@ -24,15 +30,19 @@ export const userActions = {
       }
     }),
   addUserData: createAsyncThunk('[USER]:addUserData',
-    async (name: string, { rejectWithValue }) => {
+    async (joinUser: IUserJoin, { rejectWithValue }) => {
       try {
         const userFromBE: IUserFromBE = await http.post('/api/users',
           {
-            name,
+            name: joinUser.name,
           });
         const user = new UserModel(userFromBE);
         localStorage.setItem('userId', user.userId);
-        history.push(navMap.newGame());
+        if (joinUser.link) {
+          history.push(navMap.game(getRoomPathFromLink(joinUser.link)));
+        } else {
+          history.push(navMap.newGame());
+        }
         return user;
       } catch (err) {
         return rejectWithValue(err);
