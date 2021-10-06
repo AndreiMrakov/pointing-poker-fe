@@ -12,7 +12,7 @@ export class TaskModel {
   constructor(task: ITaskFromBE) {
     this.id = task.id;
     this.title = task.title;
-    this.score = task.score.toString();
-    this.isActive = task.isActive;
+    this.score = task.score?.toString() || '0';
+    this.isActive = task.is_active;
   }
 }

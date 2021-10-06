@@ -1,44 +1,65 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Table.module.scss';
+import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
+import { socketService } from '@/services';
+import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 
-interface ITableProps {
-  isCardOpened: boolean;
-  selectedCardValue: string;
-  setIsCardIsVisible: Dispatch<SetStateAction<boolean>>;
-  setSelectedCardValue: Dispatch<SetStateAction<string>>;
-}
+export const Table: React.FC = () => {
+  const score = useSelector(userSelectors.score);
+  const activeTask = useSelector(tasksSelectors.activeTask);
+  // const tasks = useSelector(tasksSelectors.tasks);
+  const roomState = useSelector(roomStateSelectors.roomState);
+  const role = useSelector(userSelectors.role);
 
-export const Table: React.FC<ITableProps> = ({
-  selectedCardValue,
-  isCardOpened,
-  setIsCardIsVisible,
-  setSelectedCardValue,
-}) => {
-  function showCards() {
-    setIsCardIsVisible(true);
-  }
+  const showCards = () => {
+    if (activeTask) {
+      socketService.emit(SocketEvent.RoomShow, activeTask.id);
+    }
+  };
 
-  function removeChosenCard() {
-    setSelectedCardValue('');
-    setIsCardIsVisible(false);
-  }
+  const gameFinish = () => {
+    if (activeTask) {
+      socketService.emit(SocketEvent.RoomFinish, activeTask.id);
+    }
+  };
 
   return (
     <div className={styles.table}>
+      {role !== 'spectator'
+      && (
+        <>
+          <h3 className={styles.title}>
+            Issue:
+            {' '}
+            <span className={styles.IssueInfo}>{activeTask?.title}</span>
+          </h3>
+          <h3 className={styles.score}>
+            Score:
+            {' '}
+            <span className={styles.IssueInfo}>
+              {activeTask?.score}
+            </span>
+          </h3>
+        </>
+      )}
       {
-        !selectedCardValue
-        && !isCardOpened
+        ((roomState !== StateRoomTitle.showCards
+        && !score)
+        || role !== 'admin')
         && <p>Pick your cards!</p>
       }
       {
-        selectedCardValue
-        && !isCardOpened
-        && <PrimaryButton onClick={() => showCards()}>Show cards</PrimaryButton>
+        role === 'admin'
+        && roomState !== StateRoomTitle.showCards
+        && score
+        && <PrimaryButton onClick={showCards}>Show cards</PrimaryButton>
       }
       {
-        isCardOpened
-        && <SecondaryButton onClick={() => removeChosenCard()}>New voting</SecondaryButton>
+        role === 'admin'
+        && roomState === StateRoomTitle.showCards
+          && <SecondaryButton onClick={gameFinish}>Reset</SecondaryButton>
       }
     </div>
   );

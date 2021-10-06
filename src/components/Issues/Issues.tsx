@@ -1,19 +1,22 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-import { roomStateSelectors, tasksSelectors } from '@/store/selectors';
+import { Task } from '@/components/Task';
+import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
 import { taskActions } from '@/store/actions';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
-import { ITaskFromBE } from '@/utils/interfaces';
+import { ITask, ITaskFromBE } from '@/utils/interfaces';
 import { TaskModel } from '@/models';
+import { CreateTaskPanel } from '../CreateTaskPanel';
 
 export const Issues: React.FC = () => {
   const [isIssuesShow, setIsIssuesShow] = useState(false);
   const tasks = useSelector(tasksSelectors.tasks);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
 
   const issuesListIconHandler = () => {
@@ -36,8 +39,8 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.addTask(newTask));
   };
 
-  const deleteTaskHandler = (task: ITaskFromBE) => {
-    dispatch(taskActions.deleteTask(task.id));
+  const deleteTaskHandler = (id: ITask['id']) => {
+    dispatch(taskActions.deleteTask(id));
   };
 
   const updateScoreTaskHandler = (task: ITaskFromBE) => {
@@ -68,6 +71,7 @@ export const Issues: React.FC = () => {
       <button
         className={styles.issuesListWrapper}
         onClick={issuesListIconHandler}
+        title="Show Issues panel"
       >
         <div className={styles.issuesList} />
       </button>
@@ -87,12 +91,15 @@ export const Issues: React.FC = () => {
       )}
       >
         Issues
-        {tasks.map((task) => (
+        {role !== 'spectator'
+        && (
           <>
-            <div>{task.title}</div>
-            <div>{task.score}</div>
+            <CreateTaskPanel />
+            {tasks.map((task) => (
+              <Task task={task} key={task.id} />
+            ))}
           </>
-        ))}
+        )}
       </section>
     </>
   );

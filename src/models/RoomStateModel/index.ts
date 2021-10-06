@@ -1,0 +1,1 @@
+export { RoomStateModel } from './RoomStateModel';

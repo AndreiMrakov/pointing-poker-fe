@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   PanelVoteCards,
@@ -6,6 +6,7 @@ import {
   CommonArea,
   Controls,
   Issues,
+  InviteBtn,
 } from '@/components';
 import styles from './Game.module.scss';
 import { Chat, ProfileInfo } from '@/containers';
@@ -16,11 +17,10 @@ import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
 
 export const Game: React.FC = () => {
-  const [isCardOpened, setIsCardIsVisible] = useState(false);
-  const [selectedCardValue, setSelectedCardValue] = useState('');
   const title = useSelector(roomStateSelectors.roomTitle);
   const userId = useSelector(userSelectors.userId);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -33,8 +33,8 @@ export const Game: React.FC = () => {
 
   useEffect(() => {
     if (userId && roomId) {
-      dispatch(membersActions.getMembers());
       socketService.emit(SocketEvent.RoomJoin, { userId, roomId });
+      dispatch(membersActions.getMembers());
     }
   }, [userId, roomId]);
 
@@ -49,20 +49,17 @@ export const Game: React.FC = () => {
           <h1 className={styles.title}>{title}</h1>
           <Controls />
         </section>
-        <CommonArea
-          isCardOpened={isCardOpened}
-          selectedCardValue={selectedCardValue}
-          setIsCardIsVisible={setIsCardIsVisible}
-          setSelectedCardValue={setSelectedCardValue}
-        />
-        <PanelVoteCards
-          setSelectedCardValue={setSelectedCardValue}
-          selectedCardValue={selectedCardValue}
-          isCardOpened={isCardOpened}
-        />
+        {role !== 'spectator'
+        && (
+          <>
+            <CommonArea />
+            <PanelVoteCards />
+          </>
+        )}
       </article>
       <section className={styles.rightSection}>
         <ProfileInfo />
+        <InviteBtn />
         <Issues />
       </section>
     </main>

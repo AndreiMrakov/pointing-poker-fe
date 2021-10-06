@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userSelectors, roomStateSelectors } from '@/store/selectors';
 import { RootState } from '@/store';
 import { IUserFromBE } from '@/utils/interfaces';
@@ -8,10 +8,14 @@ import { history } from '@/utils/history';
 import { navMap } from '@/utils/NavMap';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
+import { getRoomIdByUrl } from '@/helpers';
+
+interface IUserJoin {
+  name: string;
+  link?: string
+}
 
 export const userActions = {
-  addRole: createAction<string>('[USER]:addRole'),
-  addScore: createAction<string>('[USER]:addScore'),
   signOut: createAsyncThunk('[USER]:signOut',
     async (_:void, { rejectWithValue, getState }) => {
       try {
@@ -25,15 +29,19 @@ export const userActions = {
       }
     }),
   addUserData: createAsyncThunk('[USER]:addUserData',
-    async (name: string, { rejectWithValue }) => {
+    async (joinUser: IUserJoin, { rejectWithValue }) => {
       try {
         const userFromBE: IUserFromBE = await http.post('/api/users',
           {
-            name,
+            name: joinUser.name,
           });
         const user = new UserModel(userFromBE);
         localStorage.setItem('userId', user.userId);
-        history.push(navMap.newGame());
+        if (joinUser.link) {
+          history.push(navMap.game(getRoomIdByUrl(joinUser.link)));
+        } else {
+          history.push(navMap.newGame());
+        }
         return user;
       } catch (err) {
         return rejectWithValue(err);

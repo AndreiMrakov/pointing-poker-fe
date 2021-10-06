@@ -16,7 +16,7 @@ export const Home: React.FC = () => {
         <div className={styles.action}>
           <h2 className={styles.title}>Start your plaining:</h2>
           <PrimaryButton onClick={showModal}>
-            Create new game
+            Start
           </PrimaryButton>
         </div>
         <ChooseUserNameModal show={modal} onClick={showModal} />

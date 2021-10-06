@@ -1,0 +1,39 @@
+@import "@/styles/variables.scss";
+
+.inviteIconWrapper {
+display: flex;
+flex-direction: column;
+position: relative;
+
+.inviteIconBtn {
+  padding: 1rem;
+  border: 2px solid $second-color;
+  border-radius: 0.5rem;
+  background-color: transparent;
+
+  .inviteIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: center / cover no-repeat url(~@/assets/images/invite-icon.svg);
+  }
+}
+
+ .inviteIconBtn:hover {
+  background-color: $table-color;
+  cursor: pointer;
+ }
+
+ .inviteIconBtn:active {
+   transform: scale(0.9);
+   transition: transform 0.2s linear;
+ }
+
+  .tooltip {
+    position: absolute;
+    top: 6rem;
+    left: -1rem;
+    width: max-content;
+    font-size: 1.5rem;
+    color: $second-color;
+  }
+}

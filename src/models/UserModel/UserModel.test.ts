@@ -10,14 +10,14 @@ describe('UserModel', () => {
   });
 
   test('Should return requred fields', () => {
-    expect(mockObj).toEqual({ name: 'q', userId: '1' });
+    expect(mockObj).toEqual({ name: 'q', userId: '1', role: 'spectator' });
   });
 
   test('Should return optional fields', () => {
-    mockObj.role = 'qwe';
+    mockObj.role = 'member';
     mockObj.score = '33';
     expect(mockObj).toEqual({
-      name: 'q', userId: '1', role: 'qwe', score: '33',
+      name: 'q', userId: '1', role: 'member', score: '33',
     });
   });
 });

@@ -39,6 +39,7 @@ export const SendMessageForm: React.FC = () => {
       <PrimaryButton
         className={styles.submit}
         type="submit"
+        disabled={text.trim().length === 0}
       >
         Send message
       </PrimaryButton>

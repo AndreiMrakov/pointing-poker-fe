@@ -13,25 +13,25 @@ export const tasks = createReducer(initialState, (builder) => {
     .addCase(taskActions.addTask, (state, action) => {
       state.push(action.payload);
     })
-    .addCase(taskActions.deleteTask, (state, action) => {
-      state.filter((task) => task.id !== action.payload);
-    })
-    .addCase(taskActions.updateTaskScore, (state, action) => {
-      state.forEach((task) => {
-        if (task.id === action.payload.id) {
-          task.score = action.payload.score;
-        }
-      });
-    })
-    .addCase(taskActions.updateTaskActive, (state, action) => {
-      state.forEach((task) => {
-        if (task.id === action.payload) {
-          task.isActive = true;
-        } else {
-          task.isActive = false;
-        }
-      });
-    })
+    .addCase(taskActions.deleteTask, (state, action) => state.filter((task) => task.id !== action.payload))
+    .addCase(taskActions.updateTaskScore, (state, action) => state.map((task) => {
+      if (task.id === action.payload.id) {
+        return { ...task, score: action.payload.score };
+      }
+      return task;
+    }))
+    .addCase(taskActions.updateActiveTaskScore, (state, action) => state.map((task) => {
+      if (task.isActive) {
+        return { ...task, score: action.payload };
+      }
+      return task;
+    }))
+    .addCase(taskActions.updateTaskActive.fulfilled, (state, action) => state.map((task) => {
+      if (task.id === action.payload) {
+        return { ...task, isActive: true };
+      }
+      return { ...task, isActive: false };
+    }))
     .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });

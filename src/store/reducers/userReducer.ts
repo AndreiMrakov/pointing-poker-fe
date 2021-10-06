@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { userActions } from '@/store/actions';
+import { membersActions, taskActions, userActions } from '@/store/actions';
 import { IUser } from '@/utils/interfaces';
 
 const initialState: IUser = {
@@ -12,13 +12,27 @@ const initialState: IUser = {
 export const user = createReducer(initialState, (builder) => {
   builder
     .addCase(userActions.addUserData.fulfilled, (state, action) => ({ ...state, ...action.payload }))
-    .addCase(userActions.addRole, (state, action) => {
-      state.role = action.payload;
+    .addCase(membersActions.updateRoomAdmin, (state, action) => {
+      if (action.payload === state.userId) { state.role = 'admin'; }
     })
-    .addCase(userActions.addScore, (state, action) => {
-      state.score = action.payload;
+    .addCase(membersActions.updateMemberScore, (state, action) => {
+      if (state.userId === action.payload.userId) {
+        state.score = action.payload.score;
+      }
     })
     .addCase(userActions.getUserDataByLS.fulfilled, (state, action) => ({ ...action.payload }))
+    .addCase(membersActions.getMembers.fulfilled, (state, action) => {
+      const currentUser = action.payload.find((member) => member.userId === state.userId);
+      state.role = currentUser?.role || 'spectator';
+      state.score = currentUser?.score;
+    })
+    .addCase(membersActions.updateMemberRole, (state, action) => {
+      if (state.userId === action.payload) {
+        state.role = 'member';
+      }
+    })
+    .addCase(membersActions.resetMembersScores, (state) => ({ ...state, score: '' }))
+    .addCase(taskActions.updateTaskActive.fulfilled, (state) => ({ ...state, score: '' }))
     .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });

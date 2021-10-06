@@ -8,3 +8,4 @@ export { Modal } from './Modal';
 export { NewGameModal, ChooseUserNameModal } from './Modals';
 export { User, PanelUsers } from './User';
 export { VoteCard, PanelVoteCards } from './VoteCard';
+export { InviteBtn } from './InviteBtn';

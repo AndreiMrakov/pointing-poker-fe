@@ -29,6 +29,15 @@
   &:hover {
     background-color: $second-color-light;
   }
+
+  
+  &:disabled {
+    background-color: $shadow-grey
+  }
+
+  &:disabled:hover {
+    background-color: $shadow-grey
+  }
 }
 
 .btnSecondary {
