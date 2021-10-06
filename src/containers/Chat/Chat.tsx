@@ -41,6 +41,7 @@ export const Chat: React.FC = () => {
           <Message
             name={message.userName}
             text={message.text}
+            userId={message.userId}
             key={message.messageId}
           />
         )) }
