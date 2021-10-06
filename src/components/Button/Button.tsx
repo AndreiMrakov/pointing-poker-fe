@@ -19,9 +19,7 @@ export const Button: FC<ButtonProps> = ({
 }) => (
   <button
     type={type}
-    className={classNames(styles.btn, className, {
-      [styles.disabled]: disabled,
-    })}
+    className={classNames(styles.btn, className)}
     onClick={onClick}
     disabled={disabled}
   >
