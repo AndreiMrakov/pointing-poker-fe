@@ -1,6 +1,7 @@
 @import "@/styles/variables.scss";
 
 .table {
+  position: relative;
   margin: 0 auto;
   width: 40rem;
   height: 30rem;
@@ -11,4 +12,18 @@
   padding: 0 1.6rem;
   background-color: $table-color;
   font-size: 2rem;
+
+  .title {
+    position: absolute;
+    top: 2rem;
+  }
+
+  .score {
+    position: absolute;
+    top: 7rem;
+  }
+
+  .IssueInfo {
+    font-weight: $normal-font-weight;
+  }
 }

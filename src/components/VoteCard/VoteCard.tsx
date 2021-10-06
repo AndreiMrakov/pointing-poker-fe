@@ -35,7 +35,7 @@ export const VoteCard: FC<IVoteCardProps> = ({ score }) => {
       className={classNames(styles.card,
         {
           [styles.unactive]:
-          roomState !== StateRoomTitle.start,
+          roomState !== StateRoomTitle.start || !activeTask,
           [styles.active]: score === userScore,
         })}
       onClick={onCardClick}

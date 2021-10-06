@@ -9,6 +9,7 @@ import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 export const Table: React.FC = () => {
   const score = useSelector(userSelectors.score);
   const activeTask = useSelector(tasksSelectors.activeTask);
+  // const tasks = useSelector(tasksSelectors.tasks);
   const roomState = useSelector(roomStateSelectors.roomState);
   const role = useSelector(userSelectors.role);
 
@@ -26,6 +27,23 @@ export const Table: React.FC = () => {
 
   return (
     <div className={styles.table}>
+      {role !== 'spectator'
+      && (
+        <>
+          <h3 className={styles.title}>
+            Issue:
+            {' '}
+            <span className={styles.IssueInfo}>{activeTask?.title}</span>
+          </h3>
+          <h3 className={styles.score}>
+            Score:
+            {' '}
+            <span className={styles.IssueInfo}>
+              {activeTask?.score}
+            </span>
+          </h3>
+        </>
+      )}
       {
         ((roomState !== StateRoomTitle.showCards
         && !score)

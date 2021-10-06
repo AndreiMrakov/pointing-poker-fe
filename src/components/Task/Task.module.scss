@@ -4,6 +4,7 @@ $size-kick: 2rem;
 
 .task {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
@@ -23,6 +24,8 @@ $size-kick: 2rem;
   }
 
   &__title {
+    position: absolute;
+    top: 1rem;
     font-size: 1.5rem;
   }
 
@@ -36,6 +39,9 @@ $size-kick: 2rem;
 }
 
 .remove__btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;

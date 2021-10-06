@@ -1,13 +1,17 @@
 import React, {
-  ChangeEventHandler, FormEventHandler, useState,
+  ChangeEventHandler, FormEventHandler, MouseEventHandler, useState,
 } from 'react';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
+import { FormControlLabel, Switch } from '@mui/material';
 import { voteOptions } from '@/mocks/options';
 import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';
 import { AppDispatch } from '@/store';
 import { roomStateActions } from '@/store/actions';
+import { history } from '@/utils/history';
+import { navMap } from '@/utils/NavMap';
+import { getRoomIdByUrl } from '@/helpers';
 
 interface OptionType {
   value: string;
@@ -19,6 +23,8 @@ export const NewGameModal: React.FC = () => {
     roomTitle: '',
     voteSystem: voteOptions[0].value,
   });
+  const [isToggled, setIsToggled] = useState(false);
+  const [link, setLink] = useState('');
   const dispatch = useDispatch<AppDispatch>();
 
   const inputsHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -37,7 +43,19 @@ export const NewGameModal: React.FC = () => {
 
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
     event.preventDefault();
-    dispatch(roomStateActions.createRoom(form));
+    if (isToggled) {
+      history.push(navMap.game(getRoomIdByUrl(link)));
+    } else {
+      dispatch(roomStateActions.createRoom(form));
+    }
+  };
+
+  const toggleHandler: MouseEventHandler<HTMLButtonElement> = () => {
+    setIsToggled(!isToggled);
+  };
+
+  const inputJoinHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setLink(event.target.value);
   };
 
   return (
@@ -54,17 +72,42 @@ export const NewGameModal: React.FC = () => {
               onChange={inputsHandler}
               required
             />
-            <Select
-              className={styles.form_select}
-              placeholder="Select vote system"
-              options={voteOptions}
-              onChange={voteSystemHandler}
-              isDisabled
+            {isToggled
+              ? (
+                <section className={styles.joinBlock}>
+                  <p className={styles.joinText}>Join to:</p>
+                  <Input
+                    className={styles.joinInput}
+                    label="Current game link"
+                    name="link"
+                    onChange={inputJoinHandler}
+                    required={isToggled}
+                  />
+                </section>
+              )
+              : (
+                <Select
+                  className={styles.form_select}
+                  placeholder="Select vote system"
+                  options={voteOptions}
+                  onChange={voteSystemHandler}
+                  isDisabled
+                />
+              )}
+            <FormControlLabel
+              className={styles.toggle}
+              control={(
+                <Switch
+                  onClick={toggleHandler}
+                  value={isToggled}
+                />
+              )}
+              label="Join to current game"
             />
             <Input
               type="submit"
               name="Create game"
-              value="Create game"
+              value={isToggled ? 'Join game' : 'Create game'}
               className={styles.form_submit}
             />
           </form>

@@ -50,7 +50,6 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
     >
 
       <div className={styles.task__head}>
-        <h5>{task.id}</h5>
         {role === 'admin'
         && (
           <Button
@@ -73,7 +72,7 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
         <Select
           value={task.score}
           onChange={updateTaskScore}
-          disabled={role !== 'admin'}
+          disabled={role !== 'admin' || !task.isActive}
         >
           {cards.map((option) => (
             <MenuItem value={option} key={option}>{option}</MenuItem>

@@ -75,7 +75,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
           <Input
             type="submit"
             name="Continue to game"
-            value="Continue to game"
+            value={isToggled ? 'Join to game' : 'Create game'}
             className={styles.form_submit}
           />
         </form>
