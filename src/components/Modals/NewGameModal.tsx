@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
-import { dealerOptions, voteOptions } from '@/mocks/options';
+import { voteOptions } from '@/mocks/options';
 import { Input, Modal } from '@/components';
 import styles from './Modals.module.scss';
 import { AppDispatch } from '@/store';
@@ -18,7 +18,6 @@ export const NewGameModal: React.FC = () => {
   const [form, setForm] = useState({
     roomTitle: '',
     voteSystem: voteOptions[0].value,
-    dealerRights: dealerOptions[0].value,
   });
   const dispatch = useDispatch<AppDispatch>();
 
@@ -33,13 +32,6 @@ export const NewGameModal: React.FC = () => {
     setForm({
       ...form,
       voteSystem: selectedOption?.value || voteOptions[0].value,
-    });
-  };
-
-  const dealerHandler = (selectedOption: OptionType | null | undefined) => {
-    setForm({
-      ...form,
-      dealerRights: selectedOption?.value || dealerOptions[0].value,
     });
   };
 
@@ -67,12 +59,6 @@ export const NewGameModal: React.FC = () => {
               placeholder="Select vote system"
               options={voteOptions}
               onChange={voteSystemHandler}
-            />
-            <Select
-              className={styles.form_select}
-              placeholder="Who can show cards?"
-              options={dealerOptions}
-              onChange={dealerHandler}
             />
             <Input
               type="submit"

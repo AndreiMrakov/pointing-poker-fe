@@ -4,7 +4,6 @@ import { roomStateActions, userActions } from '@/store/actions';
 const initialState = {
   roomTitle: '',
   voteSystem: '',
-  dealerRights: '',
   roomId: '',
   roomState: '',
 };
