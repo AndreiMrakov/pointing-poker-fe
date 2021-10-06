@@ -70,6 +70,7 @@ export const Issues: React.FC = () => {
       <button
         className={styles.issuesListWrapper}
         onClick={issuesListIconHandler}
+        title="Show Issues panel"
       >
         <div className={styles.issuesList} />
       </button>

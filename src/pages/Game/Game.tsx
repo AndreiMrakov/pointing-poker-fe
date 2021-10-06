@@ -6,6 +6,7 @@ import {
   CommonArea,
   Controls,
   Issues,
+  InviteBtn,
 } from '@/components';
 import styles from './Game.module.scss';
 import { Chat, ProfileInfo } from '@/containers';
@@ -52,6 +53,7 @@ export const Game: React.FC = () => {
       </article>
       <section className={styles.rightSection}>
         <ProfileInfo />
+        <InviteBtn />
         <Issues />
       </section>
     </main>
