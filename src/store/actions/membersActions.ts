@@ -13,11 +13,16 @@ export const membersActions = {
     async (_:void, { rejectWithValue, getState }) => {
       try {
         const roomId = roomStateSelectors.roomId(getState() as RootState);
+        const currentUser = userSelectors.user(getState() as RootState);
         const usersFromBE: IUserFromBE[] = await http.get(`/api/users?roomId=${roomId}`);
         if (!usersFromBE) {
           throw new Error('Error with room members');
         }
         const users:IUser[] = usersFromBE.map((usr) => new UserModel(usr));
+        const isUserSended = users.find((user) => user.userId === currentUser.userId);
+        if (!isUserSended) {
+          users.push(currentUser);
+        }
         return users;
       } catch (err) {
         return rejectWithValue(err);
