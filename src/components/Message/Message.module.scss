@@ -1,3 +1,7 @@
+@import "@/styles/variables.scss";
+
+$size-admin: 2rem;
+
 .messageWrapper {
   display: flex;
   width: calc(100% - 1rem);
@@ -20,3 +24,22 @@
   margin-top: 0.5rem;
 }
 
+.userName {
+  &__admin {
+    color: $red-color;
+  }
+
+  &__user {
+    color: $second-color;
+  }
+}
+
+.admin__icon {
+  display: flex;
+  width: $size-admin;
+  height: $size-admin;
+  background-image: url(~@/assets/images/admin.svg);
+  background-size: cover;
+  background-position-y: 0.3rem;
+  margin-right: 0.4rem;
+}
