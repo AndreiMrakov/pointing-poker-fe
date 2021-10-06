@@ -31,20 +31,15 @@ export const CardNest: React.FC<ICardNestProps> = ({
           },
         )}
       >
-        {userRole !== 'spectator'
-          && (
-            <>
-              <div className={styles.frontSide}>
-                {score}
-              </div>
-              <div
-                className={classNames(
-                  styles.backSide,
-                  { [styles.chosenCardBackground]: score },
-                )}
-              />
-            </>
+        <div className={styles.frontSide}>
+          {score}
+        </div>
+        <div
+          className={classNames(
+            styles.backSide,
+            { [styles.chosenCardBackground]: score },
           )}
+        />
       </section>
       {name && (
         <h2 className={styles.name}>
