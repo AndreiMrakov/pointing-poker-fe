@@ -5,7 +5,7 @@ import { Task } from '@/components/Task';
 import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
-import { roomStateActions, taskActions } from '@/store/actions';
+import { membersActions, roomStateActions, taskActions } from '@/store/actions';
 import { socketService } from '@/services';
 import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 import { ITask, ITaskFromBE } from '@/utils/interfaces';
@@ -44,6 +44,7 @@ export const Issues: React.FC = () => {
     dispatch(taskActions.deleteTask(id));
     if (id === activeTask?.id) {
       dispatch(roomStateActions.setRoomState(StateRoomTitle.reset));
+      dispatch(membersActions.resetMembersScores());
     }
   };
 
@@ -55,6 +56,7 @@ export const Issues: React.FC = () => {
   const updateActiveTaskHandler = (task: ITaskFromBE) => {
     dispatch(taskActions.updateTaskActive(task.id));
     dispatch(roomStateActions.setRoomState(StateRoomTitle.reset));
+    dispatch(membersActions.resetMembersScores());
   };
 
   useEffect(() => {
