@@ -8,7 +8,7 @@ import { userActions } from '@/store/actions';
 export const ProfileInfo: React.FC = () => {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const name = useSelector(userSelectors.name);
-  const role = useSelector(userSelectors.role)?.role;
+  const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
 
   const profileBtnHandler = () => {
@@ -41,7 +41,7 @@ export const ProfileInfo: React.FC = () => {
                 {name}
               </h4>
               <p className={styles.role}>
-                {role || 'Member'}
+                {role}
               </p>
             </div>
           </div>

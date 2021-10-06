@@ -16,7 +16,7 @@ export const User: FC<IUserProps> = ({ user }) => {
   const {
     role, name, userId, score,
   } = user;
-  const mainRole = useSelector(userSelectors.role)?.role;
+  const mainRole = useSelector(userSelectors.role);
   const roomId = useSelector(roomStateSelectors.roomId);
 
   const kickHandler = () => {

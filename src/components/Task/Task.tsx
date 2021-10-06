@@ -15,7 +15,7 @@ interface ITaskProps {
 }
 
 export const Task: React.FC<ITaskProps> = ({ task }) => {
-  const role = useSelector(userSelectors.role)?.role;
+  const role = useSelector(userSelectors.role);
 
   const setActiveTask = () => {
     if (!task.isActive) {

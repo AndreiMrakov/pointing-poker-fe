@@ -12,7 +12,7 @@ export const CreateTaskPanel: React.FC = () => {
   const [isTaskEditorOpen, setIsTaskEditorOpen] = useState(false);
   const [title, setTaskTitle] = useState('');
   const roomId = useSelector(roomStateSelectors.roomId);
-  const role = useSelector(userSelectors.role)?.role;
+  const role = useSelector(userSelectors.role);
 
   const textareaHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     setTaskTitle(event.target.value);

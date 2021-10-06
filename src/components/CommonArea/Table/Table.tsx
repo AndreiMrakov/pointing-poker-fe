@@ -10,7 +10,7 @@ export const Table: React.FC = () => {
   const score = useSelector(userSelectors.score);
   const activeTask = useSelector(tasksSelectors.activeTask);
   const roomState = useSelector(roomStateSelectors.roomState);
-  const role = useSelector(userSelectors.role)?.role;
+  const role = useSelector(userSelectors.role);
 
   const showCards = () => {
     if (activeTask) {

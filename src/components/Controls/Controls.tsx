@@ -23,7 +23,7 @@ const NAMES_BTN = {
 export const Controls: React.FC = () => {
   const activeTask = useSelector(tasksSelectors.activeTask);
   const roomId = useSelector(roomStateSelectors.roomId);
-  const role = useSelector(userSelectors.role)?.role;
+  const role = useSelector(userSelectors.role);
   const roomState = useSelector(roomStateSelectors.roomState);
   const dispatch = useAppDispatch();
 
