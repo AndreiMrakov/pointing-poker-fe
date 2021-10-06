@@ -12,8 +12,8 @@ const initialState: IUser = {
 export const user = createReducer(initialState, (builder) => {
   builder
     .addCase(userActions.addUserData.fulfilled, (state, action) => ({ ...state, ...action.payload }))
-    .addCase(userActions.addRole, (state, action) => {
-      state.role = action.payload;
+    .addCase(membersActions.updateRoomAdmin, (state, action) => {
+      if (action.payload === state.userId) { state.role = 'admin'; }
     })
     .addCase(membersActions.updateMemberScore, (state, action) => {
       if (state.userId === action.payload.userId) {

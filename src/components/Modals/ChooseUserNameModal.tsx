@@ -16,6 +16,7 @@ interface IChooseUserNameModalProps {
 export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onClick, show }) => {
   const [userName, setUserName] = useState('');
   const [link, setLink] = useState('');
+  const [isToggled, setIsToggled] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
   const submitHandler: FormEventHandler = async (event): Promise<void> => {
@@ -24,7 +25,7 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
   };
 
   const toggleHandler: MouseEventHandler<HTMLButtonElement> = () => {
-    console.log('spectator');
+    setIsToggled(!isToggled);
   };
 
   const inputNameHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -48,27 +49,28 @@ export const ChooseUserNameModal: React.FC<IChooseUserNameModalProps> = ({ onCli
             onChange={inputNameHandler}
             required
           />
-          <section className={styles.joinBlock}>
-            <p className={styles.joinText}>*Join to:</p>
-            <Input
-              className={styles.joinInput}
-              label="Current game link"
-              name="link"
-              onChange={inputJoinHandler}
-            />
-          </section>
-          <div className={styles.helpText}>
-            * Enter the link if you want to join the current game or continue creating a new one
-          </div>
+          {isToggled
+          && (
+            <section className={styles.joinBlock}>
+              <p className={styles.joinText}>Join to:</p>
+              <Input
+                className={styles.joinInput}
+                label="Current game link"
+                name="link"
+                onChange={inputJoinHandler}
+                required={isToggled}
+              />
+            </section>
+          )}
           <FormControlLabel
             className={styles.toggle}
             control={(
               <Switch
                 onClick={toggleHandler}
-                disabled
+                value={isToggled}
               />
             )}
-            label="Join as spectator"
+            label="Join to current game"
           />
           <Input
             type="submit"

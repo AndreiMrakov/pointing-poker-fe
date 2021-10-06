@@ -12,6 +12,7 @@ export enum SocketEvent {
   RoomCreate = 'room_create',
   RoomJoin = 'room_join',
   RoomLeave = 'room_leave',
+  RoomAdmin = 'room_admin',
   MessageCreate = 'message_create',
   ErrorNotData = 'error_not_data',
 }

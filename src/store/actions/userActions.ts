@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { userSelectors, roomStateSelectors } from '@/store/selectors';
 import { RootState } from '@/store';
-import { IUserFromBE } from '@/utils/interfaces';
+import { IUser, IUserFromBE } from '@/utils/interfaces';
 import { http } from '@/api/HttpClient';
 import { UserModel } from '@/models';
 import { history } from '@/utils/history';
@@ -16,7 +16,6 @@ interface IUserJoin {
 }
 
 export const userActions = {
-  addRole: createAction<string>('[USER]:addRole'),
   signOut: createAsyncThunk('[USER]:signOut',
     async (_:void, { rejectWithValue, getState }) => {
       try {
