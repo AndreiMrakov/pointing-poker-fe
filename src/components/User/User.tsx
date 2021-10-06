@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './User.module.scss';
 import { CardNest, PrimaryButton } from '@/components';
-import { IUser, IUserFromBE } from '@/utils/interfaces';
+import { IUser } from '@/utils/interfaces';
 import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
