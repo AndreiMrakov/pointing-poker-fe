@@ -5,9 +5,9 @@ import { Task } from '@/components/Task';
 import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
-import { taskActions } from '@/store/actions';
+import { roomStateActions, taskActions } from '@/store/actions';
 import { socketService } from '@/services';
-import { SocketEvent } from '@/utils/enums';
+import { SocketEvent, StateRoomTitle } from '@/utils/enums';
 import { ITask, ITaskFromBE } from '@/utils/interfaces';
 import { TaskModel } from '@/models';
 import { CreateTaskPanel } from '../CreateTaskPanel';
@@ -15,6 +15,7 @@ import { CreateTaskPanel } from '../CreateTaskPanel';
 export const Issues: React.FC = () => {
   const [isIssuesShow, setIsIssuesShow] = useState(false);
   const tasks = useSelector(tasksSelectors.tasks);
+  const activeTask = useSelector(tasksSelectors.activeTask);
   const roomId = useSelector(roomStateSelectors.roomId);
   const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
@@ -41,6 +42,9 @@ export const Issues: React.FC = () => {
 
   const deleteTaskHandler = (id: ITask['id']) => {
     dispatch(taskActions.deleteTask(id));
+    if (id === activeTask?.id) {
+      dispatch(roomStateActions.setRoomState(StateRoomTitle.reset));
+    }
   };
 
   const updateScoreTaskHandler = (task: ITaskFromBE) => {
@@ -50,6 +54,7 @@ export const Issues: React.FC = () => {
 
   const updateActiveTaskHandler = (task: ITaskFromBE) => {
     dispatch(taskActions.updateTaskActive(task.id));
+    dispatch(roomStateActions.setRoomState(StateRoomTitle.reset));
   };
 
   useEffect(() => {
