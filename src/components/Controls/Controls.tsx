@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import classNames from 'classnames';
 import { PrimaryButton, SecondaryButton } from '@/components';
 import styles from './Controls.module.scss';
 import { socketService } from '@/services';
@@ -75,19 +74,15 @@ export const Controls: React.FC = () => {
      && (
        <section className={styles.groupBtn}>
          <PrimaryButton
-           className={classNames(styles.singleBtn,
-             {
-               [styles.disabled]: !activeTask || roomState !== StateRoomTitle.reset,
-             })}
+           className={styles.singleBtn}
            onClick={handlerStart}
+           disabled={!activeTask || roomState !== StateRoomTitle.reset}
          >
            {NAMES_BTN.run}
          </PrimaryButton>
          <PrimaryButton
-           className={classNames(styles.singleBtn,
-             {
-               [styles.disabled]: roomState !== StateRoomTitle.start,
-             })}
+           className={styles.singleBtn}
+           disabled={roomState !== StateRoomTitle.start}
            onClick={handlerShow}
          >
            {NAMES_BTN.show}

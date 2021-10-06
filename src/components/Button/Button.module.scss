@@ -39,3 +39,11 @@
     background-color: $btn-dark-color;
   }
 }
+
+.disabled {
+  background-color: $shadow-grey !important;
+}
+
+.disabled:hover {
+  background-color: $shadow-grey !important;
+}
