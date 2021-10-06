@@ -32,8 +32,8 @@ export const Game: React.FC = () => {
 
   useEffect(() => {
     if (userId && roomId) {
-      dispatch(membersActions.getMembers());
       socketService.emit(SocketEvent.RoomJoin, { userId, roomId });
+      dispatch(membersActions.getMembers());
     }
   }, [userId, roomId]);
 

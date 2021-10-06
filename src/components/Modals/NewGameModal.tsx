@@ -59,6 +59,7 @@ export const NewGameModal: React.FC = () => {
               placeholder="Select vote system"
               options={voteOptions}
               onChange={voteSystemHandler}
+              isDisabled
             />
             <Input
               type="submit"
