@@ -1,0 +1,45 @@
+@import "@/styles/variables.scss";
+
+.main {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  height: inherit;
+  color: $font-color;
+  overflow-x: hidden;
+
+  .leftSection {
+    width: 40rem;
+  }
+
+  .rightSection {
+    margin-top: 1rem;
+    width: 40rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .title {
+    text-align: center;
+  }
+}
+
+.profileModal {
+  position: absolute;
+  top: $profile-btn-height;
+  margin-top: 4px;
+  right: 0;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px $second-font-color;
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,50 @@
+@import "@/styles/variables.scss";
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 0;
+  padding: 0 2.4rem;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-weight: $bold-font-weight;
+  letter-spacing: 0.2px;
+  outline: 0;
+  font-size: 1.8rem;
+  height: 5.6rem;
+  text-decoration: none;
+
+  &:active {
+    transform: scale(0.95);
+    transition: transform 0.1s linear;
+  }
+}
+
+.btnPrimary {
+  color: $primary-color;
+  background-color: $second-color;
+
+  &:hover {
+    background-color: $second-color-light;
+  }
+
+  
+  &:disabled {
+    background-color: $shadow-grey
+  }
+
+  &:disabled:hover {
+    background-color: $shadow-grey
+  }
+}
+
+.btnSecondary {
+  color: $primary-color;
+  background-color: $btn-dark-color-light;
+
+  &:hover {
+    background-color: $btn-dark-color;
+  }
+}

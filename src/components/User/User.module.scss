@@ -1,0 +1,93 @@
+@import "@/styles/variables.scss";
+
+$size-kick: 2rem;
+$size-avatar: 3rem;
+$size-admin: 2rem;
+
+.listUsers {
+  padding: 2rem 0;
+  border-right: 1px solid $second-font-color;
+  border-bottom: 1px solid $second-font-color;
+  flex: 1 0 33%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 50vh;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.user {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25rem;
+  position: relative;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  font-weight: $bold-font-weight;
+  letter-spacing: 0.2px;
+  font-size: 1.8rem;
+  text-align: center;
+  height: 5.6rem;
+  border: 2px solid $second-color;
+  color: $font-color;
+
+  &__admin {
+    background-image: url(~@/assets/images/admin.svg);
+    background-repeat: no-repeat;
+    background-size: $size-admin;
+    background-position-y: 0.3rem;
+    background-position-x: 0.3rem;
+  }
+
+  &__spectator {
+    color: $shadow-grey;
+    border: 2px solid $shadow-grey;
+  }
+}
+
+.job {
+  font-size: 1rem;
+}
+
+.avatar {
+  width: $size-avatar;
+  height: $size-avatar;
+  background: center no-repeat;
+  margin-left: 0.5rem;
+}
+
+.kick {
+  width: $size-kick;
+  height: $size-kick;
+  background: url(~@/assets/images/kick.svg) center no-repeat;
+  background-size: cover;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.approve__btn {
+  padding: 0.5rem;
+  height: auto;
+  font-size: 1.2rem;
+}

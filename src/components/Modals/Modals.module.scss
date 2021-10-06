@@ -1,0 +1,96 @@
+@import "@/styles/variables.scss";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-color;
+  padding: 3rem;
+  border-radius: 5px;
+}
+
+.title {
+  margin-bottom: 2.5rem;
+  color: $font-color;
+  font-size: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50rem;
+  height: 22rem;
+
+  .joinBlock {
+    display: flex;
+    align-items: center;
+
+    .joinText {
+      margin-right: 0.5rem;
+      width: 6rem;
+    }
+
+    .joinInput {
+      width: 100%;
+    }
+  }
+
+  .helpText {
+    margin: 1rem auto 0;
+    font-size: 1.2rem;
+  }
+
+  &_submit {
+    background-color: $second-color;
+    color: $primary-color;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $second-color-light;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      transition: transform 0.1s linear;
+      border: none;
+    }
+  }
+}
+
+.form_select {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  color: $font-color;
+
+  &__value-container {
+    color: $font-color;
+  }
+}
+
+.toggle {
+  justify-content: center;
+
+  span {
+    font-size: 1.5rem;
+  }
+}
+
+.roomSettingsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: $second-color-light;
+}
+
+.roomSettingsModal {
+  visibility: visible;
+  background-color: $second-color-light;
+}
+
+

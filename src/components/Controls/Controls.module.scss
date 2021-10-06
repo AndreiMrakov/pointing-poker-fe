@@ -1,0 +1,12 @@
+@import "@/styles/variables.scss";
+
+.groupBtn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
+
+  .singleBtn {
+    border-radius: 0.8rem;
+  }
+}
+
