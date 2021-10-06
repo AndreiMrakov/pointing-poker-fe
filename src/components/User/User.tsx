@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './User.module.scss';
 import { CardNest, PrimaryButton } from '@/components';
-import { IUser } from '@/utils/interfaces';
+import { IUser, IUserFromBE } from '@/utils/interfaces';
 import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
+import { userActions } from '@/store/actions';
 
 interface IUserProps {
   user: IUser
@@ -16,6 +17,11 @@ export const User: FC<IUserProps> = ({ user }) => {
   const { role } = user;
   const clientRole = useSelector(userSelectors.role);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const dispatch = useDispatch();
+
+  const updateUserRole = () => {
+    dispatch(userActions.addRole('member'));
+  };
 
   const approveUser = () => {
     const updatedUser = {
@@ -24,6 +30,7 @@ export const User: FC<IUserProps> = ({ user }) => {
       role: 'member',
     };
     socketService.emit(SocketEvent.UserAddRole, updatedUser);
+    socketService.on(SocketEvent.UserAddRole, updateUserRole);
   };
 
   return (
