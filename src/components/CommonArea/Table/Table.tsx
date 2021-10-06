@@ -14,13 +14,13 @@ export const Table: React.FC = () => {
 
   function showCards() {
     if (activeTask) {
-      socketService.emit(SocketEvent.RoomShow, { id: activeTask.id });
+      socketService.emit(SocketEvent.RoomShow, activeTask.id);
     }
   }
 
   function gameFinish() {
     if (activeTask) {
-      socketService.emit(SocketEvent.RoomFinish, { id: activeTask.id });
+      socketService.emit(SocketEvent.RoomFinish, activeTask.id);
     }
   }
 

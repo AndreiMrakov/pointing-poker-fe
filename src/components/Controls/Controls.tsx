@@ -55,17 +55,17 @@ export const Controls: React.FC = () => {
 
   const handlerShow = () => {
     if (activeTask) {
-      socketService.emit(SocketEvent.RoomShow, { id: activeTask.id });
+      socketService.emit(SocketEvent.RoomShow, activeTask.id);
     }
   };
 
   const handlerStart = () => {
-    socketService.emit(SocketEvent.RoomStart, { id: roomId });
+    socketService.emit(SocketEvent.RoomStart, roomId);
   };
 
   const handlerReset = () => {
     if (activeTask) {
-      socketService.emit(SocketEvent.RoomFinish, { id: activeTask.id });
+      socketService.emit(SocketEvent.RoomFinish, activeTask.id);
     }
   };
 
