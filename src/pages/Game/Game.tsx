@@ -41,7 +41,7 @@ export const Game: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      {role ? (
+      {role !== 'spectator' ? (
         <>
           <section className={styles.leftSection}>
             <PanelUsers />
