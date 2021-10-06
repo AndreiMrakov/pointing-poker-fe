@@ -8,7 +8,7 @@ import { history } from '@/utils/history';
 import { navMap } from '@/utils/NavMap';
 import { socketService } from '@/services';
 import { SocketEvent } from '@/utils/enums';
-import { getRoomPathFromLink } from '@/helpers';
+import { getRoomIdByUrl } from '@/helpers';
 
 interface IUserJoin {
   name: string;
@@ -39,7 +39,7 @@ export const userActions = {
         const user = new UserModel(userFromBE);
         localStorage.setItem('userId', user.userId);
         if (joinUser.link) {
-          history.push(navMap.game(getRoomPathFromLink(joinUser.link)));
+          history.push(navMap.game(getRoomIdByUrl(joinUser.link)));
         } else {
           history.push(navMap.newGame());
         }
