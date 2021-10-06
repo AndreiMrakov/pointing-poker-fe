@@ -51,6 +51,7 @@ export const Task: React.FC<ITaskProps> = ({ task }) => {
 
       <div className={styles.task__head}>
         {role === 'admin'
+        && !task.isActive
         && (
           <Button
             className={styles.remove__btn}

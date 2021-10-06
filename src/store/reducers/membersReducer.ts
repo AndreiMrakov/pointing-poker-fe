@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { userActions, membersActions } from '@/store/actions';
+import { userActions, membersActions, taskActions } from '@/store/actions';
 import { IUser } from '@/utils/interfaces';
 
 const initialState: IUser[] = [];
@@ -23,6 +23,7 @@ export const members = createReducer(initialState, (builder) => {
       }))
     .addCase(membersActions.resetMembersScores,
       (state) => state.map((member) => ({ ...member, score: '' })))
+    .addCase(taskActions.updateTaskActive.fulfilled, (state) => state.map((member) => ({ ...member, score: '' })))
     .addCase(membersActions.updateRoomAdmin, (state, action) => (state.map((member) => {
       if (member.userId === action.payload) {
         return { ...member, role: 'admin' };

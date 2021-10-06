@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { membersActions, userActions } from '@/store/actions';
+import { membersActions, taskActions, userActions } from '@/store/actions';
 import { IUser } from '@/utils/interfaces';
 
 const initialState: IUser = {
@@ -32,6 +32,7 @@ export const user = createReducer(initialState, (builder) => {
       }
     })
     .addCase(membersActions.resetMembersScores, (state) => ({ ...state, score: '' }))
+    .addCase(taskActions.updateTaskActive.fulfilled, (state) => ({ ...state, score: '' }))
     .addCase(userActions.signOut.fulfilled, () => initialState)
     .addDefaultCase((state) => state);
 });
