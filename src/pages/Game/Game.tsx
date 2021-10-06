@@ -21,6 +21,7 @@ export const Game: React.FC = () => {
   const title = useSelector(roomStateSelectors.roomTitle);
   const userId = useSelector(userSelectors.userId);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -40,31 +41,44 @@ export const Game: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <section className={styles.leftSection}>
-        <PanelUsers />
-        <Chat />
-      </section>
-      <article className={styles.wrapper}>
-        <section>
-          <h1 className={styles.title}>{title}</h1>
-          <Controls />
-        </section>
-        <CommonArea
-          isCardOpened={isCardOpened}
-          selectedCardValue={selectedCardValue}
-          setIsCardIsVisible={setIsCardIsVisible}
-          setSelectedCardValue={setSelectedCardValue}
-        />
-        <PanelVoteCards
-          setSelectedCardValue={setSelectedCardValue}
-          selectedCardValue={selectedCardValue}
-          isCardOpened={isCardOpened}
-        />
-      </article>
-      <section className={styles.rightSection}>
-        <ProfileInfo />
-        <Issues />
-      </section>
+      {role ? (
+        <>
+          <section className={styles.leftSection}>
+            <PanelUsers />
+            <Chat />
+          </section>
+          <article className={styles.wrapper}>
+            <section>
+              <h1 className={styles.title}>{title}</h1>
+              <Controls />
+            </section>
+            <CommonArea
+              isCardOpened={isCardOpened}
+              selectedCardValue={selectedCardValue}
+              setIsCardIsVisible={setIsCardIsVisible}
+              setSelectedCardValue={setSelectedCardValue}
+            />
+            <PanelVoteCards
+              setSelectedCardValue={setSelectedCardValue}
+              selectedCardValue={selectedCardValue}
+              isCardOpened={isCardOpened}
+            />
+          </article>
+          <section className={styles.rightSection}>
+            <ProfileInfo />
+            <Issues />
+          </section>
+        </>
+      ) : (
+        <>
+          <section className={styles.leftSection}>
+            <Chat />
+          </section>
+          <section className={styles.rightSection}>
+            <ProfileInfo />
+          </section>
+        </>
+      )}
     </main>
   );
 };
