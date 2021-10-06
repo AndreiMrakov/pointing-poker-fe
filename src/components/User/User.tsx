@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import styles from './User.module.scss';
-import { CardNest } from '@/components';
+import { CardNest, PrimaryButton } from '@/components';
 import { IUser } from '@/utils/interfaces';
 import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { socketService } from '@/services';
@@ -23,19 +23,37 @@ export const User: FC<IUserProps> = ({ user }) => {
     socketService.emit(SocketEvent.UserKick, { roomId, userId });
   };
 
+  const approveUser = () => {
+    const updatedUser = {
+      userId: user.userId,
+      roomId,
+      role: 'member',
+    };
+    socketService.emit(SocketEvent.UserAddRole, updatedUser);
+  };
+
   return (
     <li className={styles.item}>
       <div className={classNames(
         styles.user,
         {
           [styles.user__admin]: role === 'admin',
-          [styles.user__spectator]: !role,
+          [styles.user__spectator]: role === 'spectator',
         },
       )}
       >
         <div className={styles.name}>
           {name}
         </div>
+        {mainRole === 'admin' && role === 'spectator'
+        && (
+          <PrimaryButton
+            onClick={approveUser}
+            className={styles.approve__btn}
+          >
+            Approve
+          </PrimaryButton>
+        )}
         {mainRole === 'admin'
         && role !== 'admin'
         && (

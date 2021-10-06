@@ -22,7 +22,12 @@ export const user = createReducer(initialState, (builder) => {
     })
     .addCase(userActions.getUserDataByLS.fulfilled, (state, action) => ({ ...action.payload }))
     .addCase(membersActions.getMembers.fulfilled, (state, action) => {
-      state.role = action.payload.find((member) => member.userId === state.userId)?.role || 'Member';
+      state.role = action.payload.find((member) => member.userId === state.userId)?.role || 'spectator';
+    })
+    .addCase(membersActions.updateMemberRole, (state, action) => {
+      if (state.userId === action.payload) {
+        state.role = 'member';
+      }
     })
     .addCase(membersActions.resetMembersScores, (state) => ({ ...state, score: '' }))
     .addCase(userActions.signOut.fulfilled, () => initialState)

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import styles from './CardNest.module.scss';
-import { roomStateSelectors } from '@/store/selectors';
+import { roomStateSelectors, userSelectors } from '@/store/selectors';
 import { StateRoomTitle } from '@/utils/enums';
 
 interface ICardNestProps {
@@ -15,10 +15,11 @@ interface ICardNestProps {
 export const CardNest: React.FC<ICardNestProps> = ({
   score,
   className,
-  userRole = 'member',
+  userRole,
   name,
 }) => {
   const roomState = useSelector(roomStateSelectors.roomState);
+  const role = useSelector(userSelectors.role);
   return (
     <>
       <section
@@ -26,20 +27,25 @@ export const CardNest: React.FC<ICardNestProps> = ({
           styles.cardNest,
           className,
           {
-            [styles.spectator]: userRole === 'spectator',
+            [styles.spectator]: userRole === 'spectator' || role === 'spectator',
             [styles.showCard]: roomState === StateRoomTitle.showCards && score,
           },
         )}
       >
-        <div className={styles.frontSide}>
-          {score}
-        </div>
-        <div
-          className={classNames(
-            styles.backSide,
-            { [styles.chosenCardBackground]: score },
-          )}
-        />
+        {(userRole !== 'spectator' && role !== 'spectator')
+        && (
+          <>
+            <div className={styles.frontSide}>
+              {score}
+            </div>
+            <div
+              className={classNames(
+                styles.backSide,
+                { [styles.chosenCardBackground]: score },
+              )}
+            />
+          </>
+        ) }
       </section>
       {name && (
         <h2 className={styles.name}>

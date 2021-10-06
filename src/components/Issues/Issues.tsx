@@ -2,7 +2,7 @@ import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { Task } from '@/components/Task';
-import { roomStateSelectors, tasksSelectors } from '@/store/selectors';
+import { roomStateSelectors, tasksSelectors, userSelectors } from '@/store/selectors';
 import styles from './Issues.module.scss';
 import { useAppDispatch } from '@/store';
 import { taskActions } from '@/store/actions';
@@ -16,6 +16,7 @@ export const Issues: React.FC = () => {
   const [isIssuesShow, setIsIssuesShow] = useState(false);
   const tasks = useSelector(tasksSelectors.tasks);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
 
   const issuesListIconHandler = () => {
@@ -90,10 +91,15 @@ export const Issues: React.FC = () => {
       )}
       >
         Issues
-        <CreateTaskPanel />
-        {tasks.map((task) => (
-          <Task task={task} key={task.id} />
-        ))}
+        {role !== 'spectator'
+        && (
+          <>
+            <CreateTaskPanel />
+            {tasks.map((task) => (
+              <Task task={task} key={task.id} />
+            ))}
+          </>
+        )}
       </section>
     </>
   );

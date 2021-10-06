@@ -20,6 +20,7 @@ export const Game: React.FC = () => {
   const title = useSelector(roomStateSelectors.roomTitle);
   const userId = useSelector(userSelectors.userId);
   const roomId = useSelector(roomStateSelectors.roomId);
+  const role = useSelector(userSelectors.role);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -48,8 +49,13 @@ export const Game: React.FC = () => {
           <h1 className={styles.title}>{title}</h1>
           <Controls />
         </section>
-        <CommonArea />
-        <PanelVoteCards />
+        {role !== 'spectator'
+        && (
+          <>
+            <CommonArea />
+            <PanelVoteCards />
+          </>
+        )}
       </article>
       <section className={styles.rightSection}>
         <ProfileInfo />

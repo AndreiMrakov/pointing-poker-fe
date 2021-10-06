@@ -5,12 +5,12 @@ export class UserModel {
 
   userId: string;
 
-  role?: string;
+  role: string;
 
   score?: string;
 
   constructor(user: IUserFromBE) {
-    this.role = user.role;
+    this.role = user.role || 'spectator';
     this.name = user.name;
     this.score = user.score;
     this.userId = user.id.toString();

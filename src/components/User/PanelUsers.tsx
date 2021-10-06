@@ -27,16 +27,22 @@ export const PanelUsers: React.FC = () => {
     dispatch(membersActions.updateRoomAdmin(id.toString()));
   }, []);
 
+  const subscribeUpdateMemberRole = (user: IUserFromBE) => {
+    dispatch(membersActions.updateMemberRole(user.id.toString()));
+  };
+
   useEffect(() => {
     socketService.on(SocketEvent.RoomJoin, subscribeJoin);
     socketService.on(SocketEvent.RoomLeave, subscribeLeave);
     socketService.on(SocketEvent.UserKick, subscribeLeave);
     socketService.on(SocketEvent.RoomAdmin, subscribeRoomAdmin);
+    socketService.on(SocketEvent.UserAddRole, subscribeUpdateMemberRole);
     return () => {
       socketService.off(SocketEvent.RoomJoin, subscribeJoin);
       socketService.off(SocketEvent.RoomLeave, subscribeLeave);
       socketService.off(SocketEvent.UserKick, subscribeLeave);
       socketService.off(SocketEvent.RoomAdmin, subscribeRoomAdmin);
+      socketService.off(SocketEvent.UserAddRole, subscribeUpdateMemberRole);
     };
   }, []);
 

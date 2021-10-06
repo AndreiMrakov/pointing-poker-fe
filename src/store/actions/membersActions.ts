@@ -26,6 +26,7 @@ export const membersActions = {
   updateMemberScore: createAction<IUserScore>('[MEMBERS]:updateMemberScore'),
   addRoomMember: createAction<IUser>('[MEMBERS]:addRoomMember'),
   updateRoomAdmin: createAction<IUser['userId']>('[MEMBERS]:updateRoomAdmin'),
+  updateMemberRole: createAction<IUser['userId']>('[MEMBERS]:updateMemberRole'),
   resetMembersScores: createAction('[MEMBERS]:resetMembersScores'),
   deleteRoomMember: createAsyncThunk('[MEMBERS]:deleteRoomMember',
     async (id:IUser['userId'], { getState }) => {
